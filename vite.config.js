@@ -5,12 +5,13 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+      '@components': fileURLToPath(new URL('./src/presentation/components', import.meta.url)),
+      '@services': fileURLToPath(new URL('./src/application/services', import.meta.url)),
+      '@enums': fileURLToPath(new URL('./src/domain/enums', import.meta.url))
     }
   }
 })

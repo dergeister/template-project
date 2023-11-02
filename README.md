@@ -7,46 +7,10 @@ O projeto irá utilizar **JSON Server** para simular endpoints
 # Definições
 - Options Api
 - Cypress
-- Estrutura de Pastas
-
-## Estrutura de Pastas
-src/
-├── assets/ 
-│   ├── imgs/
-│   └── styles/
-├── building-blocks/ (?)
-│   ├── api/
-│   │   ├── core.js 
-│   │   ├── payment.js 
-│   │   └── portal.js 
-│   ├── directives/ 
-│   └── middlewares/ 
-├── application/ 
-│   └── stores/ (?)
-├── domain/ 
-│   ├── enums/ 
-│   ├── models/ 
-│   │   └── entities/ (?)
-│   │   └── factories/ (?)
-├── presentation/ 
-│   ├── components/ 
-|   │   ├── atoms/ 
-│   │   │   └── inputs/
-│   │   │   └── buttons/
-│   │   │   └── icons/
-|   │   ├── molecules/ 
-│   │   │   └── forms/
-|   │   ├── organisms/
-|   │   ├── pages/
-|   │   └── templates/
-|   │       ├── contexts/
-|   │       └── layouts/
-|   ├── i18n/ 
-|   └── router/ 
-└── service/ 
-    ├── payment.js 
-    ├── voucher.js 
-    └── nutritionist.js 
+- DDD
+- Sass
+- Atomic Design
+- Pinia
 
 # A Definir
 - ESLint + Prettier
