@@ -1,0 +1,4 @@
+{
+  "/nutritionists/:email": "/nutritionists?email=:email",
+  "/voucher/:code": "/voucher?code=:code"
+}

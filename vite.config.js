@@ -13,5 +13,12 @@ export default defineConfig({
       '@services': fileURLToPath(new URL('./src/application/services', import.meta.url)),
       '@enums': fileURLToPath(new URL('./src/domain/enums', import.meta.url))
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@assets/styles/variables.scss";`
+      }
+    }
   }
 })
