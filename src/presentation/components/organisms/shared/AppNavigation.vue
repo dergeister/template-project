@@ -3,7 +3,8 @@
     <div class="navigation__logo-wrapper">
       <LogoIcon class="navigation__logo" @click="handleNavigateHome" />
     </div>
-    <div class="navigation__locale">
+    <div class="navigation__switches">
+      <ThemeSwitch />
       <LocaleSwitch />
     </div>
   </nav>
@@ -11,11 +12,13 @@
 <script>
 import LogoIcon from '@components/atoms/icons/LogoIcon.vue'
 import LocaleSwitch from '@components/atoms/switch/LocaleSwitch.vue'
+import ThemeSwitch from '@components/atoms/switch/ThemeSwitch.vue'
 
 export default {
   components: {
     LogoIcon,
-    LocaleSwitch
+    LocaleSwitch,
+    ThemeSwitch
   },
   methods: {
     handleNavigateHome() {
@@ -31,11 +34,11 @@ export default {
   position: fixed;
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   padding: 0.5rem 2rem;
   box-shadow: 0 4px 2px -2px var(--gray-200);
-  background-color: $primary;
+  background-color: var(--primary-color);
 
   &__logo {
     height: 32px;
@@ -43,9 +46,13 @@ export default {
     cursor: pointer;
   }
 
-  &__locale {
+  &__switches {
     display: flex;
-    justify-content: center;
+    justify-content: end;
+
+    & > div + div {
+      margin-left: 2rem;
+    }
   }
 }
 </style>

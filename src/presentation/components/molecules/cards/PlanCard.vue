@@ -5,7 +5,7 @@
     </template>
     <template #content>
       <p class="plan-card__description">{{ $t(plan.description) }}</p>
-      <p class="plan-card__pricing">{{ $t(plan.pricing) }}</p>
+      <p class="plan-card__pricing">{{ plan.pricing }}</p>
       <PlanCardButton :variation="variation" class="w-full" />
     </template>
   </Card>

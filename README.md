@@ -17,6 +17,7 @@ O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso,
 - DDD
 - Options Api
 - Pinia
+- i18n
 - Cypress
 - Scss
 - Atomic Design
@@ -33,3 +34,5 @@ O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso,
 - Microfrontends
 - JS Docs
 - Services
+- Checkout View
+- Purchase Complete View
