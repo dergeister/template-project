@@ -9,51 +9,25 @@ import Toast from 'primevue/toast'
 
 import Errors from '@enums/Errors'
 
+import CustomErrorFactory from '@factories/CustomErrorFactory'
+
 export default {
   components: {
     Toast
   },
-  data() {
-    return {
-      toasts: [
-        {
-          type: Errors.NUTRITIONIST_NOT_FOUND,
-          config: {
-            severity: 'error',
-            summary: this.$t('errorHandler.nutritionistNotFound.title'),
-            detail: this.$t('errorHandler.nutritionistNotFound.message'),
-            life: 5000
-          }
-        },
-        {
-          type: Errors.INVALID_LOCALE,
-          config: {
-            severity: 'warn',
-            summary: this.$t('errorHandler.invalidLocale.title'),
-            detail: this.$t('errorHandler.invalidLocale.message'),
-            life: 5000
-          }
-        },
-        {
-          type: Errors.INVALID_THEME,
-          config: {
-            severity: 'warn',
-            summary: this.$t('errorHandler.invalidTheme.title'),
-            detail: this.$t('errorHandler.invalidTheme.message'),
-            life: 5000
-          }
-        }
-      ]
-    }
-  },
   errorCaptured(error) {
     const errorType = error.message
-    const appError = this.toasts.find((e) => e.type == errorType)
 
-    if (appError) {
-      this.$toast.add(appError.config)
-    } else {
-      console.error(error)
+    switch (errorType) {
+      case Errors.INVALID_LOCALE:
+        this.$toast.add(CustomErrorFactory.createInvalidLocaleError().config)
+        break
+      case Errors.INVALID_THEME:
+        this.$toast.add(CustomErrorFactory.createInvalidThemeError().config)
+        break
+      default:
+        console.error(error)
+        break
     }
 
     return false

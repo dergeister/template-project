@@ -1,9 +1,5 @@
 export default {
   errorHandler: {
-    default: {
-      title: 'Ocorreu um erro',
-      message: 'Algo de errado não está certo'
-    },
     nutritionistNotFound: {
       title: 'Nutricionista não encontrado',
       message: 'O e-mail informado não consta em nosso sistema, por favor informe um novo e-mail.'
@@ -25,7 +21,7 @@ export default {
     title: 'Planos',
     description: 'Escolha o melhor plano para você'
   },
-  plans: {
+  subscriptions: {
     professional: {
       name: 'Profissional',
       description: 'Perfeito para quem busca sucesso no consultório e carreira.'

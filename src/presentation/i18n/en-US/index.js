@@ -25,7 +25,7 @@ export default {
     title: 'Plans',
     description: 'Choose the best plan for you'
   },
-  plans: {
+  subscriptions: {
     professional: {
       name: 'Professional',
       description: 'Perfect for who is looking for success in their clinic and carrer.'

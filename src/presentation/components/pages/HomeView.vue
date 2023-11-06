@@ -2,18 +2,18 @@
   <DefaultLayout>
     <main class="home">
       <HomeHeader />
-      <HomePlans />
+      <HomeSubscriptions />
     </main>
   </DefaultLayout>
 </template>
 <script>
 import DefaultLayout from '@components/templates/layouts/DefaultLayout.vue'
 import HomeHeader from '@components/organisms/home/HomeHeader.vue'
-import HomePlans from '@components/organisms/home/HomePlans.vue'
+import HomeSubscriptions from '@components/organisms/home/HomeSubscriptions.vue'
 
 export default {
   mounted() {},
-  components: { DefaultLayout, HomeHeader, HomePlans }
+  components: { DefaultLayout, HomeHeader, HomeSubscriptions }
 }
 </script>
 <style lang="scss">

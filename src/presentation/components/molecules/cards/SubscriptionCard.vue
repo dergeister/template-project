@@ -1,44 +1,41 @@
 <template>
-  <Card :class="planCardClasses">
+  <Card :class="subscriptionCardClasses">
     <template #header>
-      <div class="plan-card__header">{{ $t(plan.title) }}</div>
+      <div class="subscription-card__header">{{ $t(data.name) }}</div>
     </template>
     <template #content>
-      <p class="plan-card__description">{{ $t(plan.description) }}</p>
-      <p class="plan-card__pricing">{{ plan.pricing }}</p>
-      <PlanCardButton :variation="variation" class="w-full" />
+      <p class="subscription-card__description">{{ $t(data.description) }}</p>
+      <p class="subscription-card__pricing">{{ data.pricing }}</p>
+      <SubscriptionCardButton :variation="data.type" class="w-full" />
     </template>
   </Card>
 </template>
 <script>
 import Card from 'primevue/card'
-import PlanCardButton from '@components/atoms/buttons/PlanCardButton.vue'
+import SubscriptionCardButton from '@components/atoms/buttons/SubscriptionCardButton.vue'
+
+import Subscription from '@entities/Subscription'
 
 export default {
   components: {
     Card,
-    PlanCardButton
+    SubscriptionCardButton
   },
   props: {
-    variation: {
-      default: 'professional',
-      validator(value) {
-        return ['professional', 'student'].includes(value)
-      }
-    },
-    plan: {
-      required: true
+    data: {
+      required: true,
+      type: Subscription
     }
   },
   computed: {
-    planCardClasses() {
-      return ['plan-card', `plan-card--${this.variation}`]
+    subscriptionCardClasses() {
+      return ['subscription-card', `subscription-card--${this.data.type}`]
     }
   }
 }
 </script>
 <style lang="scss">
-.plan-card {
+.subscription-card {
   max-width: 300px;
 
   &__header {
@@ -59,14 +56,14 @@ export default {
   }
 
   &--professional {
-    .plan-card__header {
+    .subscription-card__header {
       background-color: var(--green-400);
       color: var(--gray-50);
     }
   }
 
   &--student {
-    .plan-card__header {
+    .subscription-card__header {
       background-color: var(--blue-400);
       color: var(--gray-50);
     }

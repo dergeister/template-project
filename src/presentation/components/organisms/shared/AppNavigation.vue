@@ -50,7 +50,7 @@ export default {
     display: flex;
     justify-content: end;
 
-    & > div + div {
+    & > :not(:first-child) {
       margin-left: 2rem;
     }
   }
