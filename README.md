@@ -18,10 +18,13 @@ O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso,
 - Options Api
 - Pinia
 - i18n
+- Themes
+- Error Boundry
 - Cypress
 - Scss
 - Atomic Design
 - BEM
+- Factories
 
 # A Definir
 

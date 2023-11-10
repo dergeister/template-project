@@ -15,7 +15,8 @@ export default {
   },
   buttons: {
     signIn: 'Criar conta',
-    subscribe: 'Assinar'
+    subscribe: 'Assinar',
+    continue: 'Avançar'
   },
   homeHeader: {
     title: 'Planos',
@@ -30,5 +31,8 @@ export default {
       name: 'Estudante',
       description: 'Prepare-se para o mercado de trabalho desde a graduação e saia na frente.'
     }
+  },
+  homeEmailModal: {
+    header: 'Informe seu Email'
   }
 }
