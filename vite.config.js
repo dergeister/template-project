@@ -9,12 +9,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
-      '@components': fileURLToPath(new URL('./src/presentation/components', import.meta.url)),
-      '@services': fileURLToPath(new URL('./src/application/services', import.meta.url)),
       '@enums': fileURLToPath(new URL('./src/domain/enums', import.meta.url)),
-      '@entities': fileURLToPath(new URL('./src/domain/entities', import.meta.url)),
+      '@models': fileURLToPath(new URL('./src/domain/models', import.meta.url)),
       '@factories': fileURLToPath(new URL('./src/domain/factories', import.meta.url)),
-      '@presentation': fileURLToPath(new URL('./src/presentation', import.meta.url))
+      '@common': fileURLToPath(new URL('./src/modules/_common', import.meta.url)),
+      '@home': fileURLToPath(new URL('./src/modules/home', import.meta.url)),
+      '@checkout': fileURLToPath(new URL('./src/modules/checkout', import.meta.url))
     }
   },
   css: {
