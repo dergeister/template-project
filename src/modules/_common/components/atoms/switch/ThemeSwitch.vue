@@ -11,8 +11,8 @@
 <script>
 import SelectButton from 'primevue/selectbutton'
 
-import Themes from '@enums/Themes'
-import Events from '@enums/Events'
+import ThemeEnum from '@enums/ThemeEnum'
+import EventEnum from '@enums/EventEnum'
 
 export default {
   components: {
@@ -20,19 +20,19 @@ export default {
   },
   data() {
     return {
-      theme: Themes.NUTRITIONIST,
-      options: [Themes.NUTRITIONIST, Themes.STUDENT]
+      theme: ThemeEnum.PROFESSIONAL,
+      options: [ThemeEnum.PROFESSIONAL, ThemeEnum.STUDENT]
     }
   },
   methods: {
     handleLocaleChange() {
-      this.emitter.emit(Events.CHANGE_THEME, this.theme)
+      this.emitter.emit(EventEnum.CHANGE_THEME, this.theme)
     }
   }
 }
 </script>
 <style lang="scss">
-@import url('@assets/styles/themes/nutritionist.scss');
+@import url('@assets/styles/themes/professional.scss');
 @import url('@assets/styles/themes/student.scss');
 
 .theme-switch {

@@ -2,7 +2,7 @@ export default {
   errorHandler: {
     default: {
       title: 'An error occurred',
-      message: 'Something is not quite right'
+      message: 'Contact our support in case the error persists.'
     },
     nutritionistNotFound: {
       title: 'Nutritionist not found',

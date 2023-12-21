@@ -1,7 +1,7 @@
 <template>
   <nav class="navigation">
     <div class="navigation__logo-wrapper">
-      <LogoIcon class="navigation__logo" @click="handleNavigateHome" />
+      <LogoIcon class="navigation__logo" @click="handleLogoClick" />
     </div>
     <div class="navigation__switches">
       <ThemeSwitch />
@@ -21,7 +21,7 @@ export default {
     ThemeSwitch
   },
   methods: {
-    handleNavigateHome() {
+    handleLogoClick() {
       this.$router.push({
         name: 'home'
       })

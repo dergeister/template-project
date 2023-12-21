@@ -6,11 +6,11 @@ O escopo do projeto é simular um fluxo de pagamento onde o usuário escolhe ent
 
 # Setup
 
-Para instalar as dependencias: `yarn`
+Para instalar as dependencias: `npm install`
 
-Para rodar o projeto local: `yarn run dev`
+Para rodar o projeto local: `npm run dev`
 
-O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso, além de iniciar o projeto Vue, será necessário iniciar em um segundo terminal o server com o comando `yarn run db`
+O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso, além de iniciar o projeto Vue, será necessário iniciar em um segundo terminal o server com o comando `npm run db`
 
 # Definições
 
@@ -25,17 +25,13 @@ O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso,
 - Atomic Design
 - BEM
 - Factories
-
-# A Definir
-
 - ESLint + Prettier
-- JSDocs vs Typescript
-- Event Emitter (Mitt vs Event Bus)
+- JSDocs
+- Event Emitter (Mitt)
 
 # TODO
 
-- Microfrontends
-- JS Docs
+- Bundle optimization / Microfrontends / Code splitting
 - Services
 - Checkout View
 - Purchase Complete View

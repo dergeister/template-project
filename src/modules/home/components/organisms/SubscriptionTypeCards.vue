@@ -8,15 +8,15 @@
 import SubscriptionTypeCard from '@home/components/molecules/cards/SubscriptionTypeCard.vue'
 
 import SubscriptionFactory from '@factories/SubscriptionFactory'
-
+import SubscriptionTypeEnum from '@/domain/enums/SubscriptionTypeEnum'
 export default {
   components: { SubscriptionTypeCard },
   computed: {
     professional() {
-      return SubscriptionFactory.createProfessionalSubscription()
+      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.PROFESSIONAL)
     },
     student() {
-      return SubscriptionFactory.createStudentSubscription()
+      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.STUDENT)
     }
   }
 }

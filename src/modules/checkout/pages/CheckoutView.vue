@@ -9,7 +9,6 @@
 import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
 
 export default {
-  mounted() {},
   components: { DefaultLayout }
 }
 </script>

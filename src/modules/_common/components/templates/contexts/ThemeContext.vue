@@ -4,33 +4,36 @@
   </div>
 </template>
 <script>
-import Themes from '@enums/Themes'
-import Events from '@enums/Events'
-import Errors from '@enums/Errors'
+import ThemeEnum from '@enums/ThemeEnum'
+import EventEnum from '@enums/EventEnum'
+import ErrorEnum from '@enums/ErrorEnum'
 
 export default {
   data() {
     return {
-      theme: Themes.NUTRITIONIST
+      theme: ThemeEnum.PROFESSIONAL
     }
   },
   computed: {
     themeContextClasses() {
-      return ['db', `db--${this.theme}`]
+      return ['system', `system--${this.theme}`]
     }
   },
   methods: {
+    setupEvents() {
+      this.emitter.off(EventEnum.CHANGE_THEME, this.handleChangeTheme)
+      this.emitter.on(EventEnum.CHANGE_THEME, this.handleChangeTheme)
+    },
     handleChangeTheme(newTheme) {
-      if (!Object.values(Themes).includes(newTheme)) {
-        throw new Error(Errors.INVALID_THEME)
+      if (!Object.values(ThemeEnum).includes(newTheme)) {
+        throw new Error(ErrorEnum.INVALID_THEME)
       }
 
       this.theme = newTheme
     }
   },
   mounted() {
-    this.emitter.off(Events.CHANGE_THEME, this.handleChangeTheme)
-    this.emitter.on(Events.CHANGE_THEME, this.handleChangeTheme)
+    this.setupEvents()
   }
 }
 </script>

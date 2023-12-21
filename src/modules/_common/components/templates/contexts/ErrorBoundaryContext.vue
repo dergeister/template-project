@@ -7,8 +7,6 @@
 <script>
 import Toast from 'primevue/toast'
 
-import Errors from '@enums/Errors'
-
 import CustomErrorFactory from '@factories/CustomErrorFactory'
 
 export default {
@@ -18,17 +16,7 @@ export default {
   errorCaptured(error) {
     const errorType = error.message
 
-    switch (errorType) {
-      case Errors.INVALID_LOCALE:
-        this.$toast.add(CustomErrorFactory.createInvalidLocaleError().config)
-        break
-      case Errors.INVALID_THEME:
-        this.$toast.add(CustomErrorFactory.createInvalidThemeError().config)
-        break
-      default:
-        console.error(error)
-        break
-    }
+    this.$toast.add(CustomErrorFactory.createCustomError(errorType).config)
 
     return false
   }

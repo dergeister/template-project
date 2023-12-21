@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@enums/*": ["./src/domain/enums/*"],
+      "@models/*": ["./src/domain/models/*"],
+      "@factories/*": ["./src/domain/factories/*"],
+      "@common/*": ["./src/modules/_common/*"],
+      "@home/*": ["./src/modules/home/*"],
+      "@checkout/*": ["./src/modules/checkout/*"],
+    }
+  }
+}

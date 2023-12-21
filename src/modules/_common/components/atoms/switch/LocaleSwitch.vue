@@ -11,8 +11,8 @@
 <script>
 import SelectButton from 'primevue/selectbutton'
 
-import Locales from '@enums/Locales'
-import Events from '@enums/Events'
+import LocaleEnum from '@enums/LocaleEnum'
+import EventEnum from '@enums/EventEnum'
 
 export default {
   components: {
@@ -20,13 +20,13 @@ export default {
   },
   data() {
     return {
-      locale: Locales.PT,
-      options: [Locales.PT, Locales.EN]
+      locale: LocaleEnum.PT,
+      options: [LocaleEnum.PT, LocaleEnum.EN]
     }
   },
   methods: {
     handleLocaleChange() {
-      this.emitter.emit(Events.CHANGE_LOCALE, this.locale)
+      this.emitter.emit(EventEnum.CHANGE_LOCALE, this.locale)
     }
   }
 }

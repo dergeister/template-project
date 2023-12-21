@@ -18,7 +18,7 @@ import SubscriptionTypeCards from '@home/components/organisms/SubscriptionTypeCa
 
 const EmailModal = defineAsyncComponent(() => import('@home/components/organisms/EmailModal.vue'))
 
-import Events from '@enums/Events'
+import EventEnum from '@enums/EventEnum'
 
 export default {
   components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
@@ -28,13 +28,16 @@ export default {
     }
   },
   methods: {
+    setupEvents() {
+      this.emitter.off(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
+      this.emitter.on(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
+    },
     handleClickSubscribe() {
       this.showEmailModal = true
     }
   },
   mounted() {
-    this.emitter.off(Events.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
-    this.emitter.on(Events.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
+    this.setupEvents()
   }
 }
 </script>

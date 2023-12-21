@@ -1,5 +1,9 @@
 export default {
   errorHandler: {
+    unhandled: {
+      title: 'Ops! Ocorreu um erro',
+      message: 'Entre em contato com o suporte caso o erro persista.'
+    },
     nutritionistNotFound: {
       title: 'Nutricionista não encontrado',
       message: 'O e-mail informado não consta em nosso sistema, por favor informe um novo e-mail.'

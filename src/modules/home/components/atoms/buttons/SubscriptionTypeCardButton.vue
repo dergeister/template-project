@@ -3,14 +3,14 @@
     :label="$t('buttons.subscribe')"
     :severity="subscriptionCardButtonSeverity"
     size="small"
-    @click="handleSubscriptionButtonClick"
+    @click="handleSubscriptionCardSubscribeClick"
   />
 </template>
 <script>
 import Button from 'primevue/button'
 
-import Events from '@enums/Events'
-import SubscriptionTypes from '@enums/SubscriptionTypes'
+import EventEnum from '@enums/EventEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 export default {
   components: {
@@ -18,25 +18,25 @@ export default {
   },
   props: {
     variation: {
-      default: SubscriptionTypes.PROFESSIONAL,
+      default: SubscriptionTypeEnum.PROFESSIONAL,
       validator(value) {
-        return Object.values(SubscriptionTypes).includes(value)
+        return Object.values(SubscriptionTypeEnum).includes(value)
       }
     }
   },
   computed: {
     subscriptionCardButtonSeverity() {
       const variations = {
-        [SubscriptionTypes.PROFESSIONAL]: 'primary',
-        [SubscriptionTypes.STUDENT]: 'info'
+        [SubscriptionTypeEnum.PROFESSIONAL]: 'primary',
+        [SubscriptionTypeEnum.STUDENT]: 'info'
       }
 
       return variations[this.variation]
     }
   },
   methods: {
-    handleSubscriptionButtonClick() {
-      this.emitter.emit(Events.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.variation)
+    handleSubscriptionCardSubscribeClick() {
+      this.emitter.emit(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.variation)
     }
   }
 }

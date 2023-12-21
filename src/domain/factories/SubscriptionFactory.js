@@ -1,24 +1,37 @@
 import Subscription from '@models/Subscription'
 
-import SubscriptionTypes from '@enums/SubscriptionTypes'
+import SubscriptionTypeEnum from '@/domain/enums/SubscriptionTypeEnum'
 
 class SubscriptionFactory {
-  static createProfessionalSubscription = () => {
-    return new Subscription(
-      SubscriptionTypes.PROFESSIONAL,
-      'subscriptions.professional.name',
-      'subscriptions.professional.description',
-      'R$ 74,90'
-    )
-  }
+  /**
+   * Creates a Subscription based on the given SubscriptionTypeEnum
+   * @param {SubscriptionTypeEnum} type The subscription to be created
+   * @returns {Subscription} The Subscription object
+   */
+  static createSubscription = (type) => {
+    let subscription
 
-  static createStudentSubscription = () => {
-    return new Subscription(
-      SubscriptionTypes.STUDENT,
-      'subscriptions.student.name',
-      'subscriptions.student.description',
-      'R$ 24,90'
-    )
+    switch (type) {
+      default:
+      case SubscriptionTypeEnum.PROFESSIONAL:
+        subscription = new Subscription(
+          SubscriptionTypeEnum.PROFESSIONAL,
+          'subscriptions.professional.name',
+          'subscriptions.professional.description',
+          'R$ 74,90'
+        )
+        break
+      case SubscriptionTypeEnum.STUDENT:
+        subscription = new Subscription(
+          SubscriptionTypeEnum.STUDENT,
+          'subscriptions.student.name',
+          'subscriptions.student.description',
+          'R$ 24,90'
+        )
+        break
+    }
+
+    return subscription
   }
 }
 
