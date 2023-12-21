@@ -1,4 +1,4 @@
-import ErrorEnum from '@/domain/enums/ErrorEnum'
+import ErrorEnum from '@enums/ErrorEnum'
 
 import i18n from '@common/i18n'
 
@@ -31,11 +31,6 @@ class CustomErrorToastConfig {
 }
 
 class CustomErrorFactory {
-  constructor() {
-    const { t } = i18n.global
-
-    this.t = t
-  }
   /**
    * Creates CustomError objects based on the given ErrorEnum
    * @param {ErrorEnum} type The error to be created
@@ -43,30 +38,31 @@ class CustomErrorFactory {
    * @returns {CustomError} Custom error object
    */
   static createCustomError = (type, errorLife = 5000) => {
+    const { t } = i18n.global
     let config
 
     switch (type) {
       case ErrorEnum.INVALID_LOCALE:
         config = new CustomErrorToastConfig(
           'error',
-          this.t('errorHandler.invalidLocale.title'),
-          this.t('errorHandler.invalidLocale.message'),
+          t('errorHandler.invalidLocale.title'),
+          t('errorHandler.invalidLocale.message'),
           errorLife
         )
         break
       case ErrorEnum.INVALID_THEME:
         config = new CustomErrorToastConfig(
           'warn',
-          this.t('errorHandler.invalidTheme.title'),
-          this.t('errorHandler.invalidTheme.message'),
+          t('errorHandler.invalidTheme.title'),
+          t('errorHandler.invalidTheme.message'),
           errorLife
         )
         break
       case ErrorEnum.NUTRITIONIST_NOT_FOUND:
         config = new CustomErrorToastConfig(
           'error',
-          this.t('errorHandler.nutritionistNotFound.title'),
-          this.t('errorHandler.nutritionistNotFound.message'),
+          t('errorHandler.nutritionistNotFound.title'),
+          t('errorHandler.nutritionistNotFound.message'),
           errorLife
         )
         break
@@ -75,8 +71,8 @@ class CustomErrorFactory {
 
         config = new CustomErrorToastConfig(
           'error',
-          this.t('errorHandler.unhandled.title'),
-          this.t('errorHandler.unhandled.message'),
+          t('errorHandler.unhandled.title'),
+          t('errorHandler.unhandled.message'),
           errorLife
         )
         break

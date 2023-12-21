@@ -1,10 +1,10 @@
 <template>
   <Card :class="subscriptionCardClasses">
     <template #header>
-      <div class="subscription-card__header">{{ $t(data.name) }}</div>
+      <div class="subscription-card__header">{{ data.name }}</div>
     </template>
     <template #content>
-      <p class="subscription-card__description">{{ $t(data.description) }}</p>
+      <p class="subscription-card__description">{{ data.description }}</p>
       <p class="subscription-card__pricing">{{ data.pricing }}</p>
       <SubscriptionCardButton :variation="data.type" class="w-full" />
     </template>

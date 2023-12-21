@@ -8,7 +8,8 @@
 import SubscriptionTypeCard from '@home/components/molecules/cards/SubscriptionTypeCard.vue'
 
 import SubscriptionFactory from '@factories/SubscriptionFactory'
-import SubscriptionTypeEnum from '@/domain/enums/SubscriptionTypeEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+
 export default {
   components: { SubscriptionTypeCard },
   computed: {

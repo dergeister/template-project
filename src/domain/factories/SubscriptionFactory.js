@@ -1,6 +1,8 @@
 import Subscription from '@models/Subscription'
 
-import SubscriptionTypeEnum from '@/domain/enums/SubscriptionTypeEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+
+import i18n from '@common/i18n'
 
 class SubscriptionFactory {
   /**
@@ -9,6 +11,8 @@ class SubscriptionFactory {
    * @returns {Subscription} The Subscription object
    */
   static createSubscription = (type) => {
+    const { t } = i18n.global
+
     let subscription
 
     switch (type) {
@@ -16,16 +20,16 @@ class SubscriptionFactory {
       case SubscriptionTypeEnum.PROFESSIONAL:
         subscription = new Subscription(
           SubscriptionTypeEnum.PROFESSIONAL,
-          'subscriptions.professional.name',
-          'subscriptions.professional.description',
+          t('subscriptions.professional.name'),
+          t('subscriptions.professional.description'),
           'R$ 74,90'
         )
         break
       case SubscriptionTypeEnum.STUDENT:
         subscription = new Subscription(
           SubscriptionTypeEnum.STUDENT,
-          'subscriptions.student.name',
-          'subscriptions.student.description',
+          t('subscriptions.student.name'),
+          t('subscriptions.student.description'),
           'R$ 24,90'
         )
         break
