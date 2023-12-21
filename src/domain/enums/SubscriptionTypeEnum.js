@@ -1,5 +1,7 @@
 /**
  * @typedef {string} SubscriptionTypeEnum
+ * @property {string} PROFESSIONAL
+ * @property {string} STUDENT
  */
 
 /**

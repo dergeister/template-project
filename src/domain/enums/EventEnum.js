@@ -1,5 +1,8 @@
 /**
  * @typedef {string} EventEnum
+ * @property {string} CHANGE_THEME
+ * @property {string} CHANGE_LOCALE
+ * @property {string} HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK
  */
 
 /**

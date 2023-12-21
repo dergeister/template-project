@@ -4,22 +4,10 @@ import i18n from '@common/i18n'
 
 class CustomError {
   /**
-   * An object to structure custom system errors
-   * @param {ErrorEnum} type The error to be created
-   * @param {CustomErrorToastConfig} config The config object to be sent to the toast
-   */
-  constructor(type, config) {
-    this.type = type
-    this.config = config
-  }
-}
-
-class CustomErrorToastConfig {
-  /**
    * The config object to be sent to the toast
    * @param {"error" | "success" | "info" | "warn"} severty
-   * @param {String} summary The title of the toast error
-   * @param {String} detail The description of the toast error
+   * @param {string} summary The title of the toast error
+   * @param {string} detail The description of the toast error
    * @param {number} life The error's life time in miliseconds
    */
   constructor(severty, summary, detail, life) {
@@ -39,11 +27,11 @@ class CustomErrorFactory {
    */
   static createCustomError = (type, errorLife = 5000) => {
     const { t } = i18n.global
-    let config
+    let customError
 
     switch (type) {
       case ErrorEnum.INVALID_LOCALE:
-        config = new CustomErrorToastConfig(
+        customError = new CustomError(
           'error',
           t('errorHandler.invalidLocale.title'),
           t('errorHandler.invalidLocale.message'),
@@ -51,7 +39,7 @@ class CustomErrorFactory {
         )
         break
       case ErrorEnum.INVALID_THEME:
-        config = new CustomErrorToastConfig(
+        customError = new CustomError(
           'warn',
           t('errorHandler.invalidTheme.title'),
           t('errorHandler.invalidTheme.message'),
@@ -59,7 +47,7 @@ class CustomErrorFactory {
         )
         break
       case ErrorEnum.NUTRITIONIST_NOT_FOUND:
-        config = new CustomErrorToastConfig(
+        customError = new CustomError(
           'error',
           t('errorHandler.nutritionistNotFound.title'),
           t('errorHandler.nutritionistNotFound.message'),
@@ -67,9 +55,7 @@ class CustomErrorFactory {
         )
         break
       default:
-        type = ErrorEnum.UNHANDLED
-
-        config = new CustomErrorToastConfig(
+        customError = new CustomError(
           'error',
           t('errorHandler.unhandled.title'),
           t('errorHandler.unhandled.message'),
@@ -78,10 +64,7 @@ class CustomErrorFactory {
         break
     }
 
-    return new CustomError({
-      type,
-      config
-    })
+    return customError
   }
 }
 

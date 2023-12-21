@@ -1,5 +1,7 @@
 /**
  * @typedef {string} LocaleEnum
+ * @property {string} PT
+ * @property {string} EN
  */
 
 /**

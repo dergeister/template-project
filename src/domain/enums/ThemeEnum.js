@@ -1,5 +1,7 @@
 /**
  * @typedef {string} ThemeEnum
+ * @property {string} PROFESSIONAL
+ * @property {string} STUDENT
  */
 
 /**
