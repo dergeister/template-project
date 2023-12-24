@@ -1,9 +1,9 @@
 {
-  "nutritionists": [
+  "user": [
     {
       "id": 1,
       "name": "Nicolas Hoffmann",
-      "email": "nicolas@dietbox.me",
+      "email": "nicolas@email.com",
       "phone": "+5551984593316",
       "cpf": "03257609000"
     }

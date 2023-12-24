@@ -28,6 +28,7 @@ O projeto irá utilizar **JSON Server** para simular endpoints, por conta disso,
 - ESLint + Prettier
 - JSDocs
 - Event Emitter (Mitt)
+- Vuelidate
 
 # TODO
 
