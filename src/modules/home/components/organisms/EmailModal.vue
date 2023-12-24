@@ -3,7 +3,6 @@
     v-model:visible="isVisible"
     modal
     :header="$t('homeEmailModal.header')"
-    :style="{ width: '300px' }"
   >
     <HomeEmailForm />
   </Dialog>

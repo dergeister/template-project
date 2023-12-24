@@ -1,22 +1,64 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <FormField label="123" helperText="qwe" validationText="asd" :invalid="true"> field </FormField>
-    <Button :label="$t('buttons.continue')" size="small" class="w-full" />
+  <form @submit.prevent="handleSubmit" class="home-email-form">
+    <FormField :label="$t('user.email')" :validationText="getFieldErrorMessage('email')" :invalid="getFieldInvalid('email')"> 
+      <InputText type="text" v-model="v$.email.$model" :placeholder="$t('placeholder.email')" :class="['w-full', getInputState('email')]" />
+    </FormField>
+    <Button type="submit" :label="$t('buttons.continue')" size="small" class="w-full" />
   </form>
 </template>
 <script>
 import Button from 'primevue/button'
+import InputText from 'primevue/inputtext';
 
 import FormField from '@common/components/atoms/input/FormField.vue'
 
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, helpers } from '@vuelidate/validators'
+import vuelidateMixins from '@common/mixins/vuelidate-mixin'
+import EventEnum from '@enums/EventEnum';
+
 export default {
+  mixins: [vuelidateMixins],
+  setup() {
+    return { v$: useVuelidate() }
+  },
   components: {
     Button,
+    InputText,
     FormField
   },
+  data() {
+    return {
+      email: null
+    }
+  },
+  validations() {
+    return {
+      email: {
+        required: helpers.withMessage(this.$t('formValidation.required'), required),
+        email: helpers.withMessage(this.$t('formValidation.email'), email)
+      }
+    }
+  },
   methods: {
-    handleSubmit() {}
+    handleSubmit() {
+      this.submit()
+
+      if(this.v$.$invalid) {
+        return
+      }
+
+      this.emitter.emit(EventEnum.HOME_EMAIL_FORM_SUBMIT, this.email)
+    }
   }
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.home-email-form {
+  min-width: 350px;
+
+  @media screen and (max-width: $large-breakpoint) {
+    min-width: unset;
+  }
+}
+</style>

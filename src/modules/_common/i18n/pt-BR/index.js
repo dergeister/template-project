@@ -37,6 +37,16 @@ export default {
     }
   },
   homeEmailModal: {
-    header: 'Informe seu Email'
+    header: 'Informe seu E-mail'
+  },
+  user: {
+    email: 'E-mail'
+  },
+  placeholder: {
+    email: "seu{'@'}email.com"
+  },
+  formValidation: {
+    required: 'Este campo é obrigatório',
+    email: 'Informe um e-mail válido'
   }
 }

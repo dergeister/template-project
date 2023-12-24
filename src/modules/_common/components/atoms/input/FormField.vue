@@ -42,6 +42,10 @@ export default {
     margin-bottom: 1rem;
   }
 
+  label {
+    cursor: pointer;
+  }
+
   &__label-text {
     display: block;
     font-weight: 700;

@@ -19,7 +19,8 @@ export default {
   },
   buttons: {
     signIn: 'Create account',
-    subscribe: 'Subscribe'
+    subscribe: 'Subscribe',
+    continue: 'Next'
   },
   homeHeader: {
     title: 'Plans',
@@ -34,5 +35,18 @@ export default {
       name: 'Student',
       description: 'Get ready for your future job starting from graduation and get a head start.'
     }
+  },
+  homeEmailModal: {
+    header: 'Provide your E-mail'
+  },
+  user: {
+    email: 'E-mail'
+  },
+  placeholder: {
+    email: "your{'@'}email.com"
+  },
+  formValidation: {
+    required: 'This field is required',
+    email: 'Inform a valid e-mail'
   }
 }
