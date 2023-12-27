@@ -1,5 +1,10 @@
 <template>
-  <template v-if="showEmailModal">
+  <!--
+  <Suspense>
+    <EmailModal />
+  </Suspense>
+  -->
+  <template v-if="loadEmailModal">
     <EmailModal />
   </template>
   <DefaultLayout>
@@ -24,7 +29,7 @@ export default {
   components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
   data() {
     return {
-      showEmailModal: false
+      loadEmailModal: false,
     }
   },
   methods: {
@@ -33,7 +38,7 @@ export default {
       this.emitter.on(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
     },
     handleClickSubscribe() {
-      this.showEmailModal = true
+      this.loadEmailModal = true
     }
   },
   mounted() {

@@ -3,7 +3,6 @@
     "baseUrl": ".",
     "target": "es6",
     "paths": {
-      "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@enums/*": ["./src/domain/enums/*"],
       "@models/*": ["./src/domain/models/*"],
