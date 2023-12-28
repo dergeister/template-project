@@ -3,7 +3,7 @@
     <FormField :label="$t('user.email')" :validationText="getFieldErrorMessage('email')" :invalid="getFieldInvalid('email')"> 
       <InputText type="text" v-model="v$.email.$model" :placeholder="$t('placeholder.email')" :class="['w-full', getInputState('email')]" />
     </FormField>
-    <Button type="submit" :label="$t('buttons.continue')" size="small" class="w-full" />
+    <Button type="submit" :loading="isLoading" :label="$t('buttons.continue')" size="small" class="w-full" />
   </form>
 </template>
 <script>
@@ -15,7 +15,12 @@ import FormField from '@common/components/atoms/input/FormField.vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import vuelidateMixins from '@common/mixins/vuelidate-mixin'
-import EventEnum from '@enums/EventEnum';
+
+import { mapActions, mapState, mapWritableState } from 'pinia'
+import useUserStore from '@common/stores/user'
+
+import ErrorEnum from '@enums/ErrorEnum'
+import EventEnum from '@enums/EventEnum'
 
 export default {
   mixins: [vuelidateMixins],
@@ -40,15 +45,38 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapWritableState(useUserStore, [
+      'user'
+    ]),
+    ...mapState(useUserStore, [
+      'isLoading'
+    ])
+  },
   methods: {
-    handleSubmit() {
+    ...mapActions(useUserStore, [
+      'fetchUserByEmail'
+    ]),
+    async handleSubmit() {
       this.submit()
 
       if(this.v$.$invalid) {
         return
       }
 
-      this.emitter.emit(EventEnum.HOME_EMAIL_FORM_SUBMIT, this.email)
+      await this.fetchUserByEmail(this.email)
+        .then((result) => {
+          if (result.data.length > 0) {
+            this.user = result.data[0]
+          } else {
+            throw new Error(ErrorEnum.HOME_EMAIL_FORM_ERROR)
+          }
+
+          this.emitter.emit(EventEnum.HOME_EMAIL_FORM_SUCCESS)
+        })
+        .catch(() => {
+          this.emitter.emit(EventEnum.HOME_EMAIL_FORM_ERROR)
+        })
     }
   }
 }
