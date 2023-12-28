@@ -5,19 +5,7 @@
       "name": "Nicolas Hoffmann",
       "email": "nicolas@email.com",
       "phone": "+5551984593316",
-      "cpf": "03257609000"
-    }
-  ],
-  "vouchers": [
-    {
-      "id": 1,
-      "code": "FLATVALUE",
-      "discount_value": 2000
-    },
-    {
-      "id": 2,
-      "code": "PERCENTVALUE",
-      "discount_percentage": 10
+      "cpf": "09269521028"
     }
   ],
   "subscriptions": []
