@@ -14,9 +14,9 @@ export default {
     Toast
   },
   errorCaptured(error) {
-    const errorType = error.message
+    const errorType = error.message || null
     const customError = CustomErrorFactory.createCustomError(errorType)
-    this.$toast.add(customError.config)
+    this.$toast.add(customError)
 
     return false
   }
