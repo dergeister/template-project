@@ -9,16 +9,31 @@ import Toast from 'primevue/toast'
 
 import CustomErrorFactory from '@factories/CustomErrorFactory'
 
+import EventEnum from '@enums/EventEnum'
+
 export default {
   components: {
     Toast
   },
+  methods: {
+    setupEvents() {
+      this.emitter.off(EventEnum.UNBOUND_ERROR, this.bindError)
+      this.emitter.on(EventEnum.UNBOUND_ERROR, this.bindError)
+    },
+    bindError(errorType) {
+      const customError = CustomErrorFactory.createCustomError(errorType)
+      this.$toast.add(customError)
+    }
+  },
   errorCaptured(error) {
     const errorType = error.message || null
-    const customError = CustomErrorFactory.createCustomError(errorType)
-    this.$toast.add(customError)
+
+    this.bindError(errorType)
 
     return false
+  },
+  mounted() {
+    this.setupEvents()
   }
 }
 </script>

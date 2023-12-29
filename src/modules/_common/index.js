@@ -1,17 +1,17 @@
 import mitt from 'mitt'
-import { createPinia } from 'pinia'
 
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 
 import i18n from './i18n'
 import router from './router'
+import setupPinia from './stores'
 
 const setupCommon = (app) => {
   const emitter = mitt()
   app.config.globalProperties.emitter = emitter
 
-  app.use(createPinia())
+  app.use(setupPinia(emitter))
   app.use(PrimeVue)
   app.use(ToastService)
 

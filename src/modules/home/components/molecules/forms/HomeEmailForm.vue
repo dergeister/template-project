@@ -19,9 +19,6 @@ import vuelidateMixins from '@common/mixins/vuelidate-mixin'
 import { mapActions, mapState, mapWritableState } from 'pinia'
 import useUserStore from '@common/stores/user'
 
-import ErrorEnum from '@enums/ErrorEnum'
-import EventEnum from '@enums/EventEnum'
-
 export default {
   mixins: [vuelidateMixins],
   setup() {
@@ -34,7 +31,7 @@ export default {
   },
   data() {
     return {
-      email: null
+      email: 'asd@asd.asd'
     }
   },
   validations() {
@@ -57,26 +54,14 @@ export default {
     ...mapActions(useUserStore, [
       'fetchUserByEmail'
     ]),
-    async handleSubmit() {
+    handleSubmit() {
       this.submit()
 
       if(this.v$.$invalid) {
         return
       }
 
-      await this.fetchUserByEmail(this.email)
-        .then((result) => {
-          if (result.data.length > 0) {
-            this.user = result.data[0]
-          } else {
-            throw new Error(ErrorEnum.HOME_EMAIL_FORM_ERROR)
-          }
-
-          this.emitter.emit(EventEnum.HOME_EMAIL_FORM_SUCCESS)
-        })
-        .catch(() => {
-          this.emitter.emit(EventEnum.HOME_EMAIL_FORM_ERROR)
-        })
+      this.fetchUserByEmail(this.email)
     }
   }
 }
