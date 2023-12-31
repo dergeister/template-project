@@ -48,5 +48,19 @@ export default {
   formValidation: {
     required: 'This field is required',
     email: 'Inform a valid e-mail'
+  },
+  plans: {
+    monthly: {
+      name: 'Monthly Plan'
+    },
+    quarterly: {
+      name: 'Quarterly Plan'
+    },
+    semester: {
+      name: 'Semester Plan'
+    },
+    yearly: {
+      name: 'Yearly Plan'
+    }
   }
 }

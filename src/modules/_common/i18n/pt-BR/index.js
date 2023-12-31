@@ -48,5 +48,19 @@ export default {
   formValidation: {
     required: 'Este campo é obrigatório',
     email: 'Informe um e-mail válido'
+  },
+  plans: {
+    monthly: {
+      name: 'Plano Mensal'
+    },
+    quarterly: {
+      name: 'Plano Trimestral'
+    },
+    semester: {
+      name: 'Plano Semestral'
+    },
+    yearly: {
+      name: 'Plano Anual'
+    }
   }
 }

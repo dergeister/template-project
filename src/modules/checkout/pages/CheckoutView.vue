@@ -1,20 +1,28 @@
 <template>
   <DefaultLayout>
     <main class="checkout">
-      <h1>checkout</h1>
+      <CheckoutWrapper />
     </main>
   </DefaultLayout>
 </template>
 <script>
 import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
 
+import CheckoutWrapper from '@checkout/components/organisms/CheckoutWrapper.vue'
+
+import viewMixin from '@common/mixins/view-mixin';
+
 export default {
-  components: { DefaultLayout }
+  mixins:[viewMixin],
+  components: { 
+    DefaultLayout,
+    CheckoutWrapper
+  }
 }
 </script>
 <style lang="scss">
 .checkout {
-  padding-top: 4rem;
+  padding-top: var(--navbar-height, 4rem);
   background-color: var(--surface-c);
   min-height: 100vh;
 }
