@@ -28,9 +28,15 @@ export default {
     setupEvents() {
       this.emitter.off(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
       this.emitter.on(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
+
+      this.emitter.off(EventEnum.FETCH_USER_BY_EMAIL_SUCCESS, this.handleFetchUserSuccess)
+      this.emitter.on(EventEnum.FETCH_USER_BY_EMAIL_SUCCESS, this.handleFetchUserSuccess)
     },
     handleClickSubscribe() {
       this.isVisible = true
+    },
+    handleFetchUserSuccess() {
+      this.visible = false
     }
   },
   mounted() {
