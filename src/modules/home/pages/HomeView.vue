@@ -25,7 +25,10 @@ const EmailModal = defineAsyncComponent(() => import('@home/components/organisms
 
 import EventEnum from '@enums/EventEnum'
 
+import viewMixin from '@common/mixins/view-mixin';
+
 export default {
+  mixins:[viewMixin],
   components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
   data() {
     return {
@@ -36,9 +39,17 @@ export default {
     setupEvents() {
       this.emitter.off(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
       this.emitter.on(EventEnum.HOME_SUBSCRIPTION_CARD_SUBSCRIBE_CLICK, this.handleClickSubscribe)
+
+      this.emitter.off(EventEnum.FETCH_USER_BY_EMAIL_SUCCESS, this.handleFetchUserSuccess)
+      this.emitter.on(EventEnum.FETCH_USER_BY_EMAIL_SUCCESS, this.handleFetchUserSuccess)
     },
     handleClickSubscribe() {
       this.loadEmailModal = true
+    },
+    handleFetchUserSuccess() {
+      this.$router.push({
+        name: 'checkout'
+      })
     }
   },
   mounted() {
@@ -48,7 +59,7 @@ export default {
 </script>
 <style lang="scss">
 .home {
-  padding-top: 4rem;
+  padding-top: var(--navbar-height, 4rem);
   background-color: var(--surface-c);
   min-height: 100vh;
 }
