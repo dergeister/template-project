@@ -23,7 +23,7 @@ class CustomErrorFactory {
    * Creates CustomError objects based on the given ErrorEnum
    * @param {ErrorEnum} type The error to be created
    * @param {number} errorLife The error life time in miliseconds
-   * @returns {CustomError} Custom error object
+   * @returns {CustomError} The read only CustomError object
    */
   static createCustomError = (type, errorLife = 5000) => {
     const { t } = i18n.global
@@ -64,7 +64,7 @@ class CustomErrorFactory {
         break
     }
 
-    return customError
+    return Object.freeze(customError)
   }
 }
 

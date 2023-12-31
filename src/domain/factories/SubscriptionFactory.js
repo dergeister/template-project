@@ -8,7 +8,7 @@ class SubscriptionFactory {
   /**
    * Creates a Subscription based on the given SubscriptionTypeEnum
    * @param {SubscriptionTypeEnum} type The subscription to be created
-   * @returns {Subscription} The Subscription object
+   * @returns {Subscription} The read only Subscription object
    */
   static createSubscription = (type) => {
     const { t } = i18n.global
@@ -21,21 +21,19 @@ class SubscriptionFactory {
         subscription = new Subscription(
           SubscriptionTypeEnum.PROFESSIONAL,
           t('subscriptions.professional.name'),
-          t('subscriptions.professional.description'),
-          'R$ 74,90'
+          t('subscriptions.professional.description')
         )
         break
       case SubscriptionTypeEnum.STUDENT:
         subscription = new Subscription(
           SubscriptionTypeEnum.STUDENT,
           t('subscriptions.student.name'),
-          t('subscriptions.student.description'),
-          'R$ 24,90'
+          t('subscriptions.student.description')
         )
         break
     }
 
-    return subscription
+    return Object.freeze(subscription)
   }
 }
 
