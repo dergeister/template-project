@@ -1,8 +1,8 @@
 <template>
   <form class="plan-identifier-form" @submit.prevent="">
     <ul>
-      <li v-for="item in 4" :key="`plan-identifier-button-${item}`">
-        <PlanIdentifierButton />
+      <li v-for="(plan, index) in plans" :key="`plan-identifier-button-${index}`">
+        <PlanIdentifierButton :label="plan.label" :price="plan.price" :installmentPrice="plan.installmentPrice" />
       </li>
     </ul>
   </form>
@@ -21,22 +21,55 @@ export default {
   },
   data() {
     return {
-      plans: [
-        PlanFactory.createPlan(PlanIdentifierEnum.MONTHLY),
-        PlanFactory.createPlan(PlanIdentifierEnum.QUARTERLY),
-        PlanFactory.createPlan(PlanIdentifierEnum.SEMESTER),
-        PlanFactory.createPlan(PlanIdentifierEnum.YEARLY),
+      plans: []
+    }
+  },
+  methods: {
+    /**
+     * Populates the plans property based on the store user's SubscriptionTypeEnum
+     */
+     createPlansBySubscriptionType() {
+      const professionalPlans = [
+        PlanIdentifierEnum.MONTHLY,
+        PlanIdentifierEnum.QUARTERLY,
+        PlanIdentifierEnum.SEMESTER,
+        PlanIdentifierEnum.YEARLY
       ]
+
+      professionalPlans.forEach((p) => {
+        this.createPlan(p)
+      })
+
+      console.log(this.plans)
+    },
+    /**
+     * Creates a plan to be rendered based on the given PlanIdentifierEnum
+     * @param {PlanIdentifierEnum} planIdentifier The PlanIdentifierEnum to be created
+     */
+    createPlan(planIdentifier) {
+      const plan = PlanFactory.createPlan(planIdentifier)
+
+      const installments = createInstallments(plan.price, plan.installments)
+
+      this.plans.push({
+        label: plan.name,
+        price: installments[0].price,
+        installmentPrice: installments[installments.length -1].price
+      })
     }
   },
   mounted() {
-    // console.log(centsToReal(1000))
-    console.log(createInstallments(12000, 12))
+    this.createPlansBySubscriptionType()
   }
 }
 </script>
 <style lang="scss">
 .plan-identifier-form {
+  border: solid 1px var(--surface-300);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--surface-200);
+
   ul {
     list-style: none;
     margin: 0;

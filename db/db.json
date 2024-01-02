@@ -5,7 +5,8 @@
       "name": "Nicolas Hoffmann",
       "email": "nicolas@email.com",
       "phone": "+5551984593316",
-      "cpf": "09269521028"
+      "cpf": "09269521028",
+      "subscription_type": "professional"
     }
   ],
   "subscriptions": []

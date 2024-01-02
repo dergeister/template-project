@@ -5,20 +5,17 @@
     </div>
     <div class="checkout-wrapper__right-column">
       <PaymentMethodForm />
-      <BillingForm />
     </div>
   </div>
 </template>
 <script>
 import PlanIdentifierForm from '@checkout/components/molecules/PlanIdentifierForm.vue';
 import PaymentMethodForm from '@checkout/components/molecules/PaymentMethodForm.vue';
-import BillingForm from '@checkout/components/molecules/BillingForm.vue';
 
 export default {
   components: {
     PlanIdentifierForm,
     PaymentMethodForm,
-    BillingForm
   }
 }
 </script>
@@ -26,16 +23,15 @@ export default {
 .checkout-wrapper {
   display: flex;
   justify-content: center;
+  padding-top: 4rem;
 
   &__left-column {
     width: 350px;
-    background-color: wheat;
   }
 
   &__right-column {
     width: 500px;
     margin-left: 1rem;
-    background-color: wheat;
   }
 
   @media screen and (max-width: $large-breakpoint) {

@@ -64,7 +64,7 @@ class CustomErrorFactory {
         break
     }
 
-    return Object.freeze(customError)
+    return customError
   }
 }
 
