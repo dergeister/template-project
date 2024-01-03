@@ -1,14 +1,29 @@
 <template>
   <form @submit.prevent="handleSubmit" class="home-email-form">
-    <FormField :label="$t('user.email')" :validationText="getFieldErrorMessage('email')" :invalid="getFieldInvalid('email')"> 
-      <InputText type="text" v-model="v$.email.$model" :placeholder="$t('placeholder.email')" :class="['w-full', getInputState('email')]" />
+    <FormField
+      :label="$t('user.email')"
+      :validationText="getFieldErrorMessage('email')"
+      :invalid="getFieldInvalid('email')"
+    >
+      <InputText
+        type="text"
+        v-model="v$.email.$model"
+        :placeholder="$t('placeholder.email')"
+        :class="['w-full', getInputState('email')]"
+      />
     </FormField>
-    <Button type="submit" :loading="isLoading" :label="$t('buttons.continue')" size="small" class="w-full" />
+    <Button
+      type="submit"
+      :loading="isLoading"
+      :label="$t('buttons.continue')"
+      size="small"
+      class="w-full"
+    />
   </form>
 </template>
 <script>
 import Button from 'primevue/button'
-import InputText from 'primevue/inputtext';
+import InputText from 'primevue/inputtext'
 
 import FormField from '@common/components/atoms/input/FormField.vue'
 
@@ -43,21 +58,15 @@ export default {
     }
   },
   computed: {
-    ...mapWritableState(useUserStore, [
-      'user'
-    ]),
-    ...mapState(useUserStore, [
-      'isLoading'
-    ])
+    ...mapWritableState(useUserStore, ['user']),
+    ...mapState(useUserStore, ['isLoading'])
   },
   methods: {
-    ...mapActions(useUserStore, [
-      'fetchUserByEmail'
-    ]),
+    ...mapActions(useUserStore, ['fetchUserByEmail']),
     handleSubmit() {
       this.submit()
 
-      if(this.v$.$invalid) {
+      if (this.v$.$invalid) {
         return
       }
 

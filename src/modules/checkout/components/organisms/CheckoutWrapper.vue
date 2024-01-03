@@ -9,13 +9,13 @@
   </div>
 </template>
 <script>
-import PlanIdentifierForm from '@checkout/components/molecules/PlanIdentifierForm.vue';
-import PaymentMethodForm from '@checkout/components/molecules/PaymentMethodForm.vue';
+import PlanIdentifierForm from '@checkout/components/molecules/PlanIdentifierForm.vue'
+import PaymentMethodForm from '@checkout/components/molecules/PaymentMethodForm.vue'
 
 export default {
   components: {
     PlanIdentifierForm,
-    PaymentMethodForm,
+    PaymentMethodForm
   }
 }
 </script>

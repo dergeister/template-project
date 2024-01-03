@@ -1,19 +1,27 @@
 <template>
   <form class="plan-identifier-form" @submit.prevent="">
     <ul>
-      <li v-for="(plan, index) in plans" :key="`plan-identifier-button-${index}`">
-        <PlanIdentifierButton :label="plan.label" :price="plan.price" :installmentPrice="plan.installmentPrice" />
+      <li v-for="(plan, index) in plans" :key="`plan-${index}`">
+        <PlanIdentifierButton
+          :label="plan.label"
+          :price="plan.price"
+          :installmentPrice="plan.installmentPrice"
+        />
       </li>
     </ul>
   </form>
 </template>
 <script>
-import PlanIdentifierButton from '@checkout/components/atoms/PlanIdentifierButton.vue';
+import PlanIdentifierButton from '@checkout/components/atoms/PlanIdentifierButton.vue'
 
-import PlanFactory from '@factories/PlanFactory';
-import PlanIdentifierEnum from '@enums/PlanIdentifierEnum';
+import PlanFactory from '@factories/PlanFactory'
+import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
-import { createInstallments } from '@common/helpers/dinero-helper';
+import { createInstallments } from '@common/helpers/dinero-helper'
+
+import { mapState, mapActions } from 'pinia'
+import useUserStore from '@common/stores/user'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 export default {
   components: {
@@ -24,23 +32,34 @@ export default {
       plans: []
     }
   },
+  computed: {
+    ...mapState(useUserStore, ['user'])
+  },
   methods: {
+    ...mapActions(useUserStore, ['mockUser']),
     /**
      * Populates the plans property based on the store user's SubscriptionTypeEnum
      */
-     createPlansBySubscriptionType() {
-      const professionalPlans = [
-        PlanIdentifierEnum.MONTHLY,
-        PlanIdentifierEnum.QUARTERLY,
-        PlanIdentifierEnum.SEMESTER,
-        PlanIdentifierEnum.YEARLY
-      ]
+    createPlansBySubscriptionType() {
+      let plansToCreate = []
 
-      professionalPlans.forEach((p) => {
+      switch (this.user.subscription_type) {
+        default:
+        case SubscriptionTypeEnum.PROFESSIONAL:
+          plansToCreate = [
+            PlanIdentifierEnum.MONTHLY,
+            PlanIdentifierEnum.QUARTERLY,
+            PlanIdentifierEnum.SEMESTER,
+            PlanIdentifierEnum.YEARLY
+          ]
+          break
+        case SubscriptionTypeEnum.STUDENT:
+          break
+      }
+
+      plansToCreate.forEach((p) => {
         this.createPlan(p)
       })
-
-      console.log(this.plans)
     },
     /**
      * Creates a plan to be rendered based on the given PlanIdentifierEnum
@@ -54,11 +73,15 @@ export default {
       this.plans.push({
         label: plan.name,
         price: installments[0].price,
-        installmentPrice: installments[installments.length -1].price
+        installmentPrice: installments[installments.length - 1].price
       })
     }
   },
   mounted() {
+    if (!this.user) {
+      this.mockUser()
+    }
+
     this.createPlansBySubscriptionType()
   }
 }

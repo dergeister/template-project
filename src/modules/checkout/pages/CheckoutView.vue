@@ -10,11 +10,11 @@ import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vu
 
 import CheckoutWrapper from '@checkout/components/organisms/CheckoutWrapper.vue'
 
-import viewMixin from '@common/mixins/view-mixin';
+import viewMixin from '@common/mixins/view-mixin'
 
 export default {
-  mixins:[viewMixin],
-  components: { 
+  mixins: [viewMixin],
+  components: {
     DefaultLayout,
     CheckoutWrapper
   }

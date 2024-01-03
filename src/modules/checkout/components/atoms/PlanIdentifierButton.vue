@@ -23,12 +23,12 @@ export default {
       required: true
     },
     price: {
-      type: String,
+      type: String
     },
     installmentPrice: {
       type: String,
       required: true
-    },
+    }
   },
   components: {
     Button
@@ -40,7 +40,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  
+
   &__prices {
     display: flex;
     flex-direction: column;

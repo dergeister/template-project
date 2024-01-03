@@ -25,14 +25,14 @@ const EmailModal = defineAsyncComponent(() => import('@home/components/organisms
 
 import EventEnum from '@enums/EventEnum'
 
-import viewMixin from '@common/mixins/view-mixin';
+import viewMixin from '@common/mixins/view-mixin'
 
 export default {
-  mixins:[viewMixin],
+  mixins: [viewMixin],
   components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
   data() {
     return {
-      loadEmailModal: false,
+      loadEmailModal: false
     }
   },
   methods: {
