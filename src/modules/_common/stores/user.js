@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia/dist/pinia'
+import { defineStore } from 'pinia'
 import coreApi from '@common/api/core'
 import delay from '@common/helpers/loading-helper'
 
@@ -11,6 +11,11 @@ const useUserStore = defineStore('user', {
     user: null
   }),
   actions: {
+    /**
+     * A GET request to the /user/:email endpoint on the Core API that populates the user state
+     * @param {string} email The email of the user to be fetched
+     * @returns {Promise} The axios request
+     */
     async fetchUserByEmail(email) {
       this.isLoading = true
 
@@ -35,6 +40,11 @@ const useUserStore = defineStore('user', {
         })
 
       return await request
+    },
+    mockUser() {
+      this.user = {
+        subscription_type: 'professional'
+      }
     }
   }
 })
