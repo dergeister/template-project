@@ -15,6 +15,10 @@ export default {
     invalidTheme: {
       title: 'Tema inválido',
       message: 'O sistema não suporta o tema informado.'
+    },
+    subscriptionError: {
+      title: 'Falha ao assinar',
+      message: 'Preencha os dados e tente novamente'
     }
   },
   buttons: {

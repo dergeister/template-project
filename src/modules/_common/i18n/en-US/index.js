@@ -15,6 +15,10 @@ export default {
     invalidTheme: {
       title: 'Invalid theme',
       message: 'The system does not support the provided theme.'
+    },
+    subscriptionError: {
+      title: 'Subscription Failed',
+      message: 'Fill in the fields and try again'
     }
   },
   buttons: {
