@@ -1,5 +1,5 @@
 <template>
-  <Button class="plan-identifier-button" size="large">
+  <Button class="plan-identifier-button">
     <div class="plan-identifier-button__label">
       {{ label }}
     </div>
@@ -45,6 +45,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: end;
+    margin-left: 1rem;
   }
 
   &__installment-price {

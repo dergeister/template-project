@@ -9,8 +9,8 @@
   </div>
 </template>
 <script>
-import PlanIdentifierForm from '@checkout/components/molecules/PlanIdentifierForm.vue'
-import PaymentMethodForm from '@checkout/components/molecules/PaymentMethodForm.vue'
+import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
+import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
 .checkout-wrapper {
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
+  padding: 4rem 2rem;
 
   &__left-column {
     width: 350px;
@@ -40,11 +40,11 @@ export default {
     align-items: center;
 
     &__left-column {
-      width: unset;
+      width: 100%;
     }
 
     &__right-column {
-      width: unset;
+      width: 100%;
       margin-left: 0;
     }
   }
