@@ -29,8 +29,6 @@ export default {
     const errorType = error.message || null
 
     this.bindError(errorType)
-
-    return false
   },
   mounted() {
     this.setupEvents()
