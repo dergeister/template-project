@@ -49,6 +49,7 @@ export default {
   &__label-text {
     display: block;
     font-weight: 700;
+    margin-bottom: 2px;
   }
 
   &__validation-text {
