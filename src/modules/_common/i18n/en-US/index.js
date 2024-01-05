@@ -47,11 +47,22 @@ export default {
     email: 'E-mail'
   },
   placeholder: {
-    email: "your{'@'}email.com"
+    email: "your{'@'}email.com",
+    creditCard: {
+      number: '0000 0000 0000 0000',
+      name: 'Name printed on the credit card',
+      cvv: '000',
+      expirationDate: '00/00'
+    }
   },
   formValidation: {
     required: 'This field is required',
-    email: 'Inform a valid e-mail'
+    email: 'Inform a valid e-mail',
+    creditCard: {
+      number: 'Inform a valid credit card number',
+      cvv: 'Inform the CVV',
+      expirationDate: 'Inform the expiration Date'
+    }
   },
   plans: {
     monthly: {
@@ -66,5 +77,12 @@ export default {
     yearly: {
       name: 'Yearly Plan'
     }
+  },
+  creditCard: {
+    title: 'Credit Card',
+    number: 'Credit card number',
+    name: 'Name',
+    cvv: 'CVV',
+    expirationDate: 'Expiration date'
   }
 }
