@@ -5,14 +5,14 @@
         :label="$t('creditCard.number')"
         :validationText="getFieldErrorMessage('number')"
         :invalid="getFieldInvalid('number')"
-        :required="true"
+        required
       >
         <InputText
           type="text"
           v-model="v$.number.$model"
           v-mask="'#### #### #### ####'"
           :placeholder="$t('placeholder.creditCard.number')"
-          :class="['w-full', getInputState('number')]"
+          :class="['w-full', getInputStateClass('number')]"
         />
       </FormField>
     </div>
@@ -21,13 +21,14 @@
         :label="$t('creditCard.name')"
         :validationText="getFieldErrorMessage('name')"
         :invalid="getFieldInvalid('name')"
+        required
       >
         <InputText
           type="text"
           v-model="v$.name.$model"
           maxlength="255"
           :placeholder="$t('placeholder.creditCard.name')"
-          :class="['w-full', getInputState('name')]"
+          :class="['w-full', getInputStateClass('name')]"
         />
       </FormField>
     </div>
@@ -36,13 +37,14 @@
         :label="$t('creditCard.cvv')"
         :validationText="getFieldErrorMessage('cvv')"
         :invalid="getFieldInvalid('cvv')"
+        required
       >
         <InputText
           type="text"
           v-model="v$.cvv.$model"
           v-mask="'####'"
           :placeholder="$t('placeholder.creditCard.cvv')"
-          :class="['w-full', getInputState('cvv')]"
+          :class="['w-full', getInputStateClass('cvv')]"
         />
       </FormField>
     </div>
@@ -51,13 +53,14 @@
         :label="$t('creditCard.expirationDate')"
         :validationText="getFieldErrorMessage('expirationDate')"
         :invalid="getFieldInvalid('expirationDate')"
+        required
       >
         <InputText
           type="text"
           v-model="v$.expirationDate.$model"
           v-mask="'#### #### #### ####'"
           :placeholder="$t('placeholder.creditCard.expirationDate')"
-          :class="['w-full', getInputState('expirationDate')]"
+          :class="['w-full', getInputStateClass('expirationDate')]"
         />
       </FormField>
     </div>

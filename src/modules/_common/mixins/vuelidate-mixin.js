@@ -37,7 +37,7 @@ const vuelidateMixins = {
      * @example 'email' | 'form.email'
      * @returns {string} The class string
      */
-    getInputState(field) {
+    getInputStateClass(field) {
       return this.getFieldInvalid(field) ? 'p-invalid' : ''
     }
   }

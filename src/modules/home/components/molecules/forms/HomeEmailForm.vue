@@ -5,12 +5,13 @@
         :label="$t('user.email')"
         :validationText="getFieldErrorMessage('email')"
         :invalid="getFieldInvalid('email')"
+        required
       >
         <InputText
           type="text"
           v-model="v$.email.$model"
           :placeholder="$t('placeholder.email')"
-          :class="['w-full', getInputState('email')]"
+          :class="['w-full', getInputStateClass('email')]"
         />
       </FormField>
     </div>
