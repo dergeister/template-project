@@ -1,7 +1,7 @@
 <template>
   <div class="form-field">
     <label>
-      <span class="form-field__label-text">{{ label }}</span>
+      <span :class="labelClasses">{{ label }}</span>
       <slot></slot>
       <small v-if="showValidationMessage" class="form-field__validation-text">
         {{ validationText }}
@@ -27,11 +27,21 @@ export default {
     },
     invalid: {
       type: Boolean
+    },
+    required: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     showValidationMessage() {
       return this.invalid && this.validationText
+    },
+    labelClasses() {
+      return {
+        'form-field__label-text': true,
+        'form-field__label-text--required': this.required
+      }
     }
   }
 }
@@ -50,6 +60,14 @@ export default {
     display: block;
     font-weight: 700;
     margin-bottom: 2px;
+
+    &--required {
+      &::after {
+        display: inline-block;
+        content: '*';
+        color: var(--red-400);
+      }
+    }
   }
 
   &__validation-text {
