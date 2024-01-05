@@ -1,24 +1,28 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="home-email-form">
-    <FormField
-      :label="$t('user.email')"
-      :validationText="getFieldErrorMessage('email')"
-      :invalid="getFieldInvalid('email')"
-    >
-      <InputText
-        type="text"
-        v-model="v$.email.$model"
-        :placeholder="$t('placeholder.email')"
-        :class="['w-full', getInputState('email')]"
+  <form class="formgrid grid home-email-form" @submit.prevent="handleSubmit">
+    <div class="field col-12">
+      <FormField
+        :label="$t('user.email')"
+        :validationText="getFieldErrorMessage('email')"
+        :invalid="getFieldInvalid('email')"
+      >
+        <InputText
+          type="text"
+          v-model="v$.email.$model"
+          :placeholder="$t('placeholder.email')"
+          :class="['w-full', getInputState('email')]"
+        />
+      </FormField>
+    </div>
+    <div class="field col-12">
+      <Button
+        type="submit"
+        :loading="isLoading"
+        :label="$t('buttons.continue')"
+        size="small"
+        class="w-full"
       />
-    </FormField>
-    <Button
-      type="submit"
-      :loading="isLoading"
-      :label="$t('buttons.continue')"
-      size="small"
-      class="w-full"
-    />
+    </div>
   </form>
 </template>
 <script>
@@ -46,7 +50,7 @@ export default {
   },
   data() {
     return {
-      email: 'asd@asd.asd'
+      email: ''
     }
   },
   validations() {
