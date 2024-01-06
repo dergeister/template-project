@@ -1,37 +1,13 @@
 <template>
   <section class="home__subscriptions">
-    <SubscriptionTypeCard :data="professional" />
-    <SubscriptionTypeCard :data="student" />
+    <SubscriptionTypeForm />
   </section>
 </template>
 <script>
-import SubscriptionTypeCard from '@home/components/molecules/cards/SubscriptionTypeCard.vue'
-
-import SubscriptionFactory from '@factories/SubscriptionFactory'
-import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+import SubscriptionTypeForm from '../molecules/forms/SubscriptionTypeForm.vue'
 
 export default {
-  components: { SubscriptionTypeCard },
-  computed: {
-    professional() {
-      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.PROFESSIONAL)
-    },
-    student() {
-      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.STUDENT)
-    }
-  }
+  components: { SubscriptionTypeForm }
 }
 </script>
-<style lang="scss">
-.home {
-  &__subscriptions {
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-
-    & > :not(:first-child) {
-      margin-left: 2rem;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

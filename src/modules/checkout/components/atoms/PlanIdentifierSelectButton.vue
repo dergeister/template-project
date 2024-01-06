@@ -7,17 +7,12 @@
     @update:modelValue="handlePlanIdentifierChange"
   >
     <template #option="slotProps">
-      <div class="plan-identifier-button__label">
-        {{ slotProps.option.label }}
-      </div>
-      <div class="plan-identifier-button__prices">
-        <span class="plan-identifier-button__installment-price">
-          {{ slotProps.option.installmentPrice }}
-        </span>
-        <span class="plan-identifier-button__price">
-          {{ slotProps.option.price }}
-        </span>
-      </div>
+      <span class="plan-identifier-button__label">
+        {{ $t(slotProps.option.label) }}
+      </span>
+      <span class="plan-identifier-button__price">
+        {{ slotProps.option.price }}
+      </span>
     </template>
   </SelectButton>
 </template>
@@ -95,22 +90,11 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  &__prices {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    margin-left: 1rem;
-  }
-
-  &__installment-price {
-    font-size: 0.875rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
+  padding: 1.5rem;
 
   &__price {
-    font-size: 0.75rem;
+    font-weight: 700;
+    font-size: 0.875rem;
   }
 }
 </style>

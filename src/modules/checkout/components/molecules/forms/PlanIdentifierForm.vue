@@ -11,8 +11,7 @@ import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
 import { createInstallments } from '@common/helpers/dinero-helper'
 
-import { mapState, mapActions, mapWritableState } from 'pinia'
-import useUserStore from '@common/stores/user'
+import { mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@common/stores/payment'
 
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
@@ -27,18 +26,17 @@ export default {
     }
   },
   computed: {
-    ...mapState(useUserStore, ['user']),
+    ...mapState(usePaymentStore, ['subscriptionType']),
     ...mapWritableState(usePaymentStore, ['planIdentifier'])
   },
   methods: {
-    ...mapActions(useUserStore, ['mockUser']),
     /**
      * Populates the plans property based on the store user's SubscriptionTypeEnum
      */
     createPlansBySubscriptionType() {
       let plansToCreate = []
 
-      switch (this.user.subscription_type) {
+      switch (this.subscriptionType) {
         default:
         case SubscriptionTypeEnum.PROFESSIONAL:
           plansToCreate = [
@@ -49,6 +47,7 @@ export default {
           ]
           break
         case SubscriptionTypeEnum.STUDENT:
+          plansToCreate = [PlanIdentifierEnum.STUDENT_MONTHLY, PlanIdentifierEnum.STUDENT_YEARLY]
           break
       }
 
@@ -68,16 +67,11 @@ export default {
       this.plans.push({
         label: plan.name,
         price: installments[0].price,
-        installmentPrice: installments[installments.length - 1].price,
         planIdentifier
       })
     }
   },
   mounted() {
-    if (!this.user) {
-      this.mockUser()
-    }
-
     this.createPlansBySubscriptionType()
   }
 }
