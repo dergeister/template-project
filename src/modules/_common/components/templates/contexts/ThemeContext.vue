@@ -5,7 +5,6 @@
 </template>
 <script>
 import ThemeEnum from '@enums/ThemeEnum'
-import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
 export default {
@@ -20,10 +19,6 @@ export default {
     }
   },
   methods: {
-    setupEvents() {
-      this.emitter.off(EventEnum.CHANGE_THEME, this.handleChangeTheme)
-      this.emitter.on(EventEnum.CHANGE_THEME, this.handleChangeTheme)
-    },
     handleChangeTheme(newTheme) {
       if (!Object.values(ThemeEnum).includes(newTheme)) {
         throw new Error(ErrorEnum.INVALID_THEME)
@@ -32,8 +27,10 @@ export default {
       this.theme = newTheme
     }
   },
-  mounted() {
-    this.setupEvents()
+  provide() {
+    return {
+      changeTheme: this.handleChangeTheme
+    }
   }
 }
 </script>

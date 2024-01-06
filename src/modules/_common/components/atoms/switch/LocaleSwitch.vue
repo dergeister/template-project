@@ -12,9 +12,9 @@
 import SelectButton from 'primevue/selectbutton'
 
 import LocaleEnum from '@enums/LocaleEnum'
-import EventEnum from '@enums/EventEnum'
 
 export default {
+  inject: ['changeLocale'],
   components: {
     SelectButton
   },
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     handleLocaleChange() {
-      this.emitter.emit(EventEnum.CHANGE_LOCALE, this.locale)
+      this.changeLocale(this.locale)
     }
   }
 }

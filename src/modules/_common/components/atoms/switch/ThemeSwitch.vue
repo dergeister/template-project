@@ -12,9 +12,9 @@
 import SelectButton from 'primevue/selectbutton'
 
 import ThemeEnum from '@enums/ThemeEnum'
-import EventEnum from '@enums/EventEnum'
 
 export default {
+  inject: ['changeTheme'],
   components: {
     SelectButton
   },
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     handleLocaleChange() {
-      this.emitter.emit(EventEnum.CHANGE_THEME, this.theme)
+      this.changeTheme(this.theme)
     }
   }
 }
