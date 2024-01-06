@@ -1,31 +1,25 @@
 <template>
   <form class="plan-identifier-form" @submit.prevent="">
-    <ul>
-      <li v-for="(plan, index) in plans" :key="`plan-${index}`">
-        <PlanIdentifierButton
-          :label="plan.label"
-          :price="plan.price"
-          :installmentPrice="plan.installmentPrice"
-        />
-      </li>
-    </ul>
+    <PlanIdentifierSelectButton v-model="planIdentifier" :plans="plans" />
   </form>
 </template>
 <script>
-import PlanIdentifierButton from '@checkout/components/atoms/PlanIdentifierButton.vue'
+import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifierSelectButton.vue'
 
 import PlanFactory from '@factories/PlanFactory'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
 import { createInstallments } from '@common/helpers/dinero-helper'
 
-import { mapState, mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import useUserStore from '@common/stores/user'
+import usePaymentStore from '@common/stores/payment'
+
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 export default {
   components: {
-    PlanIdentifierButton
+    PlanIdentifierSelectButton
   },
   data() {
     return {
@@ -33,7 +27,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(useUserStore, ['user'])
+    ...mapState(useUserStore, ['user']),
+    ...mapWritableState(usePaymentStore, ['planIdentifier'])
   },
   methods: {
     ...mapActions(useUserStore, ['mockUser']),
@@ -73,7 +68,8 @@ export default {
       this.plans.push({
         label: plan.name,
         price: installments[0].price,
-        installmentPrice: installments[installments.length - 1].price
+        installmentPrice: installments[installments.length - 1].price,
+        planIdentifier
       })
     }
   },

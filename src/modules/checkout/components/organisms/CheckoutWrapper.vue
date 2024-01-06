@@ -11,11 +11,33 @@
 <script>
 import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
 import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
+import EventEnum from '@enums/EventEnum'
+
+import { mapState, mapActions } from 'pinia'
+import usePaymentStore from '@common/stores/payment'
+import useUserStore from '@common/stores/user'
 
 export default {
   components: {
     PlanIdentifierForm,
     PaymentMethodForm
+  },
+  computed: {
+    ...mapState(usePaymentStore, ['isLoading']),
+    ...mapState(useUserStore, ['user'])
+  },
+  methods: {
+    ...mapActions(usePaymentStore, ['subscribe']),
+    submitSubscription() {
+      this.subscribe(this.user.id)
+    },
+    setupEvents() {
+      this.emitter.off(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
+      this.emitter.on(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
+    }
+  },
+  mounted() {
+    this.setupEvents()
   }
 }
 </script>

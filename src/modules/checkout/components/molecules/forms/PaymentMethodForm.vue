@@ -58,7 +58,7 @@
         <InputText
           type="text"
           v-model="v$.expirationDate.$model"
-          v-mask="'#### #### #### ####'"
+          v-mask="'##/##'"
           :placeholder="$t('placeholder.creditCard.expirationDate')"
           :class="['w-full', getInputStateClass('expirationDate')]"
         />
@@ -80,8 +80,10 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import vuelidateMixins from '@common/mixins/vuelidate-mixin'
 
-import { mapActions, mapState } from 'pinia'
+import { mapActions, mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@common/stores/payment'
+
+import EventEnum from '@enums/EventEnum'
 
 export default {
   mixins: [vuelidateMixins],
@@ -96,10 +98,10 @@ export default {
   },
   data() {
     return {
-      number: '',
-      name: '',
-      cvv: '',
-      expirationDate: ''
+      number: '0000000000000000',
+      name: 'asd',
+      cvv: '123',
+      expirationDate: '1223'
     }
   },
   validations() {
@@ -125,7 +127,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(usePaymentStore, ['isLoading'])
+    ...mapState(usePaymentStore, ['isLoading']),
+    ...mapWritableState(usePaymentStore, ['creditCard'])
   },
   methods: {
     ...mapActions(usePaymentStore, ['subscribe']),
@@ -135,6 +138,15 @@ export default {
       if (this.v$.$invalid) {
         return
       }
+
+      this.creditCard = {
+        number: this.number,
+        name: this.name,
+        cvv: this.cvv,
+        expirationDate: this.expirationDate
+      }
+
+      this.emitter.emit(EventEnum.SUBMIT_SUBSCRIPTION)
     }
   }
 }
