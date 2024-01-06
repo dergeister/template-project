@@ -24,7 +24,8 @@ export default {
   buttons: {
     signIn: 'Create account',
     subscribe: 'Subscribe',
-    continue: 'Next'
+    continue: 'Next',
+    makePayment: 'Complete payment'
   },
   homeHeader: {
     title: 'Plans',

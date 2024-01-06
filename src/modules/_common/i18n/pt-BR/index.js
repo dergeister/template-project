@@ -24,7 +24,8 @@ export default {
   buttons: {
     signIn: 'Criar conta',
     subscribe: 'Assinar',
-    continue: 'Avançar'
+    continue: 'Avançar',
+    makePayment: 'Realizar pagamento'
   },
   homeHeader: {
     title: 'Planos',
