@@ -40,6 +40,14 @@ class CustomErrorFactory {
           errorLife
         )
         break
+      case ErrorEnum.SUBSCRIPTION_ERROR:
+        customError = new CustomError(
+          'error',
+          t('errorHandler.subscriptionError.title'),
+          t('errorHandler.subscriptionError.message'),
+          errorLife
+        )
+        break
       default:
         customError = new CustomError(
           'error',

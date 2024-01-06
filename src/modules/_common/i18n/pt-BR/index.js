@@ -17,7 +17,7 @@ export default {
       message: 'O sistema não suporta o tema informado.'
     },
     subscriptionError: {
-      title: 'Falha ao assinar',
+      title: 'Falha realizar assinatura',
       message: 'Preencha os dados e tente novamente'
     }
   },
