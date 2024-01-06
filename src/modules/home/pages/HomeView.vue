@@ -25,10 +25,7 @@ const EmailModal = defineAsyncComponent(() => import('@home/components/organisms
 
 import EventEnum from '@enums/EventEnum'
 
-import viewMixin from '@common/mixins/view-mixin'
-
 export default {
-  mixins: [viewMixin],
   components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
   data() {
     return {
@@ -57,10 +54,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.home {
-  padding-top: var(--navbar-height, 4rem);
-  background-color: var(--surface-c);
-  min-height: 100vh;
-}
-</style>
+<style lang="scss"></style>

@@ -1,4 +1,4 @@
-const viewMixin = {
+const navigationMixin = {
   methods: {
     /**
      * Updates the --navbar-height CSS variable based on the element nav.navigation height
@@ -20,4 +20,4 @@ const viewMixin = {
   }
 }
 
-export default viewMixin
+export default navigationMixin
