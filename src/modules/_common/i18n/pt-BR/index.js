@@ -89,5 +89,10 @@ export default {
     name: 'Nome',
     cvv: 'CVV',
     expirationDate: 'Data de expiração'
+  },
+  thankyou: {
+    title: 'Obrigado por assinar',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nihil illum accusantium dignissimos ad, eligendi minima dolor totam sit perspiciatis.'
   }
 }

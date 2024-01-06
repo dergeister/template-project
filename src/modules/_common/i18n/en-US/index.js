@@ -89,5 +89,10 @@ export default {
     name: 'Name',
     cvv: 'CVV',
     expirationDate: 'Expiration date'
+  },
+  thankyou: {
+    title: 'Thanks for subscribing',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet delectus magni ea, repellendus quas in corrupti recusandae non nam quaerat.'
   }
 }

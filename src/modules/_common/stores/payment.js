@@ -51,12 +51,9 @@ const usePaymentStore = defineStore('payment', {
 
       const payload = this.sanitizeSubscriptionPayload(user_id)
 
-      console.log(payload)
-      return
       return await this.api.payment
         .post(`/subscriptions`, payload)
-        .then((result) => {
-          console.log(result)
+        .then(() => {
           this.emitter.emit(EventEnum.POST_SUBSCRIPTION_SUCCESS)
         })
         .catch(() => {
