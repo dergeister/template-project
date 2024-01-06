@@ -1,7 +1,7 @@
 <template>
   <Button
+    :pt="passThought"
     :label="$t('buttons.subscribe')"
-    :severity="subscriptionCardButtonSeverity"
     size="small"
     @click="handleSubscriptionCardSubscribeClick"
   />
@@ -25,13 +25,17 @@ export default {
     }
   },
   computed: {
-    subscriptionCardButtonSeverity() {
-      const variations = {
-        [SubscriptionTypeEnum.PROFESSIONAL]: 'primary',
-        [SubscriptionTypeEnum.STUDENT]: 'info'
+    passThought() {
+      return {
+        root: () => ({
+          class: {
+            'subscription-type-card-button': true,
+            'subscription-type-card-button--professional':
+              this.variation == SubscriptionTypeEnum.PROFESSIONAL,
+            'subscription-type-card-button--student': this.variation == SubscriptionTypeEnum.STUDENT
+          }
+        })
       }
-
-      return variations[this.variation]
     }
   },
   methods: {
@@ -41,4 +45,32 @@ export default {
   }
 }
 </script>
-<style lang=""></style>
+<style lang="scss">
+.subscription-type-card-button {
+  &--professional {
+    background-color: var(--professional-primary-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--professional-primary-color-hover);
+    }
+
+    &:active {
+      background-color: var(--professional-primary-color-active);
+    }
+  }
+
+  &--student {
+    background-color: var(--student-primary-color);
+
+    &:hover,
+    &:focus {
+      background-color: var(--student-primary-color-hover);
+    }
+
+    &:active {
+      background-color: var(--student-primary-color-active);
+    }
+  }
+}
+</style>

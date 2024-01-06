@@ -4,7 +4,6 @@
       <LogoIcon class="navigation__logo" @click="handleLogoClick" />
     </div>
     <div class="navigation__switches">
-      <ThemeSwitch />
       <LocaleSwitch />
     </div>
   </nav>
@@ -12,13 +11,11 @@
 <script>
 import LogoIcon from '@common/components/atoms/icons/LogoIcon.vue'
 import LocaleSwitch from '@common/components/atoms/switch/LocaleSwitch.vue'
-import ThemeSwitch from '@common/components/atoms/switch/ThemeSwitch.vue'
 
 export default {
   components: {
     LogoIcon,
-    LocaleSwitch,
-    ThemeSwitch
+    LocaleSwitch
   },
   methods: {
     handleLogoClick() {
@@ -38,7 +35,7 @@ export default {
   width: 100%;
   padding: 0.5rem 2rem;
   box-shadow: 0 4px 2px -2px var(--gray-200);
-  background-color: var(--primary-color);
+  background-color: var(--system-primary-color);
 
   &__logo {
     height: 32px;

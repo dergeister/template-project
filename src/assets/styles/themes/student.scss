@@ -1,3 +1,5 @@
 .system--student {
-  --primary-color: var(--blue-400);
+  --system-primary-color: var(--student-primary-color);
+  --system-primary-color-hover: var(--student-primary-color-hover);
+  --system-primary-color-active: var(--student-primary-color-active);
 }

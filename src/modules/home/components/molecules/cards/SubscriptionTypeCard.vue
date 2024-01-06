@@ -57,14 +57,14 @@ export default {
 
   &--professional {
     .subscription-card__header {
-      background-color: var(--green-400);
+      background-color: var(--professional-primary-color);
       color: var(--gray-50);
     }
   }
 
   &--student {
     .subscription-card__header {
-      background-color: var(--blue-400);
+      background-color: var(--student-primary-color);
       color: var(--gray-50);
     }
   }
