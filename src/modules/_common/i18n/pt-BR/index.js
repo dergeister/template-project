@@ -4,6 +4,10 @@ export default {
       title: 'Ops! Ocorreu um erro',
       message: 'Entre em contato com o suporte caso o erro persista.'
     },
+    noConnection: {
+      title: 'Sem internet',
+      message: 'Verifique sua conexão e tente novamente.'
+    },
     nutritionistNotFound: {
       title: 'Nutricionista não encontrado',
       message: 'O e-mail informado não consta em nosso sistema, por favor informe um novo e-mail.'

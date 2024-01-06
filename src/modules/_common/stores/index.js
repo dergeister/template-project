@@ -1,5 +1,6 @@
 import { markRaw } from 'vue'
 import { createPinia } from 'pinia'
+import setupAPI from '@common/api/index'
 
 /**
  * Creates Pinia passing and event emitter
@@ -11,6 +12,7 @@ const setupPinia = (emitter) => {
 
   pinia.use(({ store }) => {
     store.emitter = markRaw(emitter)
+    store.api = setupAPI(emitter)
   })
 
   return pinia

@@ -8,7 +8,10 @@ import ErrorEnum from '@enums/ErrorEnum'
 const useUserStore = defineStore('user', {
   state: () => ({
     isLoading: false,
-    user: null
+    user: {
+      id: null,
+      email: null
+    }
   }),
   actions: {
     /**
@@ -17,12 +20,16 @@ const useUserStore = defineStore('user', {
      * @returns {Promise} The axios request
      */
     async fetchUserByEmail(email) {
+      if (this.isLoading) {
+        return
+      }
+
       this.isLoading = true
 
       await delay()
 
-      const request = coreApi.get(`/user/${email}`)
-      request
+      return await coreApi
+        .get(`/user/${email}`)
         .then((result) => {
           if (result.data.length > 0) {
             this.user = result.data[0]
@@ -32,19 +39,9 @@ const useUserStore = defineStore('user', {
             this.emitter.emit(EventEnum.UNBOUND_ERROR, ErrorEnum.FETCH_USER_BY_EMAIL_ERROR)
           }
         })
-        .catch(() => {
-          this.emitter.emit(EventEnum.UNBOUND_ERROR, ErrorEnum.FETCH_USER_BY_EMAIL_ERROR)
-        })
         .finally(() => {
           this.isLoading = false
         })
-
-      return await request
-    },
-    mockUser() {
-      this.user = {
-        subscription_type: 'professional'
-      }
     }
   }
 })

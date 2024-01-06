@@ -11,52 +11,19 @@ class CustomErrorFactory {
    * @param {number} errorLife The error life time in miliseconds
    * @returns {CustomError} The read only CustomError object
    */
-  static createCustomError = (type, errorLife = 5000) => {
+  static createCustomError = (errorType, errorLife = 5000) => {
     const { t } = i18n.global
-    let customError
 
-    switch (type) {
-      case ErrorEnum.INVALID_LOCALE:
-        customError = new CustomError(
-          'error',
-          t('errorHandler.invalidLocale.title'),
-          t('errorHandler.invalidLocale.message'),
-          errorLife
-        )
-        break
-      case ErrorEnum.INVALID_THEME:
-        customError = new CustomError(
-          'warn',
-          t('errorHandler.invalidTheme.title'),
-          t('errorHandler.invalidTheme.message'),
-          errorLife
-        )
-        break
-      case ErrorEnum.NUTRITIONIST_NOT_FOUND:
-        customError = new CustomError(
-          'error',
-          t('errorHandler.nutritionistNotFound.title'),
-          t('errorHandler.nutritionistNotFound.message'),
-          errorLife
-        )
-        break
-      case ErrorEnum.SUBSCRIPTION_ERROR:
-        customError = new CustomError(
-          'error',
-          t('errorHandler.subscriptionError.title'),
-          t('errorHandler.subscriptionError.message'),
-          errorLife
-        )
-        break
-      default:
-        customError = new CustomError(
-          'error',
-          t('errorHandler.unhandled.title'),
-          t('errorHandler.unhandled.message'),
-          errorLife
-        )
-        break
+    if (!errorType) {
+      errorType = ErrorEnum.UNHANDLED_ERROR
     }
+
+    const customError = new CustomError(
+      'error',
+      t(`errorHandler.${errorType}.title`),
+      t(`errorHandler.${errorType}.message`),
+      errorLife
+    )
 
     return customError
   }

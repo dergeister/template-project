@@ -1,16 +1,17 @@
 import { defineStore } from 'pinia'
-import paymentApi from '@common/api/core'
 import delay from '@common/helpers/loading-helper'
 
 import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 const usePaymentStore = defineStore('payment', {
   state: () => ({
     isLoading: false,
-    planIdentifier: PlanIdentifierEnum.SEMESTER,
+    subscriptionType: SubscriptionTypeEnum.STUDENT,
+    planIdentifier: PlanIdentifierEnum.STUDENT_YEARLY,
     creditCard: {
       number: '',
       name: '',
@@ -19,23 +20,41 @@ const usePaymentStore = defineStore('payment', {
     }
   }),
   actions: {
+    sanitizeSubscriptionPayload(user_id) {
+      const credit_card = { ...this.creditCard }
+
+      const ccName = credit_card.name.trim()
+      const ccNumber = credit_card.number.replaceAll(' ', '')
+
+      credit_card.name = ccName
+      credit_card.number = ccNumber
+
+      return {
+        user_id,
+        credit_card,
+        plan_identifier: this.planIdentifier
+      }
+    },
     /**
      * A POST request to the /subscriptions endpoint on the Payment API
      * @param {number} user_id The id of the user that is subscribing
      * @returns {Promise} The axios request
      */
     async subscribe(user_id) {
+      if (this.isLoading) {
+        return
+      }
+
       this.isLoading = true
 
       await delay()
 
-      const request = paymentApi.post(`/subscriptions`, {
-        user_id,
-        plan_identifier: this.planIdentifier,
-        credit_card: this.creditCard
-      })
+      const payload = this.sanitizeSubscriptionPayload(user_id)
 
-      request
+      console.log(payload)
+      return
+      return await this.api.payment
+        .post(`/subscriptions`, payload)
         .then((result) => {
           console.log(result)
           this.emitter.emit(EventEnum.POST_SUBSCRIPTION_SUCCESS)
@@ -46,8 +65,6 @@ const usePaymentStore = defineStore('payment', {
         .finally(() => {
           this.isLoading = false
         })
-
-      return await request
     }
   }
 })

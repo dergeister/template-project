@@ -1,8 +1,12 @@
 export default {
   errorHandler: {
-    default: {
+    unhandled: {
       title: 'An error occurred',
       message: 'Contact our support in case the error persists.'
+    },
+    noConnection: {
+      title: 'No internet connection',
+      message: 'Check your connection and try again.'
     },
     nutritionistNotFound: {
       title: 'Nutritionist not found',
@@ -18,7 +22,7 @@ export default {
     },
     subscriptionError: {
       title: 'Subscription Failed',
-      message: 'Fill in the fields and try again'
+      message: 'Fill in the fields and try again.'
     }
   },
   buttons: {
