@@ -7,12 +7,14 @@ const routes = [
   {
     path: '/checkout',
     name: 'checkout',
-    component: () => import('@checkout/pages/CheckoutView.vue')
+    component: () => import('@checkout/pages/CheckoutView.vue'),
+    meta: { requiresUserAuthenticationGuard: true }
   },
   {
     path: '/thanktou',
     name: 'thankyou',
-    component: () => import('@checkout/pages/ThankyouView.vue')
+    component: () => import('@checkout/pages/ThankyouView.vue'),
+    meta: { requiresPaymentGuard: true }
   }
 ]
 

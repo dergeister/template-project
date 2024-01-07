@@ -10,7 +10,6 @@ import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vu
 
 import CheckoutWrapper from '@checkout/components/organisms/CheckoutWrapper.vue'
 
-import useUserStore from '@common/stores/user'
 import usePaymentStore from '@common/stores/payment'
 
 import { mapState } from 'pinia'
@@ -23,7 +22,6 @@ export default {
     CheckoutWrapper
   },
   computed: {
-    ...mapState(useUserStore, ['user']),
     ...mapState(usePaymentStore, ['subscriptionType'])
   },
   methods: {
@@ -38,19 +36,11 @@ export default {
     },
     applySubscriptionTypeTheme() {
       this.changeTheme(this.subscriptionType)
-    },
-    userGuard() {
-      if (!this.user.id) {
-        this.$router.push({
-          name: 'home'
-        })
-      }
     }
   },
   mounted() {
     this.setupEvents()
     this.applySubscriptionTypeTheme()
-    this.userGuard()
   }
 }
 </script>

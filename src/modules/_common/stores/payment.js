@@ -17,9 +17,15 @@ const usePaymentStore = defineStore('payment', {
       name: '',
       cvv: '',
       expirationDate: ''
-    }
+    },
+    hasSubscribed: false
   }),
   actions: {
+    /**
+     * Sanitizes the subscription payload object
+     * @param {number} user_id The id of the user to subscribe
+     * @returns {Promise} The axios request
+     */
     sanitizeSubscriptionPayload(user_id) {
       const credit_card = { ...this.creditCard }
 
@@ -55,6 +61,7 @@ const usePaymentStore = defineStore('payment', {
         .post(`/subscriptions`, payload)
         .then(() => {
           this.emitter.emit(EventEnum.POST_SUBSCRIPTION_SUCCESS)
+          this.hasSubscribed = true
         })
         .catch(() => {
           this.emitter.emit(EventEnum.UNBOUND_ERROR, ErrorEnum.SUBSCRIPTION_ERROR)

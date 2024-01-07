@@ -19,6 +19,11 @@ const setupAPI = (emitter) => {
   }
 }
 
+/**
+ * Adds the event emitter to the response interceptor to handle unbound
+ * @param {object} api The API object
+ * @param {object} emitter The event emitter
+ */
 const addResponseInterceptor = (api, emitter) => {
   api.interceptors.response.handlers = []
 
