@@ -29,10 +29,9 @@ export default {
       return {
         root: () => ({
           class: {
-            'subscription-type-card-button': true,
-            'subscription-type-card-button--professional':
-              this.variation == SubscriptionTypeEnum.PROFESSIONAL,
-            'subscription-type-card-button--student': this.variation == SubscriptionTypeEnum.STUDENT
+            'system-btn': true,
+            'system-btn--professional': this.variation == SubscriptionTypeEnum.PROFESSIONAL,
+            'system-btn--student': this.variation == SubscriptionTypeEnum.STUDENT
           }
         })
       }
@@ -45,32 +44,4 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.subscription-type-card-button {
-  &--professional {
-    background-color: var(--professional-primary-color);
-
-    &:hover,
-    &:focus {
-      background-color: var(--professional-primary-color-hover);
-    }
-
-    &:active {
-      background-color: var(--professional-primary-color-active);
-    }
-  }
-
-  &--student {
-    background-color: var(--student-primary-color);
-
-    &:hover,
-    &:focus {
-      background-color: var(--student-primary-color-hover);
-    }
-
-    &:active {
-      background-color: var(--student-primary-color-active);
-    }
-  }
-}
-</style>
+<style lang="scss"></style>

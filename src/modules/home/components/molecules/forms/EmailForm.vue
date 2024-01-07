@@ -17,6 +17,7 @@
     </div>
     <div class="field col-12">
       <Button
+        :pt="submitPassThought"
         type="submit"
         :loading="isLoading"
         :label="$t('buttons.continue')"
@@ -64,7 +65,17 @@ export default {
   },
   computed: {
     ...mapWritableState(useUserStore, ['user']),
-    ...mapState(useUserStore, ['isLoading'])
+    ...mapState(useUserStore, ['isLoading']),
+    submitPassThought() {
+      return {
+        root: () => ({
+          class: {
+            'system-btn': true,
+            'system-btn--primary': true
+          }
+        })
+      }
+    }
   },
   methods: {
     ...mapActions(useUserStore, ['fetchUserByEmail']),

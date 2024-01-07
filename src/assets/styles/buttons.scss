@@ -1,0 +1,52 @@
+.system-btn {
+  &--primary {
+    background-color: var(--system-primary-color);
+
+    &.p-highlight {
+      background-color: var(--system-primary-color);
+    }
+
+    &:active {
+      background-color: var(--system-primary-color-active);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--system-primary-color-hover);
+    }
+  }
+
+  &--professional {
+    background-color: var(--professional-primary-color);
+
+    &:active {
+      background-color: var(--professional-primary-color-active);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--professional-primary-color-hover);
+    }
+  }
+
+  &--student {
+    background-color: var(--student-primary-color);
+
+    &:active {
+      background-color: var(--student-primary-color-active);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--student-primary-color-hover);
+    }
+  }
+  
+  &--clear {
+    background-color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <div id="theme-context" :class="themeContextClasses">
+  <div id="theme-context">
     <slot></slot>
   </div>
 </template>
@@ -13,11 +13,6 @@ export default {
       theme: ThemeEnum.PROFESSIONAL
     }
   },
-  computed: {
-    themeContextClasses() {
-      return ['system', `system--${this.theme}`]
-    }
-  },
   methods: {
     handleChangeTheme(newTheme) {
       if (!Object.values(ThemeEnum).includes(newTheme)) {
@@ -25,12 +20,22 @@ export default {
       }
 
       this.theme = newTheme
+
+      this.applyThemeToBody()
+    },
+    applyThemeToBody() {
+      const body = document.body
+      body.classList.remove('system', 'system--professional', 'system--student')
+      body.classList.add('system', `system--${this.theme}`)
     }
   },
   provide() {
     return {
       changeTheme: this.handleChangeTheme
     }
+  },
+  mounted() {
+    this.applyThemeToBody()
   }
 }
 </script>

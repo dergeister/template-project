@@ -65,7 +65,13 @@
       </FormField>
     </div>
     <div class="field col-12">
-      <Button type="submit" :loading="isLoading" :label="$t('buttons.continue')" class="w-full" />
+      <Button
+        :pt="submitPassThought"
+        type="submit"
+        :loading="isLoading"
+        :label="$t('buttons.continue')"
+        class="w-full"
+      />
     </div>
   </form>
 </template>
@@ -128,7 +134,17 @@ export default {
   },
   computed: {
     ...mapState(usePaymentStore, ['isLoading']),
-    ...mapWritableState(usePaymentStore, ['creditCard'])
+    ...mapWritableState(usePaymentStore, ['creditCard']),
+    submitPassThought() {
+      return {
+        root: () => ({
+          class: {
+            'system-btn': true,
+            'system-btn--primary': true
+          }
+        })
+      }
+    }
   },
   methods: {
     ...mapActions(usePaymentStore, ['subscribe']),

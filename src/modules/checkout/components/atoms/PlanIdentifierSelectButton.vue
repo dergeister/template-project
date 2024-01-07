@@ -45,7 +45,12 @@ export default {
           class: 'plan-identifier-select-button'
         }),
         button: () => ({
-          class: 'plan-identifier-button'
+          class: {
+            'plan-identifier-button': true,
+            'system-btn': true,
+            'system-btn--primary': true,
+            'system-btn--clear': true
+          }
         })
       }
     }
