@@ -39,7 +39,7 @@ export default {
     applySubscriptionTypeTheme() {
       this.changeTheme(this.subscriptionType)
     },
-    checkForUser() {
+    userGuard() {
       if (!this.user.id) {
         this.$router.push({
           name: 'home'
@@ -50,7 +50,7 @@ export default {
   mounted() {
     this.setupEvents()
     this.applySubscriptionTypeTheme()
-    this.checkForUser()
+    this.userGuard()
   }
 }
 </script>
