@@ -10,8 +10,8 @@ import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 const usePaymentStore = defineStore('payment', {
   state: () => ({
     isLoading: false,
-    subscriptionType: SubscriptionTypeEnum.STUDENT,
-    planIdentifier: PlanIdentifierEnum.STUDENT_YEARLY,
+    subscriptionType: SubscriptionTypeEnum.PROFESSIONAL,
+    planIdentifier: PlanIdentifierEnum.YEARLY,
     creditCard: {
       number: '',
       name: '',
