@@ -21,6 +21,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    'vue/no-reserved-component-names': 'off'
+    'no-console': 'on'
   }
 }
