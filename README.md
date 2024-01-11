@@ -95,4 +95,4 @@ Dinero é uma biblioteca para operações com moedas de fácil utilização por 
 
 ## Vue the mask
 
--
+Vue the mask é uma biblioteca que fornece fácil uso de mascaras para inputs, neste projeto optei por usar o uso por diretiva para tornar mais centralizado as customizações dos inputs
