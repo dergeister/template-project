@@ -83,7 +83,7 @@ Por conta de ser um dos poucos frameworks que suportava Vue 3 quando comecei a e
 
 ## Vuelidate
 
--
+O Vuelidate é uma biblioteca que eu ja tenho experiência e a simplicidade de uso junto com a declaração de validações mesclar bem com a construção de um componente me fez continuar utilizando, outras alternativas como Veevalidate são mais robustas, mas neste caso optei pela simplicidade.
 
 ## Event Emitter (Mitt)
 
