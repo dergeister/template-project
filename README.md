@@ -91,7 +91,7 @@ Mitt é uma biblioteca simples para registrar e emitir eventos, além de registr
 
 ## Dinerojs
 
--
+Dinero é uma biblioteca para operações com moedas de fácil utilização por conta de permitir chain methods por conta da operação retornar uma instancia Dinero.
 
 ## Vue the mask
 
