@@ -87,7 +87,7 @@ O Vuelidate é uma biblioteca que eu ja tenho experiência e a simplicidade de u
 
 ## Event Emitter (Mitt)
 
--
+Mitt é uma biblioteca simples para registrar e emitir eventos, além de registrar nas variaveis globais do Vue e para acessar em lugares como a store, ele é passado como referencia na inicialização de outras bibliotecas
 
 ## Dinerojs
 
