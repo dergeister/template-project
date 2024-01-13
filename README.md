@@ -166,17 +166,16 @@ Ele é responsável por capturar todos os erros que acontecem nos componentes pe
 
 No trecho de código acima o Internationalization Context da `throw` caso o valor enviado por parametro não exista no enum de locales, o Error Boundry Context então captura o erro e o trata.
 
-Para erros fora dos componentes, o Error Boundry Context registra um listener para o evento de `UNBOUND_ERROR` que é disparado por partes do projeto fora do Vue:
+Para erros fora dos componentes, o Error Boundry Context registra um listener para o evento de `UNBOUND_ERROR` que é disparado por partes do projeto fora do Vue, em ambos os casos é enviado um `ErrorEnum`.
 
 ```js
-setupEvents() {
-  this.emitter.off(EventEnum.UNBOUND_ERROR, this.bindError)
-  this.emitter.on(EventEnum.UNBOUND_ERROR, this.bindError)
-}
-
 bindError(errorType) {
   const customError = CustomErrorFactory.createCustomError(errorType)
   this.$toast.add(customError)
+}
+
+setupEvents() {
+  this.emitter.on(EventEnum.UNBOUND_ERROR, this.bindError)
 }
 ```
 
