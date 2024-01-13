@@ -170,7 +170,7 @@ bindError(errorType) {
   this.$toast.add(customError)
 }
 
-setupEvents() {
+registerEvents() {
   this.emitter.on(EventEnum.UNBOUND_ERROR, this.bindError)
 }
 ```
