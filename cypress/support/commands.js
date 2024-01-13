@@ -23,3 +23,10 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('fillEmail', (email) => {
+  cy.get('[data-cy="email-modal"]').should('be.visible')
+
+  cy.get('[data-cy="email-input"]').type(email)
+  cy.get('[data-cy="email-form-submit"]').click()
+})
