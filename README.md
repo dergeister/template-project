@@ -181,16 +181,19 @@ setupEvents() {
 
 ## JSDocs
 
-Um dos grandes problemas do javascript é na passagem de parâmetros para funções, não ter uma referencia para o tipo de variavel que deve ser enviado para a função ou que a função está recebendo, para resolver este problema e utilizar intellisence é utilizado JSDocs para documentar as funções.
+Um dos grandes problemas do javascript é na passagem de parâmetros para funções, não ter uma referencia para o tipo de variável que deve ser enviado ou que a função está recebendo, para resolver este problema é utilizado JSDocs para documentar as funções e como outro benefício utilizar intellisence.
 
 ## Cypress (Unit/Component + E2E Testing)
 
-É utilizado Cypress para realizar os testes no sistema, os elementos são setados o atributo `data-cy="identificador-de-teste"` para facilitar a seleção na construção dos testes e utiliza-se fixtures para simular os dados de teste.
+É utilizado Cypress para realizar os testes no sistema, é setado o atributo `data-cy="identificador-de-teste"` nos elementos testaveis para facilitar a seleção na construção dos testes.
+
+Para dados de mock utiliza-se as `fixtures`.
+
 Os testes e2e são criados na pasta `/cypress/e2e`, já os testes unitários/componentes serão criados na mesma pasta do componente que esta sendo testado.
 
 ## ESLint + Prettier
 
-Utiliza-se a combinação de ESLint + Prettier para padronizar diversos pontos do desenvolvimento e segir padrões do mercado, ajudando a evitar más práticas e homogenizando a formatação dos arquivos.
+Utiliza-se a combinação de ESLint + Prettier para padronizar diversos pontos do desenvolvimento e seguir padrões do mercado, ajudando a evitar más práticas e homogenizando a formatação dos arquivos.
 
 Algumas das regras adicionadas são:
 
