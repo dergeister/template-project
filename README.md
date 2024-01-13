@@ -46,19 +46,15 @@ A variação de cores pode ser fácilmente resolvida utilizando uma propriedade 
 ```
 
 ```js
-export default {
-  computed: {
-    exampleButtonClasses() {
-      // via array
-      return ['example-card__button', `example-card__button--${this.variation}`]
+exampleButtonClasses() {
+  // via array
+  return ['example-card__button', `example-card__button--${this.variation}`]
 
-      //via objeto
-      return {
-        'example-card__button': true,
-        'example-card__button--blue': this.variation === 'blue',
-        'example-card__button--green': this.variation === 'green'
-      }
-    }
+  //via objeto
+  return {
+    'example-card__button': true,
+    'example-card__button--blue': this.variation === 'blue',
+    'example-card__button--green': this.variation === 'green'
   }
 }
 ```
