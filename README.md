@@ -8,7 +8,7 @@ Eu queria testar algumas implementações de **contextos** para gerenciar difere
 
 # Setup
 
--
+Para acessar as informações sobre setup acessar [SETUP.md](https://github.com/dergeister/template-project/blob/main/SETUP.md)
 
 # Definições
 
