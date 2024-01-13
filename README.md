@@ -183,7 +183,7 @@ Um dos grandes problemas do javascript é na passagem de parâmetros para funç�
 
 É utilizado Cypress para realizar os testes no sistema, é setado o atributo `data-cy="identificador-de-teste"` nos elementos testaveis para facilitar a seleção na construção dos testes.
 
-Para dados de mock utiliza-se as `fixtures`.
+Durante a criação de testes utiliza-se as `fixtures` para mock de dados e `commands` para reutilizar ações comuns.
 
 Os testes e2e são criados na pasta `/cypress/e2e`, já os testes unitários/componentes serão criados na mesma pasta do componente que esta sendo testado.
 
