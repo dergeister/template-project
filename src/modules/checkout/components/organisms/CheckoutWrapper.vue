@@ -9,66 +9,71 @@
   </div>
 </template>
 <script>
-import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
-import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
-import EventEnum from '@enums/EventEnum'
+  import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
+  import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
+  import EventEnum from '@enums/EventEnum'
 
-import { mapState, mapActions } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
-import useUserStore from '@common/stores/user'
+  import { mapState, mapActions } from 'pinia'
+  import usePaymentStore from '@common/stores/payment'
+  import useUserStore from '@common/stores/user'
 
-export default {
-  components: {
-    PlanIdentifierForm,
-    PaymentMethodForm
-  },
-  computed: {
-    ...mapState(usePaymentStore, ['isLoading']),
-    ...mapState(useUserStore, ['user'])
-  },
-  methods: {
-    ...mapActions(usePaymentStore, ['subscribe']),
-    submitSubscription() {
-      this.subscribe(this.user.id)
+  export default {
+    components: {
+      PlanIdentifierForm,
+      PaymentMethodForm
     },
-    setupEvents() {
-      this.emitter.off(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
-      this.emitter.on(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
+    computed: {
+      ...mapState(usePaymentStore, ['isLoading']),
+      ...mapState(useUserStore, ['user'])
+    },
+    methods: {
+      ...mapActions(usePaymentStore, ['subscribe']),
+      registerEvents() {
+        this.emitter.on(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
+      },
+      forgetEvents() {
+        this.emitter.off(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
+      },
+      submitSubscription() {
+        this.subscribe(this.user.id)
+      }
+    },
+    mounted() {
+      this.registerEvents()
+    },
+    beforeUnmount() {
+      this.forgetEvents()
     }
-  },
-  mounted() {
-    this.setupEvents()
   }
-}
 </script>
 <style lang="scss">
-.checkout-wrapper {
-  display: flex;
-  justify-content: center;
-  padding: 4rem 2rem;
-
-  &__left-column {
-    width: 350px;
-  }
-
-  &__right-column {
-    width: 500px;
-    margin-left: 1rem;
-  }
-
-  @media screen and (max-width: $large-breakpoint) {
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
+  .checkout-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 2rem;
 
     &__left-column {
-      width: 100%;
+      width: 350px;
     }
 
     &__right-column {
-      width: 100%;
-      margin-left: 0;
+      width: 500px;
+      margin-left: 1rem;
+    }
+
+    @media screen and (max-width: $large-breakpoint) {
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+
+      &__left-column {
+        width: 100%;
+      }
+
+      &__right-column {
+        width: 100%;
+        margin-left: 0;
+      }
     }
   }
-}
 </style>
