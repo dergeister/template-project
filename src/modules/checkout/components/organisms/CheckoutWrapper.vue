@@ -1,9 +1,9 @@
 <template>
   <div class="checkout-wrapper">
-    <div class="checkout-wrapper__left-column">
+    <div class="checkout-wrapper__plan-identifier">
       <PlanIdentifierForm />
     </div>
-    <div class="checkout-wrapper__right-column">
+    <div class="checkout-wrapper__payment-method">
       <PaymentMethodForm />
     </div>
   </div>
@@ -52,11 +52,11 @@
     justify-content: center;
     padding: 4rem 2rem;
 
-    &__left-column {
+    &__plan-identifier {
       width: 350px;
     }
 
-    &__right-column {
+    &__payment-method {
       width: 500px;
       margin-left: 1rem;
     }
@@ -66,13 +66,18 @@
       justify-content: start;
       align-items: center;
 
-      &__left-column {
+      $child-width: 500px;
+
+      &__plan-identifier {
         width: 100%;
+        margin-bottom: 2rem;
+        max-width: $child-width;
       }
 
-      &__right-column {
+      &__payment-method {
         width: 100%;
         margin-left: 0;
+        max-width: $child-width;
       }
     }
   }

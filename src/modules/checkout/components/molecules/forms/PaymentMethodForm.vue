@@ -32,7 +32,7 @@
         />
       </FormField>
     </div>
-    <div class="field col-6">
+    <div class="field col-12 sm:col-6">
       <FormField
         :label="$t('creditCard.cvv')"
         :validationText="getFieldErrorMessage('cvv')"
@@ -48,7 +48,7 @@
         />
       </FormField>
     </div>
-    <div class="field col-6">
+    <div class="field col-12 sm:col-6">
       <FormField
         :label="$t('creditCard.expirationDate')"
         :validationText="getFieldErrorMessage('expirationDate')"
@@ -76,102 +76,102 @@
   </form>
 </template>
 <script>
-import { mask } from 'vue-the-mask'
+  import { mask } from 'vue-the-mask'
 
-import Button from 'primevue/button'
-import InputText from 'primevue/inputtext'
-import FormField from '@common/components/atoms/input/FormField.vue'
+  import Button from 'primevue/button'
+  import InputText from 'primevue/inputtext'
+  import FormField from '@common/components/atoms/input/FormField.vue'
 
-import { useVuelidate } from '@vuelidate/core'
-import { required, minLength, helpers } from '@vuelidate/validators'
-import vuelidateMixins from '@common/mixins/vuelidate-mixin'
+  import { useVuelidate } from '@vuelidate/core'
+  import { required, minLength, helpers } from '@vuelidate/validators'
+  import vuelidateMixins from '@common/mixins/vuelidate-mixin'
 
-import { mapActions, mapState, mapWritableState } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
+  import { mapActions, mapState, mapWritableState } from 'pinia'
+  import usePaymentStore from '@common/stores/payment'
 
-import EventEnum from '@enums/EventEnum'
+  import EventEnum from '@enums/EventEnum'
 
-export default {
-  mixins: [vuelidateMixins],
-  directives: { mask },
-  setup() {
-    return { v$: useVuelidate() }
-  },
-  components: {
-    FormField,
-    InputText,
-    Button
-  },
-  data() {
-    return {
-      number: '0000000000000000',
-      name: 'asd',
-      cvv: '123',
-      expirationDate: '1223'
-    }
-  },
-  validations() {
-    return {
-      number: {
-        required: helpers.withMessage(this.$t('formValidation.required'), required),
-        minLength: helpers.withMessage(this.$t('formValidation.creditCard.number'), minLength(19))
-      },
-      name: {
-        required: helpers.withMessage(this.$t('formValidation.required'), required)
-      },
-      cvv: {
-        required: helpers.withMessage(this.$t('formValidation.required'), required),
-        minLength: helpers.withMessage(this.$t('formValidation.creditCard.cvv'), minLength(3))
-      },
-      expirationDate: {
-        required: helpers.withMessage(this.$t('formValidation.required'), required),
-        minLength: helpers.withMessage(
-          this.$t('formValidation.creditCard.expirationDate'),
-          minLength(5)
-        )
-      }
-    }
-  },
-  computed: {
-    ...mapState(usePaymentStore, ['isLoading']),
-    ...mapWritableState(usePaymentStore, ['creditCard']),
-    submitPassThought() {
+  export default {
+    mixins: [vuelidateMixins],
+    directives: { mask },
+    setup() {
+      return { v$: useVuelidate() }
+    },
+    components: {
+      FormField,
+      InputText,
+      Button
+    },
+    data() {
       return {
-        root: () => ({
-          class: {
-            'system-btn': true,
-            'system-btn--primary': true
-          }
-        })
+        number: '',
+        name: '',
+        cvv: '',
+        expirationDate: ''
       }
-    }
-  },
-  methods: {
-    ...mapActions(usePaymentStore, ['subscribe']),
-    handleSubmit() {
-      this.submit()
-
-      if (this.v$.$invalid) {
-        return
+    },
+    validations() {
+      return {
+        number: {
+          required: helpers.withMessage(this.$t('formValidation.required'), required),
+          minLength: helpers.withMessage(this.$t('formValidation.creditCard.number'), minLength(19))
+        },
+        name: {
+          required: helpers.withMessage(this.$t('formValidation.required'), required)
+        },
+        cvv: {
+          required: helpers.withMessage(this.$t('formValidation.required'), required),
+          minLength: helpers.withMessage(this.$t('formValidation.creditCard.cvv'), minLength(3))
+        },
+        expirationDate: {
+          required: helpers.withMessage(this.$t('formValidation.required'), required),
+          minLength: helpers.withMessage(
+            this.$t('formValidation.creditCard.expirationDate'),
+            minLength(5)
+          )
+        }
       }
-
-      this.creditCard = {
-        number: this.number,
-        name: this.name,
-        cvv: this.cvv,
-        expirationDate: this.expirationDate
+    },
+    computed: {
+      ...mapState(usePaymentStore, ['isLoading']),
+      ...mapWritableState(usePaymentStore, ['creditCard']),
+      submitPassThought() {
+        return {
+          root: () => ({
+            class: {
+              'system-btn': true,
+              'system-btn--primary': true
+            }
+          })
+        }
       }
+    },
+    methods: {
+      ...mapActions(usePaymentStore, ['subscribe']),
+      handleSubmit() {
+        this.submit()
 
-      this.emitter.emit(EventEnum.SUBMIT_SUBSCRIPTION)
+        if (this.v$.$invalid) {
+          return
+        }
+
+        this.creditCard = {
+          number: this.number,
+          name: this.name,
+          cvv: this.cvv,
+          expirationDate: this.expirationDate
+        }
+
+        this.emitter.emit(EventEnum.SUBMIT_SUBSCRIPTION)
+      }
     }
   }
-}
 </script>
 <style lang="scss">
-.payment-method-form {
-  border: solid 1px var(--surface-300);
-  padding: 1rem 0.5rem;
-  border-radius: 8px;
-  background-color: var(--surface-200);
-}
+  .payment-method-form {
+    border: solid 1px var(--surface-300);
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+    background-color: var(--surface-200);
+  }
 </style>
