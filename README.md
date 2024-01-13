@@ -115,8 +115,8 @@ Seguindo com o exemplo dos cards, anteriormente o computed de classes retornando
 
 ```js
 const ExampleButtonVariantsEnum = Object.freeze({
-  blue: 'blue',
-  green: 'green'
+  BLUE: 'blue',
+  GREEN: 'green'
 })
 ```
 
@@ -132,8 +132,8 @@ export default {
       //via objeto
       return {
         'example-card__button': true,
-        'example-card__button--blue': this.variation === ExampleButtonVariantsEnum.blue,
-        'example-card__button--green': this.variation === ExampleButtonVariantsEnum.green
+        'example-card__button--blue': this.variation === ExampleButtonVariantsEnum.BLUE,
+        'example-card__button--green': this.variation === ExampleButtonVariantsEnum.GREEN
       }
     }
   }
@@ -144,17 +144,49 @@ export default {
 
 O Themes Context é um componente que engloba todos os outros contextos e o `<router-view>` controla a aplicação das classes `system` e `system--{tema}` de variação de temas no `<body>`.
 
-O contexto fornece um método para a component tree poder alterar o tema atual via `provide: { changeTheme }`.
+O contexto fornece um método para a component tree poder alterar o tema atual via `provide: { changeTheme }`, desta maneira para um componente filho pode invocar `this.changeTheme(ThemesEnum.MainTheme)`.
 
 ## Internationalization Context
 
 Similar ao Themes Context, este contexto é um componente que engloba o contexto de erros e o `<router-view>`.
-O contexto fornece um método para a component tree poder alterar o locale atual via `provide: { changeLocale }`.
+
+O contexto fornece um método para a component tree poder alterar o locale atual via `provide: { changeLocale }`, desta maneira para um componente filho pode invocar `this.changeLocale(LocaleEnum.PT)`.
+
+Este método altera o locale do i18n:
+
+```js
+export default {
+  methods: {
+    handleChangeLocale(newLocale) {
+      if (!Object.values(LocaleEnum).includes(newLocale)) {
+        throw new Error(ErrorEnum.INVALID_LOCALE)
+      }
+
+      this.$i18n.locale = newLocale
+    }
+  }
+}
+```
 
 ## Error Boundry Context
 
-Ele é responsável por capturar todos os erros que acontecem nos componentes pelo método `errorCaptured`, além disso, em conjunto com o event emitter, o ele captura o evento UNBOUND ERROR para erros fora dos componentes vue.
-Ao capturar o erro, o contexto dispara um toast com a mensagem e configuração apropriadas para o erro capturado.
+Ele é responsável por capturar todos os erros que acontecem nos componentes pelo método `errorCaptured`.
+
+No trecho de código acima o Internationalization Context da `throw` caso o valor enviado por parametro não exista no enum de locales, o Error Boundry Context então captura o erro e o trata.
+
+Para erros fora dos componentes, o Error Boundry Context registra um listener para o evento de `UNBOUND_ERROR` que é disparado por partes do projeto fora do Vue:
+
+```js
+setupEvents() {
+  this.emitter.off(EventEnum.UNBOUND_ERROR, this.bindError)
+  this.emitter.on(EventEnum.UNBOUND_ERROR, this.bindError)
+}
+
+bindError(errorType) {
+  const customError = CustomErrorFactory.createCustomError(errorType)
+  this.$toast.add(customError)
+}
+```
 
 ## JSDocs
 
