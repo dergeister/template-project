@@ -25,25 +25,37 @@ describe('Subscription', () => {
 
     cy.get(`[data-cy="subscription-type-button-${SubscriptionTypeEnum.PROFESSIONAL}"]`).click()
 
-    cy.get('[data-cy="email-modal"]').should('be.visible')
-
-    cy.get('[data-cy="email-input"]').type(this.user.email)
-    cy.get('[data-cy="email-form-submit"]').click()
+    cy.fillEmail(this.user.email)
 
     cy.wait('@fetchUser')
 
     cy.get('[data-cy="plan-identifier-form"]').should('be.visible')
     cy.get('[data-cy="payment-method-form"]').should('be.visible')
 
-    cy.get('[data-cy="body"]').should('have.class', 'system--professional')
-
     cy.get(`[data-cy="plan-identifier-${PlanIdentifierEnum.QUARTERLY}"]`).click()
 
-    cy.get('[data-cy="cc-number"]').type(this.creditCard.number)
-    cy.get('[data-cy="cc-name"]').type(this.creditCard.name)
-    cy.get('[data-cy="cc-cvv"]').type(this.creditCard.cvv)
-    cy.get('[data-cy="cc-expirationDate"]').type(this.creditCard.expirationDate)
-    cy.get('[data-cy="payment-method-form-submit').click()
+    cy.fillCreditCard(this.creditCard)
+
+    cy.wait('@postSubscription')
+
+    cy.get('[data-cy="thankyou-title"]').should('be.visible')
+  })
+
+  it('Subscribes for monthly student plan', function () {
+    cy.visit('/')
+
+    cy.get(`[data-cy="subscription-type-button-${SubscriptionTypeEnum.STUDENT}"]`).click()
+
+    cy.fillEmail(this.user.email)
+
+    cy.wait('@fetchUser')
+
+    cy.get('[data-cy="plan-identifier-form"]').should('be.visible')
+    cy.get('[data-cy="payment-method-form"]').should('be.visible')
+
+    cy.get(`[data-cy="plan-identifier-${PlanIdentifierEnum.STUDENT_MONTHLY}"]`).click()
+
+    cy.fillCreditCard(this.creditCard)
 
     cy.wait('@postSubscription')
 

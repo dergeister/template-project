@@ -30,3 +30,11 @@ Cypress.Commands.add('fillEmail', (email) => {
   cy.get('[data-cy="email-input"]').type(email)
   cy.get('[data-cy="email-form-submit"]').click()
 })
+
+Cypress.Commands.add('fillCreditCard', (creditCard) => {
+  cy.get('[data-cy="cc-number"]').type(creditCard.number)
+  cy.get('[data-cy="cc-name"]').type(creditCard.name)
+  cy.get('[data-cy="cc-cvv"]').type(creditCard.cvv)
+  cy.get('[data-cy="cc-expirationDate"]').type(creditCard.expirationDate)
+  cy.get('[data-cy="payment-method-form-submit').click()
+})
