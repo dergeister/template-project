@@ -5,6 +5,7 @@
  * @property {string} INVALID_LOCALE
  * @property {string} INVALID_THEME
  * @property {string} SUBSCRIPTION_ERROR
+ * @property {string} FETCH_USER_BY_EMAIL_ERROR
  */
 
 /**
@@ -15,7 +16,8 @@ const ErrorEnum = Object.freeze({
   NO_CONNECTION: 'noConnection',
   INVALID_LOCALE: 'invalidLocale',
   INVALID_THEME: 'invalidTheme',
-  SUBSCRIPTION_ERROR: 'subscriptionError'
+  SUBSCRIPTION_ERROR: 'subscriptionError',
+  FETCH_USER_BY_EMAIL_ERROR: 'fetchUserByEmailError'
 })
 
 export default ErrorEnum

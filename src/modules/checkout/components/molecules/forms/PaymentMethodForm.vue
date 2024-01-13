@@ -1,5 +1,9 @@
 <template>
-  <form class="payment-method-form formgrid grid" @submit.prevent="handleSubmit">
+  <form
+    class="payment-method-form formgrid grid"
+    data-cy="payment-method-form"
+    @submit.prevent="handleSubmit"
+  >
     <div class="field col-12">
       <FormField
         :label="$t('creditCard.number')"
@@ -13,6 +17,7 @@
           v-mask="'#### #### #### ####'"
           :placeholder="$t('placeholder.creditCard.number')"
           :class="['w-full', getInputStateClass('number')]"
+          data-cy="cc-number"
         />
       </FormField>
     </div>
@@ -29,6 +34,7 @@
           maxlength="255"
           :placeholder="$t('placeholder.creditCard.name')"
           :class="['w-full', getInputStateClass('name')]"
+          data-cy="cc-name"
         />
       </FormField>
     </div>
@@ -45,6 +51,7 @@
           v-mask="'####'"
           :placeholder="$t('placeholder.creditCard.cvv')"
           :class="['w-full', getInputStateClass('cvv')]"
+          data-cy="cc-cvv"
         />
       </FormField>
     </div>
@@ -61,6 +68,7 @@
           v-mask="'##/##'"
           :placeholder="$t('placeholder.creditCard.expirationDate')"
           :class="['w-full', getInputStateClass('expirationDate')]"
+          data-cy="cc-expirationDate"
         />
       </FormField>
     </div>
@@ -71,6 +79,7 @@
         :loading="isLoading"
         :label="$t('buttons.continue')"
         class="w-full"
+        data-cy="payment-method-form-submit"
       />
     </div>
   </form>

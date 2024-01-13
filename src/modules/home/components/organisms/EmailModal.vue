@@ -4,6 +4,7 @@
     :draggable="false"
     modal
     :header="$t('homeEmailModal.header')"
+    data-cy="email-modal"
   >
     <template v-if="isVisible">
       <EmailForm />

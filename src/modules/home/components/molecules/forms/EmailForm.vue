@@ -12,6 +12,7 @@
           v-model="v$.email.$model"
           :placeholder="$t('placeholder.email')"
           :class="['w-full', getInputStateClass('email')]"
+          data-cy="email-input"
         />
       </FormField>
     </div>
@@ -23,6 +24,7 @@
         :label="$t('buttons.continue')"
         size="small"
         class="w-full"
+        data-cy="email-form-submit"
       />
     </div>
   </form>

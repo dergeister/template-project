@@ -7,7 +7,10 @@
     @update:modelValue="handlePlanIdentifierChange"
   >
     <template #option="slotProps">
-      <span class="plan-identifier-button__label">
+      <span
+        class="plan-identifier-button__label"
+        :data-cy="`plan-identifier-${slotProps.option.planIdentifier}`"
+      >
         {{ $t(slotProps.option.label) }}
       </span>
       <span class="plan-identifier-button__price">
@@ -17,89 +20,89 @@
   </SelectButton>
 </template>
 <script>
-import SelectButton from 'primevue/selectbutton'
+  import SelectButton from 'primevue/selectbutton'
 
-export default {
-  props: {
-    plans: {
-      type: Array,
-      required: true
+  export default {
+    props: {
+      plans: {
+        type: Array,
+        required: true
+      },
+      modelValue: {
+        type: String
+      }
     },
-    modelValue: {
-      type: String
-    }
-  },
-  emits: ['update:modelValue'],
-  components: {
-    SelectButton
-  },
-  data() {
-    return {
-      selectedPlan: null
-    }
-  },
-  computed: {
-    passThrough() {
+    emits: ['update:modelValue'],
+    components: {
+      SelectButton
+    },
+    data() {
       return {
-        root: () => ({
-          class: 'plan-identifier-select-button'
-        }),
-        button: () => ({
-          class: {
-            'plan-identifier-button': true,
-            'system-btn': true,
-            'system-btn--primary': true,
-            'system-btn--clear': true
-          }
-        })
+        selectedPlan: null
       }
-    }
-  },
-  methods: {
-    initialize() {
-      if (this.selectedPlan) {
-        return
-      }
-
-      this.selectedPlan = { planIdentifier: this.modelValue }
     },
-    handlePlanIdentifierChange() {
-      this.$emit('update:modelValue', this.selectedPlan.planIdentifier)
+    computed: {
+      passThrough() {
+        return {
+          root: () => ({
+            class: 'plan-identifier-select-button'
+          }),
+          button: () => ({
+            class: {
+              'plan-identifier-button': true,
+              'system-btn': true,
+              'system-btn--primary': true,
+              'system-btn--clear': true
+            }
+          })
+        }
+      }
+    },
+    methods: {
+      initialize() {
+        if (this.selectedPlan) {
+          return
+        }
+
+        this.selectedPlan = { planIdentifier: this.modelValue }
+      },
+      handlePlanIdentifierChange() {
+        this.$emit('update:modelValue', this.selectedPlan.planIdentifier)
+      }
+    },
+    mounted() {
+      this.initialize()
     }
-  },
-  mounted() {
-    this.initialize()
   }
-}
 </script>
 <style lang="scss">
-.plan-identifier-select-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .plan-identifier-select-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  & > .plan-identifier-button {
-    border: solid 1px var(--surface-d);
-    border-radius: 8px;
+    & > .plan-identifier-button {
+      border: solid 1px var(--surface-d);
+      border-radius: 8px;
+    }
+
+    .plan-identifier-button {
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
   }
 
   .plan-identifier-button {
-    &:not(:first-child) {
-      margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+
+    &__price {
+      font-weight: 700;
+      font-size: 0.875rem;
     }
   }
-}
-
-.plan-identifier-button {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-
-  &__price {
-    font-weight: 700;
-    font-size: 0.875rem;
-  }
-}
 </style>

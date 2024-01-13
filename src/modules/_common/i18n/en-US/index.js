@@ -8,8 +8,8 @@ export default {
       title: 'No internet connection',
       message: 'Check your connection and try again.'
     },
-    nutritionistNotFound: {
-      title: 'Nutritionist not found',
+    fetchUserByEmailError: {
+      title: 'User not found',
       message: 'The provided e-mail is not in our system, please inform a different e-mail.'
     },
     invalidLocale: {
