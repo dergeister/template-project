@@ -111,16 +111,16 @@ O javascript não tem suporte nativo para enums, mas ainda assim eu queria evita
 
 Todos os enums são declarados dentro da pasta `/domain/enums/`.
 
-Seguindo com o exemplo dos cards, anteriormente o computed de classes retornando um objeto de classes comparava a prop `this.variant` com as strings `blue` e `green`, atualizando isso para object freeze temos:
+Seguindo com o exemplo dos cards, anteriormente o computed de classes retornando um objeto comparava a prop `this.variant` com as strings `blue` e `green`, atualizando isso para object freeze temos:
 
 ```js
-const exampleButtonVariantsEnum = Object.freeze({
+const ExampleButtonVariantsEnum = Object.freeze({
   blue: 'blue',
   green: 'green'
 })
 ```
 
-Desta maneira podemos atribuir outros valores além de `numeric` para o valor da chave. Com este exemplo ambos os retornos com array e objeto funcionam.
+Desta maneira podemos atribuir outros valores além de `numeric` para o valor da chave. Com este exemplo ambos os retornos com array e objeto funcionam como anteriormente.
 
 ```js
 export default {
@@ -132,8 +132,8 @@ export default {
       //via objeto
       return {
         'example-card__button': true,
-        'example-card__button--blue': this.variation === exampleButtonVariantsEnum.blue,
-        'example-card__button--green': this.variation === exampleButtonVariantsEnum.green
+        'example-card__button--blue': this.variation === ExampleButtonVariantsEnum.blue,
+        'example-card__button--green': this.variation === ExampleButtonVariantsEnum.green
       }
     }
   }
