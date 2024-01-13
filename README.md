@@ -123,19 +123,15 @@ const ExampleButtonVariantsEnum = Object.freeze({
 Desta maneira podemos atribuir outros valores além de `numeric` para o valor da chave. Com este exemplo ambos os retornos com array e objeto funcionam como anteriormente.
 
 ```js
-export default {
-  computed: {
-    exampleButtonClasses() {
-      // via array
-      return ['example-card__button', `example-card__button--${this.variation}`]
+exampleButtonClasses() {
+  // via array
+  return ['example-card__button', `example-card__button--${this.variation}`]
 
-      //via objeto
-      return {
-        'example-card__button': true,
-        'example-card__button--blue': this.variation === ExampleButtonVariantsEnum.BLUE,
-        'example-card__button--green': this.variation === ExampleButtonVariantsEnum.GREEN
-      }
-    }
+  //via objeto
+  return {
+    'example-card__button': true,
+    'example-card__button--blue': this.variation === ExampleButtonVariantsEnum.BLUE,
+    'example-card__button--green': this.variation === ExampleButtonVariantsEnum.GREEN
   }
 }
 ```
@@ -155,16 +151,12 @@ O contexto fornece um método para a component tree poder alterar o locale atual
 Este método altera o locale do i18n:
 
 ```js
-export default {
-  methods: {
-    handleChangeLocale(newLocale) {
-      if (!Object.values(LocaleEnum).includes(newLocale)) {
-        throw new Error(ErrorEnum.INVALID_LOCALE)
-      }
-
-      this.$i18n.locale = newLocale
-    }
+handleChangeLocale(newLocale) {
+  if (!Object.values(LocaleEnum).includes(newLocale)) {
+    throw new Error(ErrorEnum.INVALID_LOCALE)
   }
+
+  this.$i18n.locale = newLocale
 }
 ```
 
