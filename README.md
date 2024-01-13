@@ -19,14 +19,6 @@ O projeto utiliza **JSON Server** para simular endpoints, por conta disso, além
 Optei por utilizar Options Api por diversos motivos, o principal é a familiriaridade na hora de novos desenvolvedores atuarem no projeto, a comunidade que trabalhou com Vue 2 ja utiliza além de possuir guard rails que ajudam a guiar o desenvolvimento.
 Por mais que a Composition Api seja a base do desenvolvimento do framework e que ela seja a Api recomendada a partir do Vue 3 ainda existirá suporte para a Options Api, [não tendo planos para descontinua-la](https://vuejs.org/guide/extras/composition-api-faq.html#will-options-api-be-deprecated)
 
-## Pinia
-
-Pinia é o sucessor do Vuex (este tendo [entrado em modo de manutenção](https://vuex.vuejs.org/#what-is-vuex)) e é o novo gerenciador de estados oficial, mesmo tendo um nome diferente, a sintaxe é similar as stores do Vuex.
-
-## Vue i18n
-
-Utilizado por conta de ja ter experiencia com a biblioteca, ser de fácil configuração e ser a biblioteca de internacionalização mais popular para Vue
-
 ## BEM
 
 BEM é um component-based approach onde a nomenclatura de classes segue uma estrutura de Bloco Elemento Modificador, tornando mais fácil agrupar classes que pertencem ao mesmo contexto
@@ -37,7 +29,11 @@ O pré-processador Scss fornece uma sintaxe de nested classes que reduz a escrit
 
 ## Atomic Design
 
--
+O Atomic Design é uma metodologia de organização de componentes onde se categorizam componentes como `atoms`, `molecules`, `organisms`, `templates` e `pages` com a finalidade de criar interfaces de uma maneira mais deliberada e seguindo uma hierarquia.
+
+Decidi utiliza-la por funcionar muito bem com o padrão BEM, além de ajudar a previnir a ambiguidade de criação de componentes.
+
+Com isso, temos formulários de um módulo dentro de `/components/mocules/forms/` ao invés de ter uma pasta para cada página.
 
 ## Themes Context
 
@@ -76,6 +72,14 @@ Algumas das regras adicionadas são:
 ### Prettier
 
 - vueIndentScriptAndStyle: true
+
+## Pinia
+
+Pinia é o sucessor do Vuex (este tendo [entrado em modo de manutenção](https://vuex.vuejs.org/#what-is-vuex)) e é o novo gerenciador de estados oficial, mesmo tendo um nome diferente, a sintaxe é similar as stores do Vuex.
+
+## Vue i18n
+
+Utilizado por conta de ja ter experiencia com a biblioteca, ser de fácil configuração e ser a biblioteca de internacionalização mais popular para Vue
 
 ## Primevue
 
