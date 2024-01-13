@@ -49,4 +49,19 @@ describe('Subscription', () => {
 
     cy.get('[data-cy="thankyou-title"]').should('be.visible')
   })
+
+  it('Validates nonexistent user', function () {
+    cy.visit('/')
+
+    cy.get(`[data-cy="subscription-type-button-${SubscriptionTypeEnum.PROFESSIONAL}"]`).click()
+
+    cy.get('[data-cy="email-modal"]').should('be.visible')
+
+    cy.get('[data-cy="email-input"]').type(this.user.nonExistentEmail)
+    cy.get('[data-cy="email-form-submit"]').click()
+
+    cy.wait('@fetchUser')
+
+    cy.get('.p-toast-summary').should('have.text', 'Usuário não encontrado')
+  })
 })
