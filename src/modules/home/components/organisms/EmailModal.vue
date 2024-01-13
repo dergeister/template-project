@@ -5,13 +5,20 @@
     modal
     :header="$t('homeEmailModal.header')"
   >
-    <EmailForm />
+    <template v-if="isVisible">
+      <EmailForm />
+    </template>
   </Dialog>
 </template>
 <script>
+  import { defineAsyncComponent } from 'vue'
+
   import Dialog from 'primevue/dialog'
 
-  import EmailForm from '@home/components/molecules/forms/EmailForm.vue'
+  const EmailForm = defineAsyncComponent(
+    () => import('@home/components/molecules/forms/EmailForm.vue')
+  )
+
   import EventEnum from '@enums/EventEnum'
 
   export default {
@@ -21,7 +28,7 @@
     },
     data() {
       return {
-        isVisible: true
+        isVisible: false
       }
     },
     methods: {
