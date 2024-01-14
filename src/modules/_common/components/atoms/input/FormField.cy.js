@@ -6,7 +6,14 @@ describe('Form Field', () => {
   const helperText = 'Helper text test'
 
   it('Renders with label only', () => {
-    cy.mount(FormField, { props: { label } })
+    cy.mount(FormField, {
+      props: { label },
+      slots: {
+        default: {
+          render: () => 'Slot'
+        }
+      }
+    })
     cy.get('[data-cy="form-field-label"]').should('contain', label)
   })
 
@@ -14,7 +21,14 @@ describe('Form Field', () => {
     const requiredClass = 'form-field__label-text--required'
     const required = true
 
-    cy.mount(FormField, { props: { label, required } })
+    cy.mount(FormField, {
+      props: { label, required },
+      slots: {
+        default: {
+          render: () => 'Slot'
+        }
+      }
+    })
     cy.get('[data-cy="form-field-label"]').should('contain', label)
     cy.get('[data-cy="form-field-label"]').should('have.class', requiredClass)
   })
@@ -22,7 +36,14 @@ describe('Form Field', () => {
   it('Renders with validation text and valid', () => {
     const invalid = false
 
-    cy.mount(FormField, { props: { label, validationText, invalid } })
+    cy.mount(FormField, {
+      props: { label, validationText, invalid },
+      slots: {
+        default: {
+          render: () => 'Slot'
+        }
+      }
+    })
     cy.get('[data-cy="form-field-validation-text"]').should('not.be.visible')
     cy.get('[data-cy="form-field-validation-text"]').should('contain', validationText)
   })
@@ -30,13 +51,27 @@ describe('Form Field', () => {
   it('Renders with validation text and invalid', () => {
     const invalid = true
 
-    cy.mount(FormField, { props: { label, validationText, invalid } })
+    cy.mount(FormField, {
+      props: { label, validationText, invalid },
+      slots: {
+        default: {
+          render: () => 'Slot'
+        }
+      }
+    })
     cy.get('[data-cy="form-field-validation-text"]').should('be.visible')
     cy.get('[data-cy="form-field-validation-text"]').should('contain', validationText)
   })
 
   it('Renders with helper text', () => {
-    cy.mount(FormField, { props: { label, helperText } })
+    cy.mount(FormField, {
+      props: { label, helperText },
+      slots: {
+        default: {
+          render: () => 'Slot'
+        }
+      }
+    })
     cy.get('[data-cy="form-field-helper-text"]').should('be.visible')
     cy.get('[data-cy="form-field-helper-text"]').should('contain', helperText)
   })
