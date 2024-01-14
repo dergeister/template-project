@@ -23,8 +23,13 @@ import './commands'
 import '@assets/styles/global.scss'
 
 import { mount } from 'cypress/vue'
+import i18n from '@common/i18n/index'
 
-Cypress.Commands.add('mount', mount)
+// Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, args) => {
+  args.global = args.global || {}
+  args.global.plugins = args.global.plugins || []
+  args.global.plugins.push(i18n)
 
-// Example use:
-// cy.mount(MyComponent)
+  return mount(component, args)
+})
