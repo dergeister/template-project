@@ -11,9 +11,12 @@
         class="plan-identifier-button__label"
         :data-cy="`plan-identifier-${slotProps.option.planIdentifier}`"
       >
-        {{ $t(slotProps.option.label) }}
+        {{ slotProps.option.label }}
       </span>
-      <span class="plan-identifier-button__price">
+      <span
+        class="plan-identifier-button__price"
+        :data-cy="`plan-identifier-price-${slotProps.option.planIdentifier}`"
+      >
         {{ slotProps.option.price }}
       </span>
     </template>

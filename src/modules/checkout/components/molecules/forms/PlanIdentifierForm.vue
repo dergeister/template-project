@@ -20,14 +20,12 @@
     components: {
       PlanIdentifierSelectButton
     },
-    data() {
-      return {
-        plans: []
-      }
-    },
     computed: {
       ...mapState(usePaymentStore, ['subscriptionType']),
-      ...mapWritableState(usePaymentStore, ['planIdentifier'])
+      ...mapWritableState(usePaymentStore, ['planIdentifier']),
+      plans() {
+        return this.createPlansBySubscriptionType()
+      }
     },
     methods: {
       /**
@@ -35,6 +33,7 @@
        */
       createPlansBySubscriptionType() {
         let plansToCreate = []
+        const plansList = []
 
         switch (this.subscriptionType) {
           default:
@@ -51,9 +50,12 @@
             break
         }
 
-        plansToCreate.forEach((p) => {
-          this.createPlan(p)
-        })
+        for (let i = 0; i < plansToCreate.length; i++) {
+          const plan = plansToCreate[i]
+          plansList.push(this.createPlan(plan))
+        }
+
+        return plansList
       },
       /**
        * Creates a plan to be rendered based on the given PlanIdentifierEnum
@@ -64,15 +66,12 @@
 
         const installments = createInstallments(plan.price, plan.installments)
 
-        this.plans.push({
-          label: plan.name,
+        return {
+          label: this.$t(plan.name),
           price: installments[0].price,
           planIdentifier
-        })
+        }
       }
-    },
-    mounted() {
-      this.createPlansBySubscriptionType()
     }
   }
 </script>
