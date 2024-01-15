@@ -1,8 +1,11 @@
 <template>
-  <section class="subscription-type-form">
+  <form
+    class="subscription-type-form"
+    @submit.prevent=""
+  >
     <SubscriptionTypeCard :data="professional" />
     <SubscriptionTypeCard :data="student" />
-  </section>
+  </form>
 </template>
 <script>
 import SubscriptionTypeCard from '@home/components/molecules/cards/SubscriptionTypeCard.vue'
