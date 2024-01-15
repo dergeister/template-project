@@ -74,7 +74,7 @@ export default {
       const installments = createInstallments(plan.price, plan.installments)
 
       return {
-        label: this.$t(plan.name),
+        label: plan.name,
         price: installments[0].price,
         planIdentifier
       }
