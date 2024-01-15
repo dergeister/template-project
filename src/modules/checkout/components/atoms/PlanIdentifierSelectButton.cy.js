@@ -38,10 +38,11 @@ describe('Plan Identifier Select Button', () => {
     })
 
     const plan = plans[0]
+    const id = `plan-identifier-${plan.planIdentifier}`
 
-    const btn = cy.get(`[data-cy="plan-identifier-${plan.planIdentifier}"]`)
+    cy.get(`[data-cy="${id}"]`)
 
-    btn.click()
-    btn.parent().should('have.class', 'p-highlight')
+    cy.get(`[data-cy="${id}"]`).click()
+    cy.get(`[data-cy="${id}"]`).parent().should('have.class', 'p-highlight')
   })
 })

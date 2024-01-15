@@ -11,9 +11,13 @@ module.exports = {
   overrides: [
     {
       files: [
-        '**/__tests__/*.{cy,spec}.{js,ts,jsx,tsx}',
-        'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}'
+        '**/*.{cy,spec}.{js,ts,jsx,tsx}',
+        'cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}',
+        'cypress/**/*.{js,ts,jsx,tsx}'
       ],
+      rules: {
+        'no-undef': 'off'
+      },
       extends: ['plugin:cypress/recommended']
     }
   ],
@@ -21,6 +25,7 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    'no-console': 'on'
+    'no-console': 'error',
+    'vue/no-reserved-component-names': 'off'
   }
 }

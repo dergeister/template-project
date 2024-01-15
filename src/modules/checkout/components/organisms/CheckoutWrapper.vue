@@ -9,76 +9,76 @@
   </div>
 </template>
 <script>
-  import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
-  import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
-  import EventEnum from '@enums/EventEnum'
+import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
+import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
+import EventEnum from '@enums/EventEnum'
 
-  import { mapState, mapActions } from 'pinia'
-  import usePaymentStore from '@common/stores/payment'
-  import useUserStore from '@common/stores/user'
+import { mapState, mapActions } from 'pinia'
+import usePaymentStore from '@common/stores/payment'
+import useUserStore from '@common/stores/user'
 
-  export default {
-    components: {
-      PlanIdentifierForm,
-      PaymentMethodForm
+export default {
+  components: {
+    PlanIdentifierForm,
+    PaymentMethodForm
+  },
+  computed: {
+    ...mapState(usePaymentStore, ['isLoading']),
+    ...mapState(useUserStore, ['user'])
+  },
+  methods: {
+    ...mapActions(usePaymentStore, ['subscribe']),
+    registerEvents() {
+      this.emitter.on(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
     },
-    computed: {
-      ...mapState(usePaymentStore, ['isLoading']),
-      ...mapState(useUserStore, ['user'])
+    forgetEvents() {
+      this.emitter.off(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
     },
-    methods: {
-      ...mapActions(usePaymentStore, ['subscribe']),
-      registerEvents() {
-        this.emitter.on(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
-      },
-      forgetEvents() {
-        this.emitter.off(EventEnum.SUBMIT_SUBSCRIPTION, this.submitSubscription)
-      },
-      submitSubscription() {
-        this.subscribe(this.user.id)
-      }
-    },
-    mounted() {
-      this.registerEvents()
-    },
-    beforeUnmount() {
-      this.forgetEvents()
+    submitSubscription() {
+      this.subscribe(this.user.id)
     }
+  },
+  mounted() {
+    this.registerEvents()
+  },
+  beforeUnmount() {
+    this.forgetEvents()
   }
+}
 </script>
 <style lang="scss">
-  .checkout-wrapper {
-    display: flex;
-    justify-content: center;
-    padding: 4rem 2rem;
+.checkout-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 2rem;
+
+  &__plan-identifier {
+    width: 350px;
+  }
+
+  &__payment-method {
+    width: 500px;
+    margin-left: 1rem;
+  }
+
+  @media screen and (max-width: $large-breakpoint) {
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    $child-width: 500px;
 
     &__plan-identifier {
-      width: 350px;
+      width: 100%;
+      margin-bottom: 2rem;
+      max-width: $child-width;
     }
 
     &__payment-method {
-      width: 500px;
-      margin-left: 1rem;
-    }
-
-    @media screen and (max-width: $large-breakpoint) {
-      flex-direction: column;
-      justify-content: start;
-      align-items: center;
-
-      $child-width: 500px;
-
-      &__plan-identifier {
-        width: 100%;
-        margin-bottom: 2rem;
-        max-width: $child-width;
-      }
-
-      &__payment-method {
-        width: 100%;
-        margin-left: 0;
-        max-width: $child-width;
-      }
+      width: 100%;
+      margin-left: 0;
+      max-width: $child-width;
     }
   }
+}
 </style>

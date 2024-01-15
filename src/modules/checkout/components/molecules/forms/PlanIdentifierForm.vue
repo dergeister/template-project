@@ -1,95 +1,102 @@
 <template>
-  <form class="plan-identifier-form" data-cy="plan-identifier-form" @submit.prevent="">
-    <PlanIdentifierSelectButton v-model="planIdentifier" :plans="plans" />
+  <form
+    class="plan-identifier-form"
+    data-cy="plan-identifier-form"
+    @submit.prevent=""
+  >
+    <PlanIdentifierSelectButton
+      v-model="planIdentifier"
+      :plans="plans"
+    />
   </form>
 </template>
 <script>
-  import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifierSelectButton.vue'
+import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifierSelectButton.vue'
 
-  import PlanFactory from '@factories/PlanFactory'
-  import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
+import PlanFactory from '@factories/PlanFactory'
+import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
-  import { createInstallments } from '@common/helpers/dinero-helper'
+import { createInstallments } from '@common/helpers/dinero-helper'
 
-  import { mapState, mapWritableState } from 'pinia'
-  import usePaymentStore from '@common/stores/payment'
+import { mapState, mapWritableState } from 'pinia'
+import usePaymentStore from '@common/stores/payment'
 
-  import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
-  export default {
-    components: {
-      PlanIdentifierSelectButton
-    },
-    computed: {
-      ...mapState(usePaymentStore, ['subscriptionType']),
-      ...mapWritableState(usePaymentStore, ['planIdentifier']),
-      plans() {
-        return this.createPlansBySubscriptionType()
+export default {
+  components: {
+    PlanIdentifierSelectButton
+  },
+  computed: {
+    ...mapState(usePaymentStore, ['subscriptionType']),
+    ...mapWritableState(usePaymentStore, ['planIdentifier']),
+    plans() {
+      return this.createPlansBySubscriptionType()
+    }
+  },
+  methods: {
+    /**
+     * Populates the plans property based on the store user's SubscriptionTypeEnum
+     */
+    createPlansBySubscriptionType() {
+      let plansToCreate = []
+      const plansList = []
+
+      switch (this.subscriptionType) {
+        default:
+        case SubscriptionTypeEnum.PROFESSIONAL:
+          plansToCreate = [
+            PlanIdentifierEnum.MONTHLY,
+            PlanIdentifierEnum.QUARTERLY,
+            PlanIdentifierEnum.SEMESTER,
+            PlanIdentifierEnum.YEARLY
+          ]
+          break
+        case SubscriptionTypeEnum.STUDENT:
+          plansToCreate = [PlanIdentifierEnum.STUDENT_MONTHLY, PlanIdentifierEnum.STUDENT_YEARLY]
+          break
       }
+
+      for (let i = 0; i < plansToCreate.length; i++) {
+        const plan = plansToCreate[i]
+        plansList.push(this.createPlan(plan))
+      }
+
+      return plansList
     },
-    methods: {
-      /**
-       * Populates the plans property based on the store user's SubscriptionTypeEnum
-       */
-      createPlansBySubscriptionType() {
-        let plansToCreate = []
-        const plansList = []
+    /**
+     * Creates a plan to be rendered based on the given PlanIdentifierEnum
+     * @param {PlanIdentifierEnum} planIdentifier The PlanIdentifierEnum to be created
+     */
+    createPlan(planIdentifier) {
+      const plan = PlanFactory.createPlan(planIdentifier)
 
-        switch (this.subscriptionType) {
-          default:
-          case SubscriptionTypeEnum.PROFESSIONAL:
-            plansToCreate = [
-              PlanIdentifierEnum.MONTHLY,
-              PlanIdentifierEnum.QUARTERLY,
-              PlanIdentifierEnum.SEMESTER,
-              PlanIdentifierEnum.YEARLY
-            ]
-            break
-          case SubscriptionTypeEnum.STUDENT:
-            plansToCreate = [PlanIdentifierEnum.STUDENT_MONTHLY, PlanIdentifierEnum.STUDENT_YEARLY]
-            break
-        }
+      const installments = createInstallments(plan.price, plan.installments)
 
-        for (let i = 0; i < plansToCreate.length; i++) {
-          const plan = plansToCreate[i]
-          plansList.push(this.createPlan(plan))
-        }
-
-        return plansList
-      },
-      /**
-       * Creates a plan to be rendered based on the given PlanIdentifierEnum
-       * @param {PlanIdentifierEnum} planIdentifier The PlanIdentifierEnum to be created
-       */
-      createPlan(planIdentifier) {
-        const plan = PlanFactory.createPlan(planIdentifier)
-
-        const installments = createInstallments(plan.price, plan.installments)
-
-        return {
-          label: this.$t(plan.name),
-          price: installments[0].price,
-          planIdentifier
-        }
+      return {
+        label: this.$t(plan.name),
+        price: installments[0].price,
+        planIdentifier
       }
     }
   }
+}
 </script>
 <style lang="scss">
-  .plan-identifier-form {
-    border: solid 1px var(--surface-300);
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: var(--surface-200);
+.plan-identifier-form {
+  border: solid 1px var(--surface-300);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--surface-200);
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-      li:not(:first-child) {
-        margin-top: 1rem;
-      }
+    li:not(:first-child) {
+      margin-top: 1rem;
     }
   }
+}
 </style>

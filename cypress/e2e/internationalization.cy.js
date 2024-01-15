@@ -7,11 +7,9 @@ describe('Internationalization', () => {
     cy.get('[data-cy="home-header-title"]').should('have.text', 'Planos')
 
     cy.get(`[data-cy="locale-${LocaleEnum.EN}"]`).click()
-    cy.wait(100)
     cy.get('[data-cy="home-header-title"]').should('have.text', 'Plans')
 
     cy.get(`[data-cy="locale-${LocaleEnum.PT}"]`).click()
-    cy.wait(100)
     cy.get('[data-cy="home-header-title"]').should('have.text', 'Planos')
   })
 })

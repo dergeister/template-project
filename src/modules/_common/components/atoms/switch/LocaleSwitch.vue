@@ -15,34 +15,34 @@
   </SelectButton>
 </template>
 <script>
-  import SelectButton from 'primevue/selectbutton'
+import SelectButton from 'primevue/selectbutton'
 
-  import LocaleEnum from '@enums/LocaleEnum'
+import LocaleEnum from '@enums/LocaleEnum'
 
-  export default {
-    inject: ['changeLocale'],
-    components: {
-      SelectButton
-    },
-    data() {
-      return {
-        locale: LocaleEnum.PT,
-        options: [LocaleEnum.PT, LocaleEnum.EN]
-      }
-    },
-    methods: {
-      handleLocaleChange() {
-        this.changeLocale(this.locale)
-      }
+export default {
+  inject: ['changeLocale'],
+  components: {
+    SelectButton
+  },
+  data() {
+    return {
+      locale: LocaleEnum.PT,
+      options: [LocaleEnum.PT, LocaleEnum.EN]
+    }
+  },
+  methods: {
+    handleLocaleChange() {
+      this.changeLocale(this.locale)
     }
   }
+}
 </script>
 <style lang="scss">
-  .locale-switch {
-    .p-button {
-      font-size: 0.875rem;
-      padding: 0.5rem 1rem;
-      text-transform: uppercase;
-    }
+.locale-switch {
+  .p-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
   }
+}
 </style>

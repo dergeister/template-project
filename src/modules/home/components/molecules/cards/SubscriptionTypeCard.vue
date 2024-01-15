@@ -6,7 +6,10 @@
     <template #content>
       <p class="subscription-card__description">{{ data.description }}</p>
       <!-- <p class="subscription-card__pricing">{{ data.pricing }}</p> -->
-      <SubscriptionCardButton :variation="data.type" class="w-full" />
+      <SubscriptionCardButton
+        :variation="data.type"
+        class="w-full"
+      />
     </template>
   </Card>
 </template>
