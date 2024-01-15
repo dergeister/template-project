@@ -28,7 +28,7 @@ Além disso criei um mixin para ser usado em componentes que utilizam o Vuelidat
 
 A inicialização do Vuelidate nos componentes do Vue 3 precisam ser feitas pela Composition API, então mesmo usando a Options API, é necessário criar a instancia do Vuelidate pelo `setup`.
 
-Neste projeto optei por usar mensagens de validação via `helpers.withMessage()` por conta de preferir uma mensagem específica de "E-mail obrigatório" ao invés de uma mensagem genérica de "Campo obrigatório".
+Neste projeto optei por usar mensagens de validação via `helpers.withMessage()` para ficar mais fácil de setar mensagens específicas para validações caso preciso.
 
 ```js
 export default {
