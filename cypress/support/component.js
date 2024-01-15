@@ -23,13 +23,15 @@ import './commands'
 import '@assets/styles/global.scss'
 
 import { mount } from 'cypress/vue'
-import i18n from '@common/i18n/index'
+import i18n from '@common/i18n'
+import setupPinia from '@common/stores'
 
 // Cypress.Commands.add('mount', mount)
-Cypress.Commands.add('mount', (component, args) => {
-  args.global = args.global || {}
-  args.global.plugins = args.global.plugins || []
-  args.global.plugins.push(i18n)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
+  options.global.plugins.push(i18n)
+  options.global.plugins.push(setupPinia)
 
-  return mount(component, args)
+  return mount(component, options)
 })
