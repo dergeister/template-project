@@ -1,0 +1,12 @@
+[
+  {
+    "label": "Plan test 1",
+    "price": "R$ 00,00",
+    "planIdentifier": "monthly_plan"
+  },
+  {
+    "label": "Plan test 2",
+    "price": "R$ 12,34",
+    "planIdentifier": "student_yearly_plan"
+  }
+]

@@ -2,5 +2,8 @@
   "number": "1111222233334444",
   "name": "Nicolas Devmann",
   "cvv": "123",
-  "expirationDate": "01/24"
+  "expirationDate": "01/24",
+  "invalidNumber": "1234",
+  "invalidCvv": "1",
+  "invalidExpirationDate": "12"
 }

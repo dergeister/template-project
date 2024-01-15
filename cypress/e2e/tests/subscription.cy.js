@@ -1,5 +1,7 @@
-import SubscriptionTypeEnum from '../../src/domain/enums/SubscriptionTypeEnum'
-import PlanIdentifierEnum from '../../src/domain/enums/PlanIdentifierEnum'
+import SubscriptionTypeEnum from '../../../src/domain/enums/SubscriptionTypeEnum'
+import PlanIdentifierEnum from '../../../src/domain/enums/PlanIdentifierEnum'
+
+import ptBR from '../../../src/modules/_common/i18n/pt-BR'
 
 describe('Subscription', () => {
   beforeEach(function () {
@@ -63,6 +65,8 @@ describe('Subscription', () => {
   })
 
   it('Validates nonexistent user', function () {
+    const userNotFound = ptBR.errorHandler.fetchUserByEmailError.title
+
     cy.visit('/')
 
     cy.get(`[data-cy="subscription-type-button-${SubscriptionTypeEnum.PROFESSIONAL}"]`).click()
@@ -74,6 +78,6 @@ describe('Subscription', () => {
 
     cy.wait('@fetchUser')
 
-    cy.get('.p-toast-summary').should('have.text', 'Usuário não encontrado')
+    cy.get('.p-toast-summary').should('have.text', userNotFound)
   })
 })

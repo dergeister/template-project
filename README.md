@@ -32,7 +32,11 @@ Por exemplo: Um card onde deve se exibir uma imagem, um título, uma descrição
 
 ```html
 <div class="example-card">
-  <img class="example-card__img" src="..." alt="..." />
+  <img
+    class="example-card__img"
+    src="..."
+    alt="..."
+  />
   <h3 class="example-card__title">...</h3>
   <p class="example-card__description">...</p>
   <button class="example-card__button example-card__button--blue">...</button>
@@ -195,8 +199,13 @@ Algumas das regras adicionadas são:
 
 ### ESLint:
 
-- no-console: on
+- no-console: error
+- no-undef: off (apenas para arquivos .cy.js e arquivos .js dentro da pasta cypress)
 
 ### Prettier
 
-- vueIndentScriptAndStyle: true
+- vueIndentScriptAndStyle: false
+- singleAttributePerLine: true
+- singleQuote: true
+- trailingComma: none
+- semi: false

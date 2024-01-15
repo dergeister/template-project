@@ -175,7 +175,7 @@ export default {
         expirationDate: this.expirationDate
       }
 
-      this.emitter.emit(EventEnum.SUBMIT_SUBSCRIPTION)
+      this.emitter?.emit(EventEnum.SUBMIT_SUBSCRIPTION)
     }
   }
 }

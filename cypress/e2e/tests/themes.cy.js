@@ -1,5 +1,5 @@
-import ThemeEnum from '../../src/domain/enums/ThemeEnum'
-import SubscriptionTypeEnum from '../../src/domain/enums/SubscriptionTypeEnum'
+import ThemeEnum from '../../../src/domain/enums/ThemeEnum'
+import SubscriptionTypeEnum from '../../../src/domain/enums/SubscriptionTypeEnum'
 
 describe('Themes', () => {
   beforeEach(function () {

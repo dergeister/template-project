@@ -1,28 +1,19 @@
 import PlanIdentifierSelectButton from './PlanIdentifierSelectButton.vue'
-import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
 describe('Plan Identifier Select Button', () => {
-  const professionalPlan = {
-    label: 'Plan test 1',
-    price: 'R$ 00,00',
-    planIdentifier: PlanIdentifierEnum.MONTHLY
-  }
+  beforeEach(function () {
+    cy.fixture('plans').then((p) => {
+      this.plans = p
+    })
+  })
 
-  const studentPlan = {
-    label: 'Plan test 2',
-    price: 'R$ 12,34',
-    planIdentifier: PlanIdentifierEnum.STUDENT_YEARLY
-  }
-
-  const plans = [professionalPlan, studentPlan]
-
-  it('Renders properly', () => {
+  it('Renders properly', function () {
     cy.mount(PlanIdentifierSelectButton, {
-      props: { plans }
+      props: { plans: this.plans }
     })
 
-    for (let i = 0; i < plans.length; i++) {
-      const plan = plans[i]
+    for (let i = 0; i < this.plans.length; i++) {
+      const plan = this.plans[i]
 
       cy.get(`[data-cy="plan-identifier-${plan.planIdentifier}"]`).should('contain', plan.label)
       cy.get(`[data-cy="plan-identifier-price-${plan.planIdentifier}"]`).should(
@@ -32,12 +23,12 @@ describe('Plan Identifier Select Button', () => {
     }
   })
 
-  it('Selects the first option', () => {
+  it('Selects the first option', function () {
     cy.mount(PlanIdentifierSelectButton, {
-      props: { plans }
+      props: { plans: this.plans }
     })
 
-    const plan = plans[0]
+    const plan = this.plans[0]
     const id = `plan-identifier-${plan.planIdentifier}`
 
     cy.get(`[data-cy="${id}"]`)
