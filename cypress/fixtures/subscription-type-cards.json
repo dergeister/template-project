@@ -1,0 +1,14 @@
+{
+  "professional": 
+  {
+    "name": "Profissional",
+    "description": "teste de descrição profissional",
+    "type": "professional"
+  },
+  "student":
+  {
+    "name": "Estudante",
+    "description": "teste de descrição estudante",
+    "type": "student"
+  }
+}

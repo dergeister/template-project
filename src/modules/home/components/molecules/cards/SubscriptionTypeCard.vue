@@ -1,11 +1,23 @@
 <template>
-  <Card :class="subscriptionCardClasses">
+  <Card
+    :class="subscriptionCardClasses"
+    :data-cy="cardDataCy"
+  >
     <template #header>
-      <div class="subscription-card__header">{{ data.name }}</div>
+      <div
+        class="subscription-card__header"
+        :data-cy="nameDataCy"
+      >
+        {{ data.name }}
+      </div>
     </template>
     <template #content>
-      <p class="subscription-card__description">{{ data.description }}</p>
-      <!-- <p class="subscription-card__pricing">{{ data.pricing }}</p> -->
+      <p
+        class="subscription-card__description"
+        :data-cy="descriptionDataCy"
+      >
+        {{ data.description }}
+      </p>
       <SubscriptionCardButton
         :variation="data.type"
         class="w-full"
@@ -33,6 +45,15 @@ export default {
   computed: {
     subscriptionCardClasses() {
       return ['subscription-card', `subscription-card--${this.data.type}`]
+    },
+    cardDataCy() {
+      return `subscription-card-${this.data.type}`
+    },
+    nameDataCy() {
+      return `subscription-card-name-${this.data.type}`
+    },
+    descriptionDataCy() {
+      return `subscription-card-description-${this.data.type}`
     }
   }
 }
