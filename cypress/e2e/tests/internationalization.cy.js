@@ -1,7 +1,7 @@
 import LocaleEnum from '../../../src/domain/enums/LocaleEnum'
 
-import ptBR from '../../../src/modules/_common/i18n/pt-BR'
-import enUS from '../../../src/modules/_common/i18n/en-US'
+import ptBR from '../../../src/i18n/pt-BR'
+import enUS from '../../../src/i18n/en-US'
 
 describe('Internationalization', () => {
   it('Changes from PT to EN and back to PT', function () {

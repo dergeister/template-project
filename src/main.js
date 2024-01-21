@@ -2,12 +2,12 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 
-import setupCommon from '@common'
+import registerPlugins from './plugins'
 
 import './assets/styles/global.scss'
 
 const app = createApp(App)
 
-setupCommon(app)
+registerPlugins(app)
 
 app.mount('#app')

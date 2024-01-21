@@ -2,7 +2,7 @@ import Plan from '@models/Plan'
 
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
-import i18n from '@common/i18n'
+import i18n from '@i18n'
 
 class PlanFactory {
   /**

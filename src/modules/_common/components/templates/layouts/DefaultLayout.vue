@@ -9,7 +9,7 @@
 <script>
 import AppNavigation from '@common/components/organisms/AppNavigation.vue'
 
-import navigationMixin from '@common/mixins/navigation-mixin'
+import navigationMixin from '@mixins/navigation-mixin'
 
 export default {
   mixins: [navigationMixin],

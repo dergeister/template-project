@@ -2,7 +2,7 @@ import Subscription from '@models/Subscription'
 
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
-import i18n from '@common/i18n'
+import i18n from '@i18n'
 
 class SubscriptionFactory {
   /**

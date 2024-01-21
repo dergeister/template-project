@@ -9,7 +9,13 @@
       "@factories/*": ["./src/domain/factories/*"],
       "@common/*": ["./src/modules/_common/*"],
       "@home/*": ["./src/modules/home/*"],
-      "@checkout/*": ["./src/modules/checkout/*"],
+      "@i18n/*": ["./src/i18n/*"],
+      "@api/*": ["./src/api/*"],
+      "@router/*": ["./src/router/*"],
+      "@store/*": ["./src/stores/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@mixins/*": ["./src/mixins/*"],
     }
   }
 }

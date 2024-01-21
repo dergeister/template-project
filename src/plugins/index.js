@@ -3,11 +3,11 @@ import mitt from 'mitt'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 
-import i18n from './i18n'
-import router from './router'
-import setupPinia from './stores'
+import i18n from '@i18n'
+import router from '@router'
+import setupPinia from '@store'
 
-const setupCommon = (app) => {
+const registerPlugins = (app) => {
   const emitter = mitt()
   app.config.globalProperties.emitter = emitter
 
@@ -19,4 +19,4 @@ const setupCommon = (app) => {
   app.use(router)
 }
 
-export default setupCommon
+export default registerPlugins

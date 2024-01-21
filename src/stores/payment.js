@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import delay from '@common/helpers/loading-helper'
+import delay from '@helpers/loading-helper'
 
 import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
