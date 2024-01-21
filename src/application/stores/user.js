@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import coreApi from '@api/core'
 import delay from '@helpers/loading-helper'
 
 import EventEnum from '@enums/EventEnum'
@@ -32,7 +31,7 @@ const useUserStore = defineStore('user', {
 
       await delay()
 
-      return await coreApi
+      return await this.api.core
         .get(`/user/${queryEmail}`)
         .then((result) => {
           if (result.data.length > 0) {

@@ -11,7 +11,7 @@ const routes = [
     meta: { requiresUserAuthenticationGuard: true }
   },
   {
-    path: '/thanktou',
+    path: '/thankyou',
     name: 'thankyou',
     component: () => import('@checkout/pages/ThankyouView.vue'),
     meta: { requiresPaymentGuard: true }
