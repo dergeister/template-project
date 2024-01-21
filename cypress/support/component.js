@@ -23,8 +23,8 @@ import './commands'
 import '@assets/styles/global.scss'
 
 import { mount } from 'cypress/vue'
-import i18n from '@common/i18n'
-import setupPinia from '@common/stores'
+import i18n from '@i18n'
+import setupPinia from '@store'
 
 // Cypress.Commands.add('mount', mount)
 Cypress.Commands.add('mount', (component, options = {}) => {
