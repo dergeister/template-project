@@ -43,8 +43,10 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
 import vuelidateMixins from '@mixins/vuelidate-mixin'
 
-import { mapActions, mapState, mapWritableState } from 'pinia'
+import { mapState, mapWritableState } from 'pinia'
 import useUserStore from '@store/user'
+
+import EventEnum from '@enums/EventEnum'
 
 export default {
   mixins: [vuelidateMixins],
@@ -84,7 +86,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useUserStore, ['fetchUserByEmail']),
     handleSubmit() {
       this.submit()
 
@@ -92,7 +93,7 @@ export default {
         return
       }
 
-      this.fetchUserByEmail(this.email)
+      this.emitter?.emit(EventEnum.SUBMIT_EMAIL, this.email)
     }
   }
 }

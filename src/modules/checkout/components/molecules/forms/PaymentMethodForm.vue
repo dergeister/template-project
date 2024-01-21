@@ -99,7 +99,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
 import vuelidateMixins from '@mixins/vuelidate-mixin'
 
-import { mapActions, mapState, mapWritableState } from 'pinia'
+import { mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@store/payment'
 
 import EventEnum from '@enums/EventEnum'
@@ -160,7 +160,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions(usePaymentStore, ['subscribe']),
     handleSubmit() {
       this.submit()
 

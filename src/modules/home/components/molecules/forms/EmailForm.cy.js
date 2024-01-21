@@ -15,8 +15,8 @@ describe('Email Form', () => {
   it('Validates a correct e-mail', function () {
     cy.mount(EmailForm)
 
-    cy.get('[data-cy="email-input"').type(this.user.email)
-    cy.get('[data-cy="email-form-submit"').click()
+    cy.get('[data-cy="email-input"]').type(this.user.email)
+    cy.get('[data-cy="email-form-submit"]').click()
 
     cy.get('[data-cy="form-field-email-validation-text"]').should('not.be.visible')
   })
@@ -27,11 +27,11 @@ describe('Email Form', () => {
     const requiredValidation = ptBR.formValidation.required
     const emailValidation = ptBR.formValidation.email
 
-    cy.get('[data-cy="email-form-submit"').click()
+    cy.get('[data-cy="email-form-submit"]').click()
     cy.get('[data-cy="form-field-email-validation-text"]').should('be.visible')
     cy.get('[data-cy="form-field-email-validation-text"]').should('have.text', requiredValidation)
 
-    cy.get('[data-cy="email-input"').type(this.user.invalidEmail)
+    cy.get('[data-cy="email-input"]').type(this.user.invalidEmail)
     cy.get('[data-cy="form-field-email-validation-text"]').should('be.visible')
     cy.get('[data-cy="form-field-email-validation-text"]').should('have.text', emailValidation)
   })

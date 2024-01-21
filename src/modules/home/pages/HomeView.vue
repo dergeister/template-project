@@ -1,5 +1,5 @@
 <template>
-  <EmailModal />
+  <EmailModalWrapper />
   <DefaultLayout>
     <main class="home">
       <HomeHeader />
@@ -11,12 +11,12 @@
 import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
 import HomeHeader from '@home/components/organisms/HomeHeader.vue'
 import SubscriptionTypeCards from '@home/components/organisms/SubscriptionTypeCards.vue'
-import EmailModal from '@home/components/organisms/EmailModal.vue'
+import EmailModalWrapper from '@home/components/organisms/EmailModalWrapper.vue'
 
 import EventEnum from '@enums/EventEnum'
 
 export default {
-  components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModal },
+  components: { DefaultLayout, HomeHeader, SubscriptionTypeCards, EmailModalWrapper },
   data() {
     return {
       loadEmailModal: false

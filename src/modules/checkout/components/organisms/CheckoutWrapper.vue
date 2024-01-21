@@ -1,9 +1,9 @@
 <template>
-  <div class="checkout-wrapper">
-    <div class="checkout-wrapper__plan-identifier">
+  <div class="checkout-form-wrapper">
+    <div class="checkout-form-wrapper__plan-identifier">
       <PlanIdentifierForm />
     </div>
-    <div class="checkout-wrapper__payment-method">
+    <div class="checkout-form-wrapper__payment-method">
       <PaymentMethodForm />
     </div>
   </div>
@@ -47,7 +47,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.checkout-wrapper {
+.checkout-form-wrapper {
   display: flex;
   justify-content: center;
   padding: 4rem 2rem;

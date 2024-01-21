@@ -3,7 +3,7 @@ import { setActivePinia, createPinia } from 'pinia'
 
 import { planIdentifierPerSubscriptionType } from '@services/payment-service'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
-import usePaymentStore from 'src/application/stores/payment'
+import usePaymentStore from '@store/payment'
 
 describe('Payment Method Form', () => {
   const planIdentifierId = (id) => `plan-identifier-${id}`
@@ -27,7 +27,6 @@ describe('Payment Method Form', () => {
   it('Validates student plan', function () {
     cy.mount(PlanIdentifierForm)
 
-    // eslint-disable-next-line no-unused-vars
     const paymentStore = usePaymentStore()
     paymentStore.subscriptionType = SubscriptionTypeEnum.STUDENT
 
