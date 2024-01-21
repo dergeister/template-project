@@ -16,10 +16,10 @@ import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifie
 import PlanFactory from '@factories/PlanFactory'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
-import { createInstallments } from '@common/helpers/dinero-helper'
+import { createInstallments } from '@helpers/dinero-helper'
 
 import { mapState, mapWritableState } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
+import usePaymentStore from '@store/payment'
 
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 

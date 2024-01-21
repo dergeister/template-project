@@ -21,7 +21,8 @@ export default defineConfig({
       '@store': fileURLToPath(new URL('./src/stores', import.meta.url)),
       '@middlewares': fileURLToPath(new URL('./src/middlewares', import.meta.url)),
       '@helpers': fileURLToPath(new URL('./src/helpers', import.meta.url)),
-      '@mixins': fileURLToPath(new URL('./src/mixins', import.meta.url))
+      '@mixins': fileURLToPath(new URL('./src/mixins', import.meta.url)),
+      '@services': fileURLToPath(new URL('./src/services', import.meta.url))
     }
   },
   css: {

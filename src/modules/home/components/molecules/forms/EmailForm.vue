@@ -41,10 +41,10 @@ import FormField from '@common/components/atoms/input/FormField.vue'
 
 import { useVuelidate } from '@vuelidate/core'
 import { required, email, helpers } from '@vuelidate/validators'
-import vuelidateMixins from '@common/mixins/vuelidate-mixin'
+import vuelidateMixins from '@mixins/vuelidate-mixin'
 
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import useUserStore from '@common/stores/user'
+import useUserStore from '@store/user'
 
 export default {
   mixins: [vuelidateMixins],

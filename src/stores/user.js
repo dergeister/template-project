@@ -5,6 +5,8 @@ import delay from '@helpers/loading-helper'
 import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
+import { sanitizeUserEmail } from '@services/user-service'
+
 const useUserStore = defineStore('user', {
   state: () => ({
     isLoading: false,
@@ -24,12 +26,14 @@ const useUserStore = defineStore('user', {
         return
       }
 
+      const queryEmail = sanitizeUserEmail(email)
+
       this.isLoading = true
 
       await delay()
 
       return await coreApi
-        .get(`/user/${email}`)
+        .get(`/user/${queryEmail}`)
         .then((result) => {
           if (result.data.length > 0) {
             this.user = result.data[0]

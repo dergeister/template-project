@@ -97,10 +97,10 @@ import FormField from '@common/components/atoms/input/FormField.vue'
 
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'
-import vuelidateMixins from '@common/mixins/vuelidate-mixin'
+import vuelidateMixins from '@mixins/vuelidate-mixin'
 
 import { mapActions, mapState, mapWritableState } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
+import usePaymentStore from '@store/payment'
 
 import EventEnum from '@enums/EventEnum'
 

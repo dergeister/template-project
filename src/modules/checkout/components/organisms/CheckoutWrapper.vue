@@ -14,8 +14,8 @@ import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMetho
 import EventEnum from '@enums/EventEnum'
 
 import { mapState, mapActions } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
-import useUserStore from '@common/stores/user'
+import usePaymentStore from '@store/payment'
+import useUserStore from '@store/user'
 
 export default {
   components: {

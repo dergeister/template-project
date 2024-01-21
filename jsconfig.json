@@ -16,6 +16,7 @@
       "@middlewares/*": ["./src/middlewares/*"],
       "@helpers/*": ["./src/helpers/*"],
       "@mixins/*": ["./src/mixins/*"],
+      "@services/*": ["./src/services/*"],
     }
   }
 }

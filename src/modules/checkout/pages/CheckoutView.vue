@@ -10,7 +10,7 @@ import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vu
 
 import CheckoutWrapper from '@checkout/components/organisms/CheckoutWrapper.vue'
 
-import usePaymentStore from '@common/stores/payment'
+import usePaymentStore from '@store/payment'
 
 import { mapState } from 'pinia'
 import EventEnum from '@enums/EventEnum'

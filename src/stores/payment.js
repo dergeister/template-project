@@ -7,6 +7,8 @@ import ErrorEnum from '@enums/ErrorEnum'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
+import { sanitizeSubscription } from '@services/payment-service'
+
 const usePaymentStore = defineStore('payment', {
   state: () => ({
     isLoading: false,
@@ -22,31 +24,11 @@ const usePaymentStore = defineStore('payment', {
   }),
   actions: {
     /**
-     * Sanitizes the subscription payload object
-     * @param {number} user_id The id of the user to subscribe
-     * @returns {Promise} The axios request
-     */
-    sanitizeSubscriptionPayload(user_id) {
-      const credit_card = { ...this.creditCard }
-
-      const ccName = credit_card.name.trim()
-      const ccNumber = credit_card.number.replaceAll(' ', '')
-
-      credit_card.name = ccName
-      credit_card.number = ccNumber
-
-      return {
-        user_id,
-        credit_card,
-        plan_identifier: this.planIdentifier
-      }
-    },
-    /**
      * A POST request to the /subscriptions endpoint on the Payment API
-     * @param {number} user_id The id of the user that is subscribing
+     * @param {number} userId The id of the user that is subscribing
      * @returns {Promise} The axios request
      */
-    async subscribe(user_id) {
+    async subscribe(userId) {
       if (this.isLoading) {
         return
       }
@@ -55,7 +37,11 @@ const usePaymentStore = defineStore('payment', {
 
       await delay()
 
-      const payload = this.sanitizeSubscriptionPayload(user_id)
+      const payload = sanitizeSubscription({
+        userId,
+        creditCard: this.creditCard,
+        planIdentifier: this.planIdentifier
+      })
 
       return await this.api.payment
         .post(`/subscriptions`, payload)
