@@ -14,14 +14,13 @@
 import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifierSelectButton.vue'
 
 import PlanFactory from '@factories/PlanFactory'
-import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
 import { createInstallments } from '@helpers/dinero-helper'
 
 import { mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@store/payment'
 
-import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+import { planIdentifierPerSubscriptionType } from '@services/payment-service'
 
 export default {
   components: {
@@ -39,23 +38,8 @@ export default {
      * Populates the plans property based on the store user's SubscriptionTypeEnum
      */
     createPlansBySubscriptionType() {
-      let plansToCreate = []
+      const plansToCreate = planIdentifierPerSubscriptionType[this.subscriptionType]
       const plansList = []
-
-      switch (this.subscriptionType) {
-        default:
-        case SubscriptionTypeEnum.PROFESSIONAL:
-          plansToCreate = [
-            PlanIdentifierEnum.MONTHLY,
-            PlanIdentifierEnum.QUARTERLY,
-            PlanIdentifierEnum.SEMESTER,
-            PlanIdentifierEnum.YEARLY
-          ]
-          break
-        case SubscriptionTypeEnum.STUDENT:
-          plansToCreate = [PlanIdentifierEnum.STUDENT_MONTHLY, PlanIdentifierEnum.STUDENT_YEARLY]
-          break
-      }
 
       for (let i = 0; i < plansToCreate.length; i++) {
         const plan = plansToCreate[i]

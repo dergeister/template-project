@@ -1,3 +1,6 @@
+import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
+import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
+
 /**
  * Sanitizes the subscription object
  * @param {object} subscription The subscription to be sanitized
@@ -19,4 +22,17 @@ const sanitizeSubscription = (subscription) => {
   }
 }
 
-export { sanitizeSubscription }
+const planIdentifierPerSubscriptionType = {
+  [SubscriptionTypeEnum.PROFESSIONAL]: [
+    PlanIdentifierEnum.MONTHLY,
+    PlanIdentifierEnum.QUARTERLY,
+    PlanIdentifierEnum.SEMESTER,
+    PlanIdentifierEnum.YEARLY
+  ],
+  [SubscriptionTypeEnum.STUDENT]: [
+    PlanIdentifierEnum.STUDENT_MONTHLY,
+    PlanIdentifierEnum.STUDENT_YEARLY
+  ]
+}
+
+export { sanitizeSubscription, planIdentifierPerSubscriptionType }
