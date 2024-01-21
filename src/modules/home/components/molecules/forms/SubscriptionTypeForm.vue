@@ -14,7 +14,7 @@ import SubscriptionFactory from '@factories/SubscriptionFactory'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 import { mapWritableState } from 'pinia'
-import usePaymentStore from '@common/stores/payment'
+import usePaymentStore from '@store/payment'
 
 import EventEnum from '@enums/EventEnum'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'

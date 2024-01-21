@@ -1,6 +1,6 @@
 import { markRaw } from 'vue'
 import { createPinia } from 'pinia'
-import setupAPI from '@common/api/index'
+import setupAPI from '@api'
 
 /**
  * Creates Pinia passing and event emitter

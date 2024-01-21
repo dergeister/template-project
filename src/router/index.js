@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from './routes'
-import userAuthenticationGuard from '@common/middlewares/authentication'
-import paymentGuard from '@common/middlewares/payment'
+import userAuthenticationGuard from '@middlewares/authenticationGuard'
+import paymentGuard from '@middlewares/paymentGuard'
 
-import useUserStore from '@common/stores/user'
-import usePaymentStore from '@common/stores/payment'
+import useUserStore from '@store/user'
+import usePaymentStore from '@store/payment'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
