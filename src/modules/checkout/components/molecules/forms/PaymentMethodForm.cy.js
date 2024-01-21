@@ -4,7 +4,7 @@ import { setActivePinia, createPinia } from 'pinia'
 import ptBR from '@common/i18n/pt-BR'
 
 describe('Payment Method Form', () => {
-  const requiredField = ptBR.formValidation.required
+  const requiredValidation = ptBR.formValidation.required
 
   const validationId = (id) => `form-field-${id}-validation-text`
 
@@ -24,7 +24,7 @@ describe('Payment Method Form', () => {
 
     cy.get('[data-cy="payment-method-form-submit"').click()
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
-    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredField)
+    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredValidation)
 
     cy.get(`[data-cy="${id}"]`).type(this.creditCard.invalidNumber)
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
@@ -42,7 +42,7 @@ describe('Payment Method Form', () => {
 
     cy.get('[data-cy="payment-method-form-submit"').click()
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
-    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredField)
+    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredValidation)
 
     cy.get(`[data-cy="${id}"]`).clear()
     cy.get(`[data-cy="${id}"]`).type(this.creditCard.name)
@@ -57,7 +57,7 @@ describe('Payment Method Form', () => {
 
     cy.get('[data-cy="payment-method-form-submit"').click()
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
-    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredField)
+    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredValidation)
 
     cy.get(`[data-cy="${id}"]`).type(this.creditCard.invalidCvv)
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
@@ -76,7 +76,7 @@ describe('Payment Method Form', () => {
 
     cy.get('[data-cy="payment-method-form-submit"').click()
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')
-    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredField)
+    cy.get(`[data-cy="${validationId(id)}"]`).should('have.text', requiredValidation)
 
     cy.get(`[data-cy="${id}"]`).type(this.creditCard.invalidExpirationDate)
     cy.get(`[data-cy="${validationId(id)}"]`).should('be.visible')

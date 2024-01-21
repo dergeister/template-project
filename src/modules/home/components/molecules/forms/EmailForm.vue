@@ -9,6 +9,7 @@
         :validationText="getFieldErrorMessage('email')"
         :invalid="getFieldInvalid('email')"
         required
+        id="email"
       >
         <InputText
           type="text"
