@@ -1,7 +1,7 @@
 import PaymentMethodForm from './PaymentMethodForm.vue'
 import { setActivePinia, createPinia } from 'pinia'
 
-import ptBR from '@common/i18n/pt-BR'
+import ptBR from '@i18n/pt-BR'
 
 describe('Payment Method Form', () => {
   const requiredValidation = ptBR.formValidation.required

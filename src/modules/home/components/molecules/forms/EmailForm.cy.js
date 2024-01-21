@@ -1,7 +1,7 @@
 import EmailForm from './EmailForm.vue'
 import { setActivePinia, createPinia } from 'pinia'
 
-import ptBR from '@common/i18n/pt-BR'
+import ptBR from '@i18n/pt-BR'
 
 describe('Email Form', () => {
   beforeEach(function () {
