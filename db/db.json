@@ -49,6 +49,17 @@
       },
       "plan_identifier": "quarterly_plan",
       "id": 4
+    },
+    {
+      "user_id": 1,
+      "credit_card": {
+        "number": "1231231231231231",
+        "name": "aaaaaaaaaaaaaaaaaaaaaaa",
+        "cvv": "123",
+        "expirationDate": "12/34"
+      },
+      "plan_identifier": "semester_plan",
+      "id": 5
     }
   ]
 }
