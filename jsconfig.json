@@ -10,14 +10,13 @@
       "@common/*": ["./src/modules/_common/*"],
       "@home/*": ["./src/modules/home/*"],
       "@i18n/*": ["./src/i18n/*"],
-      "@api/*": ["src/application/api/*"],
+      "@api/*": ["src/infrastructure/api/*"],
       "@router/*": ["src/application/router/*"],
       "@store/*": ["src/application/stores/*"],
       "@middlewares/*": ["src/application/middlewares/*"],
       "@helpers/*": ["src/application/helpers/*"],
       "@mixins/*": ["src/application/mixins/*"],
-      "@plugins/*": ["src/application/plugins/*"],
-      "@services/*": ["./src/services/*"],
+      "@services/*": ["src/application/services/*"],
     }
   }
 }

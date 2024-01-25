@@ -4,7 +4,7 @@ import delay from '@helpers/loading-helper'
 import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
-import { sanitizeUserEmail } from '@services/user-service'
+import UserService from '@services/user-service'
 
 const useUserStore = defineStore('user', {
   state: () => ({
@@ -25,7 +25,7 @@ const useUserStore = defineStore('user', {
         return
       }
 
-      const queryEmail = sanitizeUserEmail(email)
+      const queryEmail = UserService.sanitizeUserEmail(email)
 
       this.isLoading = true
 

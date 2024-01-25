@@ -7,7 +7,7 @@ import ErrorEnum from '@enums/ErrorEnum'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
-import { sanitizeSubscription } from '@services/payment-service'
+import PaymentService from '@services/payment-service'
 
 const usePaymentStore = defineStore('payment', {
   state: () => ({
@@ -37,7 +37,7 @@ const usePaymentStore = defineStore('payment', {
 
       await delay()
 
-      const payload = sanitizeSubscription({
+      const payload = PaymentService.sanitizeSubscription({
         userId,
         creditCard: this.creditCard,
         planIdentifier: this.planIdentifier

@@ -7,7 +7,7 @@ import i18n from '@i18n'
 import router from '@router'
 import setupPinia from '@store'
 
-const registerPlugins = (app) => {
+const registerPresentation = (app) => {
   const emitter = mitt()
   app.config.globalProperties.emitter = emitter
 
@@ -19,4 +19,4 @@ const registerPlugins = (app) => {
   app.use(router)
 }
 
-export default registerPlugins
+export default registerPresentation
