@@ -1,5 +1,5 @@
-import SubscriptionTypeEnum from '../../../src/domain/enums/SubscriptionTypeEnum'
-import PlanIdentifierEnum from '../../../src/domain/enums/PlanIdentifierEnum'
+import SubscriptionTypeEnum from '../../../src/enums/SubscriptionTypeEnum'
+import PlanIdentifierEnum from '../../../src/enums/PlanIdentifierEnum'
 
 import ptBR from '../../../src/presentation/i18n/pt-BR'
 

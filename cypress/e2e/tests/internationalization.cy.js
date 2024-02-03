@@ -1,4 +1,4 @@
-import LocaleEnum from '../../../src/domain/enums/LocaleEnum'
+import LocaleEnum from '../../../src/enums/LocaleEnum'
 
 import ptBR from '../../../src/presentation/i18n/pt-BR'
 import enUS from '../../../src/presentation/i18n/en-US'

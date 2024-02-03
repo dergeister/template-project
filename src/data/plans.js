@@ -1,4 +1,5 @@
 import Plan from '@models/Plan'
+import Subscription from '@models/Subscription'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 import i18n from '@i18n'
@@ -38,6 +39,18 @@ const plansPerSubscriptionType = {
   [SubscriptionTypeEnum.STUDENT]: studentPlans
 }
 
+const professionalSubscription = new Subscription(
+  SubscriptionTypeEnum.PROFESSIONAL,
+  t('subscriptions.professional.name'),
+  t('subscriptions.professional.description')
+)
+
+const studentSubscription = new Subscription(
+  SubscriptionTypeEnum.STUDENT,
+  t('subscriptions.student.name'),
+  t('subscriptions.student.description')
+)
+
 export {
   monthlyPlan,
   quarterlyPlan,
@@ -47,5 +60,7 @@ export {
   studentYearlyPlan,
   professionalPlans,
   studentPlans,
-  plansPerSubscriptionType
+  plansPerSubscriptionType,
+  professionalSubscription,
+  studentSubscription
 }
