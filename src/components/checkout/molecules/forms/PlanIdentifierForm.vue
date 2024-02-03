@@ -11,7 +11,7 @@
   </form>
 </template>
 <script>
-import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifierSelectButton.vue'
+import PlanIdentifierSelectButton from '@checkout/atoms/PlanIdentifierSelectButton.vue'
 
 import { mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@store/payment'

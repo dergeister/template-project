@@ -6,8 +6,8 @@
   </DefaultLayout>
 </template>
 <script>
-import ThankyouHeader from '@checkout/components/organisms/ThankyouHeader.vue'
-import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
+import ThankyouHeader from '@checkout/organisms/ThankyouHeader.vue'
+import DefaultLayout from '@common/templates/layouts/DefaultLayout.vue'
 export default {
   components: {
     DefaultLayout,

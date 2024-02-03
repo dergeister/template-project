@@ -19,9 +19,7 @@ import Dialog from 'primevue/dialog'
 import { mapActions } from 'pinia'
 import useUserStore from '@store/user'
 
-const EmailForm = defineAsyncComponent(
-  () => import('@home/components/molecules/forms/EmailForm.vue')
-)
+const EmailForm = defineAsyncComponent(() => import('@home/molecules/forms/EmailForm.vue'))
 
 import EventEnum from '@enums/EventEnum'
 

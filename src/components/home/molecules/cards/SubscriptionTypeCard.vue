@@ -27,7 +27,7 @@
 </template>
 <script>
 import Card from 'primevue/card'
-import SubscriptionCardButton from '@home/components/atoms/buttons/SubscriptionTypeCardButton.vue'
+import SubscriptionCardButton from '@home/atoms/buttons/SubscriptionTypeCardButton.vue'
 
 import Subscription from '@models/Subscription'
 

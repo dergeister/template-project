@@ -12,8 +12,8 @@
   </nav>
 </template>
 <script>
-import LogoIcon from '@common/components/atoms/icons/LogoIcon.vue'
-import LocaleSwitch from '@common/components/atoms/switch/LocaleSwitch.vue'
+import LogoIcon from '@common/atoms/icons/LogoIcon.vue'
+import LocaleSwitch from '@common/atoms/switch/LocaleSwitch.vue'
 
 export default {
   components: {

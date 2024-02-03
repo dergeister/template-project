@@ -93,7 +93,7 @@ import { mask } from 'vue-the-mask'
 
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
-import FormField from '@common/components/atoms/input/FormField.vue'
+import FormField from '@common/atoms/input/FormField.vue'
 
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, helpers } from '@vuelidate/validators'

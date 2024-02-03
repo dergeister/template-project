@@ -8,10 +8,10 @@
   </DefaultLayout>
 </template>
 <script>
-import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
-import HomeHeader from '@home/components/organisms/HomeHeader.vue'
-import SubscriptionTypeCards from '@home/components/organisms/SubscriptionTypeCards.vue'
-import EmailModalWrapper from '@home/components/organisms/EmailModalWrapper.vue'
+import DefaultLayout from '@common/templates/layouts/DefaultLayout.vue'
+import HomeHeader from '@home/organisms/HomeHeader.vue'
+import SubscriptionTypeCards from '@home/organisms/SubscriptionTypeCards.vue'
+import EmailModalWrapper from '@home/organisms/EmailModalWrapper.vue'
 
 import EventEnum from '@enums/EventEnum'
 

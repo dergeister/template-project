@@ -9,8 +9,8 @@
   </div>
 </template>
 <script>
-import PlanIdentifierForm from '@checkout/components/molecules/forms/PlanIdentifierForm.vue'
-import PaymentMethodForm from '@checkout/components/molecules/forms/PaymentMethodForm.vue'
+import PlanIdentifierForm from '@checkout/molecules/forms/PlanIdentifierForm.vue'
+import PaymentMethodForm from '@checkout/molecules/forms/PaymentMethodForm.vue'
 import EventEnum from '@enums/EventEnum'
 
 import { mapState, mapActions } from 'pinia'

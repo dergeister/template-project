@@ -8,9 +8,8 @@
   </form>
 </template>
 <script>
-import SubscriptionTypeCard from '@home/components/molecules/cards/SubscriptionTypeCard.vue'
+import SubscriptionTypeCard from '@home/molecules/cards/SubscriptionTypeCard.vue'
 
-import SubscriptionFactory from '@factories/SubscriptionFactory'
 import SubscriptionTypeEnum from '@enums/SubscriptionTypeEnum'
 
 import { mapWritableState } from 'pinia'
@@ -19,15 +18,17 @@ import usePaymentStore from '@store/payment'
 import EventEnum from '@enums/EventEnum'
 import PlanIdentifierEnum from '@enums/PlanIdentifierEnum'
 
+import { professionalSubscription, studentSubscription } from '@data/plans'
+
 export default {
   components: { SubscriptionTypeCard },
   computed: {
     ...mapWritableState(usePaymentStore, ['subscriptionType', 'planIdentifier']),
     professional() {
-      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.PROFESSIONAL)
+      return professionalSubscription
     },
     student() {
-      return SubscriptionFactory.createSubscription(SubscriptionTypeEnum.STUDENT)
+      return studentSubscription
     }
   },
   methods: {

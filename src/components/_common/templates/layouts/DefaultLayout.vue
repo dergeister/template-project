@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import AppNavigation from '@common/components/organisms/AppNavigation.vue'
+import AppNavigation from '@common/organisms/AppNavigation.vue'
 
 import navigationMixin from '@mixins/navigation-mixin'
 

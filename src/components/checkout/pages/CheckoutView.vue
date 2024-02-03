@@ -6,9 +6,9 @@
   </DefaultLayout>
 </template>
 <script>
-import DefaultLayout from '@common/components/templates/layouts/DefaultLayout.vue'
+import DefaultLayout from '@common/templates/layouts/DefaultLayout.vue'
 
-import CheckoutWrapper from '@checkout/components/organisms/CheckoutWrapper.vue'
+import CheckoutWrapper from '@checkout/organisms/CheckoutWrapper.vue'
 
 import usePaymentStore from '@store/payment'
 
