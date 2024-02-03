@@ -4,7 +4,7 @@ import delay from '@helpers/loading-helper'
 import EventEnum from '@enums/EventEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
-import UserService from '@services/user-service'
+import { sanitizeUserEmail, mapUser } from '@services/user-service'
 
 const useUserStore = defineStore('user', {
   state: () => ({
@@ -25,7 +25,7 @@ const useUserStore = defineStore('user', {
         return
       }
 
-      const queryEmail = UserService.sanitizeUserEmail(email)
+      const queryEmail = sanitizeUserEmail(email)
 
       this.isLoading = true
 
@@ -35,7 +35,7 @@ const useUserStore = defineStore('user', {
         .get(`/user/${queryEmail}`)
         .then((result) => {
           if (result.data.length > 0) {
-            this.user = result.data[0]
+            this.user = mapUser(result.data[0])
 
             this.emitter.emit(EventEnum.FETCH_USER_BY_EMAIL_SUCCESS)
           } else {

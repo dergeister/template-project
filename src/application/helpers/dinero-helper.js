@@ -14,27 +14,10 @@ const formatDineroInstanceToReal = (dineroInstance) => {
   return rawValue.replace('.', ',')
 }
 
-const centsToReal = (amount) => {
+const formatCentsToReal = (amount) => {
   const dineroInstance = createDineroInstance(amount)
 
   return formatDineroInstanceToReal(dineroInstance)
 }
 
-const createInstallments = (amount, installments) => {
-  const installmentsList = []
-
-  const dineroInstance = createDineroInstance(amount)
-
-  for (let i = 1; i <= installments; i++) {
-    const diviedValue = dineroInstance.divide(i)
-
-    installmentsList.push({
-      installment: i,
-      price: formatDineroInstanceToReal(diviedValue)
-    })
-  }
-
-  return installmentsList
-}
-
-export { centsToReal, createInstallments }
+export { createDineroInstance, formatDineroInstanceToReal, formatCentsToReal }

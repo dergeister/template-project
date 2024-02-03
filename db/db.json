@@ -1,76 +1,9 @@
 {
   "user": [
     {
-      "id": 1,
-      "email": "nicolas@email.com"
+      "Id": 1,
+      "Email": "nicolas@email.com"
     }
   ],
-  "subscriptions": [
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "1111222233334444",
-        "name": "Nicolas Devmann",
-        "cvv": "123",
-        "expirationDate": "01/24"
-      },
-      "plan_identifier": "quarterly_plan",
-      "id": 1
-    },
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "1111222233334444",
-        "name": "Nicolas Devmann",
-        "cvv": "123",
-        "expirationDate": "01/24"
-      },
-      "plan_identifier": "quarterly_plan",
-      "id": 2
-    },
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "1111222233334444",
-        "name": "Nicolas Devmann",
-        "cvv": "123",
-        "expirationDate": "01/24"
-      },
-      "plan_identifier": "quarterly_plan",
-      "id": 3
-    },
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "1111222233334444",
-        "name": "Nicolas Devmann",
-        "cvv": "123",
-        "expirationDate": "01/24"
-      },
-      "plan_identifier": "quarterly_plan",
-      "id": 4
-    },
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "1231231231231231",
-        "name": "aaaaaaaaaaaaaaaaaaaaaaa",
-        "cvv": "123",
-        "expirationDate": "12/34"
-      },
-      "plan_identifier": "semester_plan",
-      "id": 5
-    },
-    {
-      "user_id": 1,
-      "credit_card": {
-        "number": "4000000000000000",
-        "name": "asd",
-        "cvv": "123",
-        "expirationDate": "12/23"
-      },
-      "plan_identifier": "quarterly_plan",
-      "id": 6
-    }
-  ]
+  "subscriptions": []
 }

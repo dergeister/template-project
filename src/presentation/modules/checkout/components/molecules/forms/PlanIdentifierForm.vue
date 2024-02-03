@@ -16,7 +16,7 @@ import PlanIdentifierSelectButton from '@checkout/components/atoms/PlanIdentifie
 import { mapState, mapWritableState } from 'pinia'
 import usePaymentStore from '@store/payment'
 
-import PaymentService from '@services/payment-service'
+import { plansPerSubscriptionType } from '@data/plans'
 
 export default {
   components: {
@@ -26,7 +26,7 @@ export default {
     ...mapState(usePaymentStore, ['subscriptionType']),
     ...mapWritableState(usePaymentStore, ['planIdentifier']),
     plans() {
-      return PaymentService.plansPerSubscriptionType(this.subscriptionType)
+      return plansPerSubscriptionType[this.subscriptionType]
     }
   }
 }
