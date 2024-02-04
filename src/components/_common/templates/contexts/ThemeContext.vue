@@ -7,10 +7,12 @@
 import ThemeEnum from '@enums/ThemeEnum'
 import ErrorEnum from '@enums/ErrorEnum'
 
+import themeConfig from '@config/theme'
+
 export default {
   data() {
     return {
-      theme: ThemeEnum.PROFESSIONAL
+      theme: themeConfig.defaultTheme
     }
   },
   methods: {

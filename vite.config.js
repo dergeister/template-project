@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
+      '@config': fileURLToPath(new URL('./src/config', import.meta.url)),
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
       '@enums': fileURLToPath(new URL('./src/enums', import.meta.url)),
       '@models': fileURLToPath(new URL('./src/models', import.meta.url)),
