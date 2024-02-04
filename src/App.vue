@@ -10,9 +10,9 @@
 <script>
 import { RouterView } from 'vue-router'
 
-import ThemeContext from '@common/templates/contexts/ThemeContext.vue'
-import InternationalizationContext from '@common/templates/contexts/InternationalizationContext.vue'
-import ErrorBoundaryContext from '@common/templates/contexts/ErrorBoundaryContext.vue'
+import ThemeContext from '@common/components/templates/contexts/ThemeContext.vue'
+import InternationalizationContext from '@common/components/templates/contexts/InternationalizationContext.vue'
+import ErrorBoundaryContext from '@common/components/templates/contexts/ErrorBoundaryContext.vue'
 
 export default {
   components: {

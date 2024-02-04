@@ -5,5 +5,39 @@
       "Email": "nicolas@email.com"
     }
   ],
-  "subscriptions": []
+  "subscriptions": [
+    {
+      "UserId": 1,
+      "CreditCard": {
+        "number": "1231231231231231",
+        "name": "asd",
+        "cvv": "123",
+        "expirationDate": "12/31"
+      },
+      "PlanIdentifier": "quarterly_plan",
+      "id": 1
+    },
+    {
+      "UserId": 1,
+      "CreditCard": {
+        "number": "1111222233334444",
+        "name": "Nicolas Devmann",
+        "cvv": "123",
+        "expirationDate": "01/24"
+      },
+      "PlanIdentifier": "quarterly_plan",
+      "id": 2
+    },
+    {
+      "UserId": 1,
+      "CreditCard": {
+        "number": "1111222233334444",
+        "name": "Nicolas Devmann",
+        "cvv": "123",
+        "expirationDate": "01/24"
+      },
+      "PlanIdentifier": "student_monthly_plan",
+      "id": 3
+    }
+  ]
 }

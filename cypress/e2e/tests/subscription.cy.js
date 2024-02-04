@@ -1,7 +1,7 @@
 import SubscriptionTypeEnum from '../../../src/enums/SubscriptionTypeEnum'
 import PlanIdentifierEnum from '../../../src/enums/PlanIdentifierEnum'
 
-import ptBR from '../../../src/presentation/i18n/pt-BR'
+import ptBR from '../../../src/i18n/pt-BR'
 
 describe('Subscription', () => {
   beforeEach(function () {

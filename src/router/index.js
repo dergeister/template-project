@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import routes from './routes'
 import userAuthenticationGuard from '@middlewares/authenticationGuard'
 import paymentGuard from '@middlewares/paymentGuard'
 
@@ -8,7 +7,7 @@ import usePaymentStore from '@store/payment'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes: []
 })
 
 router.beforeEach(async (to) => {
